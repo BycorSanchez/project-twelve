@@ -1,22 +1,22 @@
 
 .App {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  background: red;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: black;
 }
 
 .slice{
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350") no-repeat;
+
   background-size: cover;
-  transition: all 0.8s ease;
+  background-repeat: no-repeat;
   transition-delay: 0.3s;
+  transition: all 0.8s ease;
 }
 
-.slice-hover {
-  background: green;
+.slice-front {
   z-index: 1;
 }
