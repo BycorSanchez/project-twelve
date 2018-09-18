@@ -4,12 +4,14 @@ import classnames from 'classnames';
 
 const Slice = props => {
     const { image, item, isHover, isSelected, onHover, onClick } = props;
+    const polygon = clipPath(props);
 
     return (
         <div
             className={classnames("slice", { "slice-front": (isHover || isSelected) })}
             style={{
-                clipPath: clipPath(props),
+                clipPath: polygon,
+                WebkitClipPath: polygon,
                 backgroundImage: "url(" + image.url + ")"
             }}
             onMouseEnter={() => onHover(item)}
