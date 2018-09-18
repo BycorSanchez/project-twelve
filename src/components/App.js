@@ -1,6 +1,7 @@
 import '../css/App.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Slice from './Slice';
 
 
 class App extends Component {
@@ -9,40 +10,34 @@ class App extends Component {
     slices: PropTypes.number.isRequired
   }
 
-  state = { hoverItem: undefined }
-
-  sliceStyle = (i, width, increment = 0) => {
-    const x1 = i * width;
-    const x2 = (i + 1) * width;
-    const x3 = (i - 1) * width;
-    return ({ "clipPath": "polygon(" + (x1 - increment) + "% 0," + (x2 + increment) + "% 0," + (x1 + increment) + "% 100%, " + (x3 - increment) + "% 100%)" });
+  state = {
+    hoverItem: undefined,
+    selected: undefined
   }
 
-  onHover = hoverItem => this.setState({ hoverItem });
+  onHover = item => this.setState({ hoverItem: item });
+  onClick = item => this.setState({ selected: item });
+
+  isHover = item => this.state.hoverItem === item;
 
   render() {
     const { slices } = this.props;
-    const { hoverItem } = this.state;
     const width = 100 / (slices - 1);
 
     return (
       <div className="App">
         {
-          Array(slices)
-            .fill()
-            .map((n, i) => {
-              const increment = (hoverItem === i) ? (width / 4) : 0;
-              const sliceClass = "shape" + ((hoverItem === i) ? " shape-hover" : "");
-
-              return (
-                <div
-                  key={i}
-                  className={sliceClass}
-                  style={this.sliceStyle(i, width, increment)}
-                  onMouseEnter={() => this.onHover(i)}
-                />
-              )
-            })
+          Array(slices).fill()
+            .map((n, i) => (
+              <Slice
+                key={i}
+                item={i}
+                width={width}
+                isHover={this.isHover(i)}
+                onHover={this.onHover}
+                onClick={this.onClick}
+              />
+            ))
         }
       </div>
     );
