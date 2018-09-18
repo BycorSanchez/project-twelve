@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
 import '../css/App.css';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 class App extends Component {
+
+  static propTypes = {
+    slices: PropTypes.number.isRequired
+  }
 
   state = { hoverItem: undefined }
 
@@ -15,8 +21,8 @@ class App extends Component {
   onHover = hoverItem => this.setState({ hoverItem });
 
   render() {
+    const { slices } = this.props;
     const { hoverItem } = this.state;
-    const slices = 12;
     const width = 100 / (slices - 1);
 
     return (
