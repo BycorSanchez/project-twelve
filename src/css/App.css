@@ -1,9 +1,14 @@
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   position: relative;
   min-width: 100vw;
   min-height: 100vh;
   background: black;
+  overflow: hidden;
 }
 
 .slice{
@@ -11,10 +16,14 @@
   width: 100%;
   height: 100%;
 
-  background-size: cover;
-  background-repeat: no-repeat;
   transition-delay: 0.3s;
   transition: all 0.8s ease;
+}
+
+.slice img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .slice-front {

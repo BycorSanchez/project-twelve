@@ -11,12 +11,13 @@ const Slice = props => {
             className={classnames("slice", { "slice-front": (isHover || isSelected) })}
             style={{
                 clipPath: polygon,
-                WebkitClipPath: polygon,
-                backgroundImage: "url(" + image.url + ")"
+                WebkitClipPath: polygon
             }}
             onMouseEnter={() => onHover(item)}
             onClick={() => onClick(item)}
-        />
+        >
+            <img src={image.url} alt={image.alt}/>
+        </div>
     );
 }
 
