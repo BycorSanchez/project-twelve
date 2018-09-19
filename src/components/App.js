@@ -1,44 +1,33 @@
 import '../css/App.css';
 import React, { Component } from 'react';
 import Slice from './Slice';
-import images from '../data/images.json';
+import dataList from '../data/front-data.json';
 
 
 class App extends Component {
 
   state = {
-    images: [],
-    hoverItem: undefined,
-    selected: undefined
+    dataList: []
   }
 
   componentDidMount() {
-    this.setState({ images })
+    this.setState({ dataList });
   }
 
-  onHover = item => this.setState({ hoverItem: item });
-  onClick = item => this.setState({ selected: item });
-  isHover = item => this.state.hoverItem === item;
-  isSelected = item => this.state.selected === item;
-
   render() {
-    const { images } = this.state;
-    const width = 100 / (images.length - 1);
+    const { dataList } = this.state;
+    const width = 100 / (dataList.length - 1);
 
     return (
       <div className="App">
         {
-          images &&
-          images.map((image, index) => (
+          dataList &&
+          dataList.map((data, index) => (
             <Slice
               key={index}
               item={index}
-              image={image}
+              data={data}
               width={width}
-              isHover={this.isHover(index)}
-              isSelected={this.isSelected(index)}
-              onHover={this.onHover}
-              onClick={this.onClick}
             />
           ))
         }

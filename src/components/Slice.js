@@ -6,15 +6,19 @@ class Slice extends Component {
 
     static propTypes = {
         item: PropTypes.number.isRequired,
-        image: PropTypes.object.isRequired,
-        width: PropTypes.number.isRequired,
-        isHover: PropTypes.bool.isRequired,
-        isSelected: PropTypes.bool.isRequired,
-        onHover: PropTypes.func.isRequired,
-        onClick: PropTypes.func.isRequired
+        data: PropTypes.object.isRequired,
+        width: PropTypes.number.isRequired
     }
 
     static fullPolygon = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
+
+    state = {
+        isHover: false,
+        isSelected: false
+    }
+
+    hover = (isHover = true) => this.setState({ isHover });
+    select = (isSelected = true) => this.setState({ isSelected });
 
     polygon = (i, width, offset = 0) => {
         const x1 = i * width;
@@ -24,8 +28,9 @@ class Slice extends Component {
     }
 
     render() {
-        const { image, item, width, isHover, isSelected, onHover, onClick } = this.props;
-        const polygon = isSelected ? Slice.fullPolygon : this.polygon(item, width, isHover ? (width / 4) : 0);;
+        const { data, item, width } = this.props;
+        const { isHover, isSelected } = this.state;
+        const polygon = isSelected ? Slice.fullPolygon : this.polygon(item, width, isHover ? (width / 4) : 0);
 
         return (
             <div
@@ -34,10 +39,11 @@ class Slice extends Component {
                     clipPath: polygon,
                     WebkitClipPath: polygon
                 }}
-                onMouseEnter={() => onHover(item)}
-                onClick={() => onClick(item)}
+                onMouseEnter={() => this.hover()}
+                onMouseOut={() => this.hover(false)}
+                onClick={() => this.select()}
             >
-                <img src={image.url} alt={image.alt} />
+                <img src={data.url} alt={data.alt} />
             </div>
         );
     }
