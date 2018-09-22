@@ -1,6 +1,7 @@
 import '../css/App.css';
 import React, { Component } from 'react';
 import Slice from './Slice';
+import Rotable from './RotableText';
 import dataList from '../data/front-data.json';
 
 
@@ -20,6 +21,11 @@ class App extends Component {
 
     return (
       <div className="App">
+        <header>
+          <h1>
+            <Rotable text="Memories of" options={["a lifetime", "a love story", "us"]} />
+          </h1>
+        </header>
         {
           dataList &&
           dataList.map((data, index) => (
