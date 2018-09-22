@@ -7,7 +7,8 @@ class Slice extends Component {
     static propTypes = {
         item: PropTypes.number.isRequired,
         data: PropTypes.object.isRequired,
-        width: PropTypes.number.isRequired
+        width: PropTypes.number.isRequired,
+        onHover: PropTypes.func
     }
 
     static fullPolygon = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
@@ -17,7 +18,14 @@ class Slice extends Component {
         isSelected: false
     }
 
-    hover = (isHover = true) => this.setState({ isHover });
+    hover = (isHover = true) => {
+        const { data, onHover } = this.props;
+        if (onHover){
+            onHover(data);
+        }
+        this.setState({ isHover });
+    };
+
     select = (isSelected = true) => this.setState({ isSelected });
 
     polygon = (i, width, offset = 0) => {
@@ -37,14 +45,13 @@ class Slice extends Component {
                 className={classnames("slice", { "slice-front": (isHover || isSelected) })}
                 style={{
                     clipPath: polygon,
-                    WebkitClipPath: polygon
+                    WebkitClipPath: polygon,
+                    backgroundImage: `url(${data.url})`,
                 }}
                 onMouseEnter={() => this.hover()}
                 onMouseOut={() => this.hover(false)}
                 onClick={() => this.select()}
-            >
-                <img src={data.url} alt={data.alt} />
-            </div>
+            />
         );
     }
 }
