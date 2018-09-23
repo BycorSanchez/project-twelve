@@ -6,7 +6,8 @@ import Rotable from '../components/RotableText';
 class App extends Component {
 
   state = {
-    dataList: []
+    dataList: [],
+    hover: undefined
   }
 
   componentDidMount() {
@@ -16,15 +17,19 @@ class App extends Component {
       .catch(e => console.error("Front page information could not be loaded"));
   }
 
+  onHover = item => {
+    this.setState({ hover: item });
+  }
+
   render() {
-    const { dataList } = this.state;
+    const { dataList, hover } = this.state;
     const width = 100 / (dataList.length - 1);
 
     return (
       <div className="App">
         <header>
           <h1>
-            <Rotable text="Memories of" options={["a lifetime", "a love story", "us"]} />
+            <Rotable text="Memories of" mode="manual" options={dataList.map(d => d.title)} start={hover} />
           </h1>
         </header>
         {
@@ -35,6 +40,7 @@ class App extends Component {
               item={index}
               width={width}
               image={data.url}
+              onHover={this.onHover}
             />
           ))
         }
