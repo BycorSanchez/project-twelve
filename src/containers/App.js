@@ -2,7 +2,6 @@ import './App.css';
 import React, { Component } from 'react';
 import Slice from './Slice';
 import Rotable from '../components/RotableText';
-import dataList from '../data/front-data.json';
 
 class App extends Component {
 
@@ -11,7 +10,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({ dataList });
+    fetch("data/front-data.json")
+      .then(r => r.json())
+      .then(dataList => this.setState({ dataList }))
+      .catch(e => console.error("Front page information could not be loaded"));
   }
 
   render() {
