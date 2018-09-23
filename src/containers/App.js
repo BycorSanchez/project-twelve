@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-import Slice from './Slice';
+import Slice from '../components/Slice';
 import Rotable from '../components/RotableText';
 
 class App extends Component {
@@ -33,8 +33,8 @@ class App extends Component {
             <Slice
               key={index}
               item={index}
-              data={data}
               width={width}
+              image={data.url}
             />
           ))
         }

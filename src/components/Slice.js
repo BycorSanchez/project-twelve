@@ -1,3 +1,4 @@
+import './Slice.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -6,8 +7,8 @@ class Slice extends Component {
 
     static propTypes = {
         item: PropTypes.number.isRequired,
-        data: PropTypes.object.isRequired,
         width: PropTypes.number.isRequired,
+        image: PropTypes.object.isRequired,
         onHover: PropTypes.func
     }
 
@@ -19,9 +20,9 @@ class Slice extends Component {
     }
 
     hover = (isHover = true) => {
-        const { data, onHover } = this.props;
-        if (onHover){
-            onHover(data);
+        const { item, onHover } = this.props;
+        if (onHover) {
+            onHover(item);
         }
         this.setState({ isHover });
     };
@@ -36,7 +37,7 @@ class Slice extends Component {
     }
 
     render() {
-        const { data, item, width } = this.props;
+        const { item, width, image } = this.props;
         const { isHover, isSelected } = this.state;
         const polygon = isSelected ? Slice.fullPolygon : this.polygon(item, width, isHover ? (width / 4) : 0);
 
@@ -46,7 +47,7 @@ class Slice extends Component {
                 style={{
                     clipPath: polygon,
                     WebkitClipPath: polygon,
-                    backgroundImage: `url(${data.url})`,
+                    backgroundImage: `url(${image})`,
                 }}
                 onMouseEnter={() => this.hover()}
                 onMouseOut={() => this.hover(false)}
