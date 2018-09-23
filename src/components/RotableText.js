@@ -7,23 +7,27 @@ class RotableText extends Component {
     static propTypes = {
         text: PropTypes.string,
         options: PropTypes.array.isRequired,
-        defaultOption: PropTypes.number,
+        start: PropTypes.number,
         timeout: PropTypes.number,
         mode: PropTypes.oneOf(["manual", "auto", "loop"])
     }
 
     static defaultProps = {
-        defaultOption: 0,
+        start: 0,
         timeout: 2,
         mode: "auto"
     }
 
     state = {
-        selected: this.props.defaultOption
+        selected: this.props.start
     }
 
     componentDidMount() {
         this._autoUpdate();
+    }
+
+    _selectedItem() {
+        return (this.props.mode === "manual") ? this.props.start : this.state.selected;
     }
 
     _autoUpdate() {
@@ -43,7 +47,7 @@ class RotableText extends Component {
 
     render() {
         const { text, options } = this.props;
-        const { selected } = this.state;
+        let selected = this._selectedItem();
 
         return (
             <div className="rotable-text">
