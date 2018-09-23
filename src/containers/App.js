@@ -1,9 +1,8 @@
-import '../css/App.css';
+import './App.css';
 import React, { Component } from 'react';
 import Slice from './Slice';
-import Rotable from './RotableText';
+import Rotable from '../components/RotableText';
 import dataList from '../data/front-data.json';
-
 
 class App extends Component {
 

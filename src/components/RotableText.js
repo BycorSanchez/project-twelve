@@ -1,4 +1,4 @@
-import '../css/RotableText.css'
+import './RotableText.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
