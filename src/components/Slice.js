@@ -8,7 +8,7 @@ class Slice extends Component {
     static propTypes = {
         item: PropTypes.number.isRequired,
         width: PropTypes.number.isRequired,
-        image: PropTypes.object.isRequired,
+        image: PropTypes.string.isRequired,
         onHover: PropTypes.func
     }
 
