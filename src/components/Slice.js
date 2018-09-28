@@ -9,7 +9,8 @@ class Slice extends Component {
         item: PropTypes.number.isRequired,
         width: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
-        onHover: PropTypes.func
+        onHover: PropTypes.func,
+        onSelect: PropTypes.func
     }
 
     static fullPolygon = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
@@ -27,7 +28,13 @@ class Slice extends Component {
         this.setState({ isHover });
     };
 
-    select = (isSelected = true) => this.setState({ isSelected });
+    select = (isSelected = true) => {
+        const { item, onSelect } = this.props;
+        if (onSelect) {
+            onSelect(item);
+        }
+        this.setState({ isSelected });
+    }
 
     polygon = (i, width, offset = 0) => {
         const x1 = i * width;
