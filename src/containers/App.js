@@ -8,7 +8,8 @@ class App extends Component {
 
   state = {
     dataList: [],
-    hover: undefined
+    hover: undefined,
+    selected: undefined
   }
 
   componentDidMount() {
@@ -22,8 +23,12 @@ class App extends Component {
     this.setState({ hover: item });
   }
 
+  onSelect = item => {
+    this.setState({ selected: item });
+  }
+
   render() {
-    const { dataList, hover } = this.state;
+    const { dataList, hover, selected } = this.state;
     const width = 100 / (dataList.length - 1);
 
     return (
@@ -44,13 +49,20 @@ class App extends Component {
                 width={width}
                 image={data.url}
                 onHover={this.onHover}
+                onSelect={this.onSelect}
               />
             ))
           }
         </section>
-        <section>
-          <Gallery images={dataList.map(d => d.url)} />
-        </section>
+        {
+          selected !== undefined &&
+          selected !== null &&
+          (
+            <section>
+              <Gallery images={dataList.map(d => d.url)} />
+            </section>
+          )
+        }
       </div>
     );
   }
