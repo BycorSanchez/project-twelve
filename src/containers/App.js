@@ -27,17 +27,12 @@ class App extends Component {
     this.setState({ selected: item });
   }
 
-  unselect = () => {
-    this.onSelect(undefined);
-  }
-
-  anySelected(){
-    const { selected } = this.state;
-    return selected !== undefined && selected !== null;
+  anySelected() {
+    return this.state.selected !== undefined;
   }
 
   render() {
-    const { dataList, hover, selected } = this.state;
+    const { dataList, hover } = this.state;
     const width = 100 / (dataList.length - 1);
 
     return (
@@ -56,8 +51,6 @@ class App extends Component {
                 item={index}
                 width={width}
                 image={data.url}
-                isHover={index === hover}
-                isSelected={index === selected}
                 onHover={this.onHover}
                 onSelect={this.onSelect}
               />

@@ -9,31 +9,37 @@ class Slice extends Component {
         item: PropTypes.number.isRequired,
         width: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
-        isHover: PropTypes.bool,
-        isSelected: PropTypes.bool,
         onHover: PropTypes.func,
         onSelect: PropTypes.func
     }
 
-    static defaultProps = {
-        isSelected: false,
-        isHover: false
+    state = {
+        isHover: false,
+        isSelected: false
     }
 
     static fullPolygon = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
 
     hover(isHover = true) {
         const { item, onHover } = this.props;
+        this.setState({ isHover });
+
         if (isHover && onHover) {
             onHover(item);
         }
     };
 
-    select() {
+    select(isSelected = true) {
         const { item, onSelect } = this.props;
-        if (onSelect) {
+        this.setState({ isSelected });
+
+        if (isSelected && onSelect) {
             onSelect(item);
         }
+    }
+
+    anySelected() {
+        return this.state.isSelected !== undefined && this.state.isSelected !== null;
     }
 
     polygon = (i, width, offset = 0) => {
@@ -44,12 +50,12 @@ class Slice extends Component {
     }
 
     render() {
-        const { item, width, image, isSelected, isHover } = this.props;
+        const { item, width, image } = this.props;
+        const { isSelected, isHover } = this.state;
         const polygon = isSelected ? Slice.fullPolygon : this.polygon(item, width, isHover ? (width / 4) : 0);
 
         return (
-            <div
-                className={classnames("slice", { "slice-front": (isSelected || isHover) })}
+            <div className={classnames("slice", { "slice-front": (isSelected || isHover) })}
                 style={{
                     clipPath: polygon,
                     WebkitClipPath: polygon,
@@ -58,7 +64,8 @@ class Slice extends Component {
                 onMouseEnter={() => this.hover()}
                 onMouseOut={() => this.hover(false)}
                 onClick={() => this.select()}
-            />
+            >
+            </div >
         );
     }
 }
