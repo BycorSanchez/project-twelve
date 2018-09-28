@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Slice from '../components/Slice';
 import Rotable from '../components/RotableText';
+import Gallery from '../components/Gallery';
 
 class App extends Component {
 
@@ -27,23 +28,29 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header>
-          <h1>
-            <Rotable text="Memories of" mode="manual" options={dataList.map(d => d.title)} start={hover} />
-          </h1>
-        </header>
-        {
-          dataList &&
-          dataList.map((data, index) => (
-            <Slice
-              key={index}
-              item={index}
-              width={width}
-              image={data.url}
-              onHover={this.onHover}
-            />
-          ))
-        }
+        <section className="front">
+          <header>
+            <h1>
+              <Rotable text="Memories of" mode="manual" start={hover} options={dataList.map(d => d.title)} />
+            </h1>
+          </header>
+
+          {
+            dataList &&
+            dataList.map((data, index) => (
+              <Slice
+                key={index}
+                item={index}
+                width={width}
+                image={data.url}
+                onHover={this.onHover}
+              />
+            ))
+          }
+        </section>
+        <section>
+          <Gallery images={dataList.map(d => d.url)} />
+        </section>
       </div>
     );
   }

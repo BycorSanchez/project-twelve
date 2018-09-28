@@ -2,15 +2,15 @@
   box-sizing: border-box;
 }
 
-.App {
+.App .front {
+  display: block;
   position: relative;
-  min-width: 100vw;
-  min-height: 100vh;
-  background: black;
-  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
 }
 
-header{
+header {
   position: absolute;
   width: 100%;
   display: flex;
