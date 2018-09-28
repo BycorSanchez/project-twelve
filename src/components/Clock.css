@@ -1,0 +1,80 @@
+:root {
+    --clock-size: 80px;
+    --hour-line-thick: 3px;
+    --minute-line-thick: 4px;
+    --hour-degrees: 65deg;
+    --minute-degree: -40deg;
+}
+
+.clock {
+    position: relative;
+    width: var(--clock-size);
+    height: var(--clock-size);
+    background: #2f2f2f;
+    background: radial-gradient(circle, rgba(47,47,47,1) 0%, rgba(28,28,28,1) 34%, rgba(0,0,0,1) 100%);
+    border-radius: 50%;
+    z-index: 9999;
+}
+
+.clock:hover {
+    box-shadow: 0px 0px 20px white;
+}
+
+.clock-center {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    top: calc(50% - 5%);
+    left: calc(50% - 5%);
+    background: #737373;
+    border-radius: 50%;
+}
+
+.line {
+    position: absolute;
+    transform-origin: bottom center;
+    left: 50%;
+    bottom: 50%;
+}
+
+.hours {
+    transform: rotate(var(--hour-degrees));
+    height: 45%;
+    width: var(--hour-line-thick);
+    background: #b1b1b1;
+    left: calc(50% - calc(var(--hour-line-thick) / 2));
+}
+
+.clock:hover .hours {
+    animation: hour-rotation 3s linear infinite;
+}
+
+.clock:hover .minutes {
+    animation: minute-rotation 1.5s linear infinite;
+}
+
+.minutes {
+    transform: rotate(var(--minute-degree));
+    left: calc(50% - calc(var(--minute-line-thick) / 2));
+    height: 28%;
+    width: var(--minute-line-thick);
+    background: #8a8a8a;
+}
+
+@keyframes hour-rotation {
+    from {
+        transform:rotate(calc(360deg + var(--hour-degrees)));
+    }
+    to {
+        transform:rotate(calc(0deg + var(--hour-degrees)));
+    }
+}
+
+@keyframes minute-rotation {
+    from {
+        transform:rotate(calc(360deg + var(--minute-degree)));
+    }
+    to {
+        transform:rotate(calc(0deg + var(--minute-degree)));
+    }
+}
