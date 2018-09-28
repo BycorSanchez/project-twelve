@@ -9,31 +9,31 @@ class Slice extends Component {
         item: PropTypes.number.isRequired,
         width: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
+        isHover: PropTypes.bool,
+        isSelected: PropTypes.bool,
         onHover: PropTypes.func,
         onSelect: PropTypes.func
     }
 
-    static fullPolygon = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
-
-    state = {
-        isHover: false,
-        isSelected: false
+    static defaultProps = {
+        isSelected: false,
+        isHover: false
     }
 
-    hover = (isHover = true) => {
+    static fullPolygon = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
+
+    hover(isHover = true) {
         const { item, onHover } = this.props;
-        if (onHover) {
+        if (isHover && onHover) {
             onHover(item);
         }
-        this.setState({ isHover });
     };
 
-    select = (isSelected = true) => {
+    select() {
         const { item, onSelect } = this.props;
         if (onSelect) {
             onSelect(item);
         }
-        this.setState({ isSelected });
     }
 
     polygon = (i, width, offset = 0) => {
@@ -44,13 +44,12 @@ class Slice extends Component {
     }
 
     render() {
-        const { item, width, image } = this.props;
-        const { isHover, isSelected } = this.state;
+        const { item, width, image, isSelected, isHover } = this.props;
         const polygon = isSelected ? Slice.fullPolygon : this.polygon(item, width, isHover ? (width / 4) : 0);
 
         return (
             <div
-                className={classnames("slice", { "slice-front": (isHover || isSelected) })}
+                className={classnames("slice", { "slice-front": (isSelected || isHover) })}
                 style={{
                     clipPath: polygon,
                     WebkitClipPath: polygon,
