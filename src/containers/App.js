@@ -47,7 +47,7 @@ class App extends Component {
           {
             this.anySelected() &&
             (
-              <a className="back" onClick={this.onSelect}>
+              <a className="back" onClick={() => this.onSelect()}>
                 <Clock />
               </a>
             )
