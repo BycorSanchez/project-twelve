@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Slice from '../components/Slice';
 import Rotable from '../components/RotableText';
 import Gallery from '../components/Gallery';
+import Clock from '../components/Clock';
 
 class App extends Component {
 
@@ -32,7 +33,7 @@ class App extends Component {
   }
 
   render() {
-    const { dataList, hover } = this.state;
+    const { dataList, hover, selected } = this.state;
     const width = 100 / (dataList.length - 1);
 
     return (
@@ -44,6 +45,14 @@ class App extends Component {
         </header>
         <section className="front">
           {
+            this.anySelected() &&
+            (
+              <a className="back" onClick={this.onSelect}>
+                <Clock />
+              </a>
+            )
+          }
+          {
             dataList &&
             dataList.map((data, index) => (
               <Slice
@@ -51,6 +60,8 @@ class App extends Component {
                 item={index}
                 width={width}
                 image={data.url}
+                isHover={index === hover}
+                isSelected={index === selected}
                 onHover={this.onHover}
                 onSelect={this.onSelect}
               />

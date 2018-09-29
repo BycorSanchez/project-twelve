@@ -26,3 +26,34 @@ header h1 {
   letter-spacing: .05em;
   color: #ececec;
 }
+
+:root {
+  --clock-size: 40px;
+}
+
+section .back{
+  position: absolute;
+  z-index: 9;
+  width: var(--clock-size);
+  height: var(--clock-size);
+  right: 10%;
+  margin-top: 50px;
+}
+
+@media screen and (min-width: 400px){
+  :root {
+    --clock-size: 45px;
+  }
+}
+
+@media screen and (min-width: 700px){
+  :root {
+    --clock-size: 60px;
+  }
+}
+
+@media screen and (min-width: 1000px){
+  :root {
+    --clock-size: 80px;
+  }
+}

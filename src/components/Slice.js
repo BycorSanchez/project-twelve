@@ -9,37 +9,23 @@ class Slice extends Component {
         item: PropTypes.number.isRequired,
         width: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
+        isHover: PropTypes.bool,
+        isSelected: PropTypes.bool,
         onHover: PropTypes.func,
         onSelect: PropTypes.func
     }
 
-    state = {
+    static defaultProps = {
         isHover: false,
         isSelected: false
     }
 
     static fullPolygon = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
 
-    hover(isHover = true) {
-        const { item, onHover } = this.props;
-        this.setState({ isHover });
-
-        if (isHover && onHover) {
-            onHover(item);
+    callListener(item, func){
+        if (func){
+            func(item);
         }
-    };
-
-    select(isSelected = true) {
-        const { item, onSelect } = this.props;
-        this.setState({ isSelected });
-
-        if (isSelected && onSelect) {
-            onSelect(item);
-        }
-    }
-
-    anySelected() {
-        return this.state.isSelected !== undefined && this.state.isSelected !== null;
     }
 
     polygon = (i, width, offset = 0) => {
@@ -50,8 +36,7 @@ class Slice extends Component {
     }
 
     render() {
-        const { item, width, image } = this.props;
-        const { isSelected, isHover } = this.state;
+        const { item, width, image, isSelected, isHover, onHover, onSelect } = this.props;
         const polygon = isSelected ? Slice.fullPolygon : this.polygon(item, width, isHover ? (width / 4) : 0);
 
         return (
@@ -61,9 +46,8 @@ class Slice extends Component {
                     WebkitClipPath: polygon,
                     backgroundImage: `url(${image})`,
                 }}
-                onMouseEnter={() => this.hover()}
-                onMouseOut={() => this.hover(false)}
-                onClick={() => this.select()}
+                onMouseEnter={() => this.callListener(item, onHover)}
+                onClick={() => this.callListener(item, onSelect)}
             >
             </div >
         );
