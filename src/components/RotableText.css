@@ -4,12 +4,11 @@
     line-height: 1.2em;
     overflow: hidden;
     color: white;
-    margin-top: 50px;
   }
   
   .rotable-text .options {
     display: flex;
     flex-direction: column;
-    padding-left: 18px;
+    padding-left: 0.4em;
     transition: all 0.8s ease;
   }
