@@ -1,6 +1,4 @@
 :root {
-    --hour-line-thick: 3px;
-    --minute-line-thick: 4px;
     --hour-degrees: 65deg;
     --minute-degree: -40deg;
 }
@@ -39,9 +37,9 @@
 .hours {
     transform: rotate(var(--hour-degrees));
     height: 45%;
-    width: var(--hour-line-thick);
+    width: 3.5%;
     background: #b1b1b1;
-    left: calc(50% - calc(var(--hour-line-thick) / 2));
+    left: calc(50% - 1.75%);
 }
 
 .clock:hover .hours {
@@ -54,9 +52,9 @@
 
 .minutes {
     transform: rotate(var(--minute-degree));
-    left: calc(50% - calc(var(--minute-line-thick) / 2));
+    left: calc(50% - 2.5%);
     height: 28%;
-    width: var(--minute-line-thick);
+    width: 5%;
     background: #8a8a8a;
 }
 
