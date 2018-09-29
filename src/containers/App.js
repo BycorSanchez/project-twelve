@@ -47,9 +47,15 @@ class App extends Component {
           {
             this.anySelected() &&
             (
-              <a className="back" onClick={() => this.onSelect()}>
+              <a className="overlap back" onClick={() => this.onSelect()}>
                 <Clock />
               </a>
+            )
+          }
+          {
+            this.anySelected() &&
+            (
+              <a className="overlap forth" href="#gallery"/>
             )
           }
           {
@@ -71,7 +77,7 @@ class App extends Component {
         {
           this.anySelected() &&
           (
-            <section>
+            <section id="gallery">
               <Gallery images={dataList.map(d => d.url)} />
             </section>
           )
