@@ -1,7 +1,7 @@
-import './Slice.css';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import './Slice.css'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
 class Slice extends Component {
 
@@ -22,13 +22,13 @@ class Slice extends Component {
 
     static fullPolygon = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
 
-    callListener(item, func){
-        if (func){
+    _callListener(item, func) {
+        if (func) {
             func(item);
         }
     }
 
-    polygon = (i, width, offset = 0) => {
+    _polygon = (i, width, offset = 0) => {
         const x1 = i * width;
         const x2 = (i + 1) * width;
         const x3 = (i - 1) * width;
@@ -37,7 +37,7 @@ class Slice extends Component {
 
     render() {
         const { item, width, image, isSelected, isHover, onHover, onSelect } = this.props;
-        const polygon = isSelected ? Slice.fullPolygon : this.polygon(item, width, isHover ? (width / 4) : 0);
+        const polygon = isSelected ? Slice.fullPolygon : this._polygon(item, width, isHover ? (width / 4) : 0);
 
         return (
             <div className={classnames("slice", { "slice-front": (isSelected || isHover) })}
@@ -46,8 +46,8 @@ class Slice extends Component {
                     WebkitClipPath: polygon,
                     backgroundImage: `url(${image})`,
                 }}
-                onMouseEnter={() => this.callListener(item, onHover)}
-                onClick={() => this.callListener(item, onSelect)}
+                onMouseEnter={() => this._callListener(item, onHover)}
+                onClick={() => this._callListener(item, onSelect)}
             >
             </div >
         );

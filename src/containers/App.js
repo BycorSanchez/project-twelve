@@ -1,9 +1,9 @@
-import './App.css';
-import React, { Component } from 'react';
-import Slice from '../components/Slice';
-import Rotable from '../components/RotableText';
-import Gallery from '../components/Gallery';
-import Clock from '../components/Clock';
+import './App.css'
+import React, { Component } from 'react'
+import Slice from '../components/Slice'
+import Rotable from '../components/RotableText'
+import Gallery from '../components/Gallery'
+import Clock from '../components/Clock'
 
 class App extends Component {
 
@@ -20,15 +20,15 @@ class App extends Component {
       .catch(e => console.error("Front page information could not be loaded"));
   }
 
-  onHover = item => {
+  _onHover = item => {
     this.setState({ hover: item });
   }
 
-  onSelect = item => {
+  _onSelect = item => {
     this.setState({ selected: item });
   }
 
-  anySelected() {
+  _anySelected() {
     return this.state.selected !== undefined;
   }
 
@@ -40,27 +40,29 @@ class App extends Component {
       <div className="App">
         <header>
           <h1>
-            <Rotable text="Memories of" mode="manual" start={hover} options={dataList.map(d => d.title)} />
+            <Rotable
+              text="Memories of"
+              mode="manual"
+              start={hover}
+              options={dataList.map(d => d.title)} />
           </h1>
         </header>
         <section className="front">
           {
-            this.anySelected() &&
+            this._anySelected() &&
             (
               <a
                 className="overlap back"
-                onClick={() => this.onSelect()}
                 aria-label="Back to front"
+                onClick={() => this._onSelect()}
               >
                 <Clock />
               </a>
             )
           }
           {
-            this.anySelected() &&
-            (
-              <a className="overlap next hide-text" href="#gallery">Next</a>
-            )
+            this._anySelected() &&
+            (<a className="overlap next hide-text" href="#gallery">Next</a>)
           }
           {
             dataList &&
@@ -72,14 +74,14 @@ class App extends Component {
                 image={data.url}
                 isHover={index === hover}
                 isSelected={index === selected}
-                onHover={this.onHover}
-                onSelect={this.onSelect}
+                onHover={this._onHover}
+                onSelect={this._onSelect}
               />
             ))
           }
         </section>
         {
-          this.anySelected() &&
+          this._anySelected() &&
           (
             <section id="gallery">
               <Gallery images={dataList.map(d => d.url)} />

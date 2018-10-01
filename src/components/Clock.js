@@ -1,5 +1,5 @@
-import './Clock.css';
-import React from 'react';
+import './Clock.css'
+import React from 'react'
 
 const Clock = () => (
     <div className="clock">
