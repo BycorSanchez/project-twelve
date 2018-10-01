@@ -45,7 +45,7 @@ header h1 {
 }
 
 .front .next{
-  background: rgba(255, 255, 255, 0.25) url(../images/arrow_down.svg) no-repeat center;
+  background: rgba(0, 0, 0, 0.4) url(../images/arrow_down.svg) no-repeat center;
   border-radius: 50%;
   border: 0.3px solid white;
   width: 70px;
