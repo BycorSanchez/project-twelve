@@ -21,7 +21,9 @@ class App extends Component {
   }
 
   _onHover = item => {
-    this.setState({ hover: item });
+    this.setState(state => ({
+      hover: state.selected ? undefined : item
+    }));
   }
 
   _onSelect = item => {
