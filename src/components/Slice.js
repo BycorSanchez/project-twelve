@@ -54,4 +54,4 @@ class Slice extends Component {
     }
 }
 
-export default Slice;
+export default Slice

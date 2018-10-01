@@ -73,4 +73,4 @@ class RotableText extends Component {
     }
 }
 
-export default RotableText;
+export default RotableText

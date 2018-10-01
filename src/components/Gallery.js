@@ -61,4 +61,4 @@ class Gallery extends Component {
 }
 
 
-export default sizes(Gallery.sizesToProps)(Gallery);
+export default sizes(Gallery.sizesToProps)(Gallery)
