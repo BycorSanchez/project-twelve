@@ -47,7 +47,11 @@ class App extends Component {
           {
             this.anySelected() &&
             (
-              <a className="overlap back" onClick={() => this.onSelect()}>
+              <a
+                className="overlap back"
+                onClick={() => this.onSelect()}
+                aria-label="Back to front"
+              >
                 <Clock />
               </a>
             )
@@ -55,7 +59,7 @@ class App extends Component {
           {
             this.anySelected() &&
             (
-              <a className="overlap forth" href="#gallery"/>
+              <a className="overlap next hide-text" href="#gallery">Next</a>
             )
           }
           {
