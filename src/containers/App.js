@@ -45,7 +45,7 @@ class App extends Component {
             <Rotable
               text="Memories of"
               mode="manual"
-              start={hover}
+              start={selected ? selected : hover}
               options={dataList.map(d => d.title)} />
           </h1>
         </header>
