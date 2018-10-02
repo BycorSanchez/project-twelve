@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   _onSelect = item => {
-    this.setState({ selected: item });
+    this.setState({ selected: item, hover: undefined });
   }
 
   _anySelected() {
