@@ -46,6 +46,7 @@ class App extends Component {
   render() {
     const { dataList, hover, selected } = this.state;
     const width = 100 / (dataList.length - 1);
+    const sliceType = this._isMobile() ? 'horizontal' : 'vertical';
 
     return (
       <div className="App">
@@ -85,9 +86,9 @@ class App extends Component {
                 image={data.url}
                 isHover={index === hover}
                 isSelected={index === selected}
+                type={sliceType}
                 onHover={this._onHover}
                 onSelect={this._onSelect}
-                type={this._isMobile() ? 'horizontal' : 'vertical'}
               />
             ))
           }
