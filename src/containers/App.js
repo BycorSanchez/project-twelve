@@ -4,8 +4,13 @@ import Slice from '../components/Slice'
 import Rotable from '../components/RotableText'
 import Gallery from '../components/Gallery'
 import Clock from '../components/Clock'
+import sizes from 'react-sizes'
 
 class App extends Component {
+
+  static sizesToProps({ width }) {
+    return { deviceWidth: width };
+  };
 
   state = {
     dataList: [],
@@ -32,6 +37,10 @@ class App extends Component {
 
   _anySelected() {
     return this.state.selected !== undefined;
+  }
+
+  _isMobile() {
+    return this.props.deviceWidth < 700;
   }
 
   render() {
@@ -78,6 +87,7 @@ class App extends Component {
                 isSelected={index === selected}
                 onHover={this._onHover}
                 onSelect={this._onSelect}
+                type={this._isMobile() ? 'horizontal' : 'vertical'}
               />
             ))
           }
@@ -95,4 +105,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default sizes(App.sizesToProps)(App)
