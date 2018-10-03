@@ -15,7 +15,7 @@ class RotableText extends Component {
     static defaultProps = {
         start: 0,
         timeout: 2,
-        mode: "auto"
+        mode: "manual"
     }
 
     state = {

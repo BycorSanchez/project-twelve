@@ -5,6 +5,7 @@ import Rotable from '../components/RotableText'
 import Gallery from '../components/Gallery'
 import Clock from '../components/Clock'
 import sizes from 'react-sizes'
+import classnames from 'classnames'
 
 class App extends Component {
 
@@ -49,50 +50,60 @@ class App extends Component {
     const sliceType = this._isMobile() ? 'horizontal' : 'vertical';
 
     return (
-      <div className="App">
-        <header>
-          <h1>
-            <Rotable
-              text="Memories of"
-              mode="manual"
-              start={selected ? selected : hover}
-              options={dataList.map(d => d.title)} />
-          </h1>
-        </header>
+      <main className="App">
         <section className="front">
-          {
-            this._anySelected() &&
-            (
-              <a
-                className="overlap back"
-                aria-label="Back to front"
-                onClick={() => this._onSelect()}
-              >
-                <Clock />
-              </a>
-            )
-          }
-          {
-            this._anySelected() &&
-            (<a className="overlap next hide-text" href="#gallery">Next</a>)
-          }
-          {
-            dataList &&
-            dataList.map((data, index) => (
-              <Slice
-                key={index}
-                item={index}
-                width={width}
-                image={data.url}
-                isHover={index === hover}
-                isSelected={index === selected}
-                type={sliceType}
-                onHover={this._onHover}
-                onSelect={this._onSelect}
+
+          {/* Overlapped information */}
+          <div className={classnames("front-info", "overlap", { "no-interaction": !this._anySelected() })}>
+            <h1>
+              <Rotable
+                text="Memories of"
+                start={selected ? selected : hover}
+                options={dataList.map(d => d.title)}
               />
-            ))
-          }
+              {
+                this._anySelected() &&
+                (
+                  <a
+                    id="clock"
+                    aria-label="Back to front"
+                    onClick={() => this._onSelect()}
+                  >
+                    <Clock />
+                  </a>
+                )
+              }
+            </h1>
+
+            <p>{this._anySelected() ? (dataList[selected].description) : "Select a memory"}</p>
+
+            {
+              this._anySelected() &&
+              (<a className="next-section hide-text" href="#gallery">Next</a>)
+            }
+          </div>
+
+          {/* Background slices */}
+          <div>
+            {
+              dataList &&
+              dataList.map((data, index) => (
+                <Slice
+                  key={index}
+                  item={index}
+                  width={width}
+                  image={data.url}
+                  isHover={index === hover}
+                  isSelected={index === selected}
+                  type={sliceType}
+                  onHover={this._onHover}
+                  onSelect={this._onSelect}
+                />
+              ))
+            }
+          </div>
         </section>
+
         {
           this._anySelected() &&
           (
@@ -101,7 +112,7 @@ class App extends Component {
             </section>
           )
         }
-      </div>
+      </main>
     );
   }
 }
