@@ -25,16 +25,15 @@ class Gallery extends Component {
         this.setState({ modalImage });
     }
 
-    _closeModal(){
+    _closeModal() {
         this.setState({ modalImage: undefined });
     }
 
-    _modalClicked(e){
-        if (e.target.classList.contains("modal")){
+    _modalClicked(e) {
+        if (e.target.classList.contains("modal")) {
             this._closeModal();
         }
     }
-
 
     _mapColumn(column) {
         const width = (100 / this.props.columns);
@@ -87,7 +86,10 @@ class Gallery extends Component {
                 {
                     modalImage &&
                     <div className="modal" onClick={e => this._modalClicked(e)}>
-                        <img className="modal-image"src={modalImage} alt="" />
+                        <div className="modal-content">
+                            <span className="icon close" onClick={() => this._closeModal()}>×</span>
+                            <img src={modalImage} alt="" />
+                        </div>
                     </div>
                 }
             </div>

@@ -30,7 +30,39 @@
     z-index: 10;
 }
 
-.modal .modal-image {
-    max-width: 80vw;
-    max-height: 80vh;
+.modal-content {
+    position: relative;
+    max-width: 70vw;
+    max-height: 70vh;
+}
+
+.gallery .icon {
+    font-size: 1.5em;
+}
+
+.close {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background: white;
+    padding: 0 0.2em;
+    cursor: pointer;
+}
+
+.modal-content img {
+    max-width: inherit;
+    max-height: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (min-width: 500px) {
+    .modal-content {
+        position: relative;
+        max-width: 80vw;
+        max-height: 80vh;
+    }    
+
+    .gallery .icon {
+        font-size: 2.2em;
+    }
 }
