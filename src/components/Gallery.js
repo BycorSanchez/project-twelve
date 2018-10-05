@@ -2,6 +2,7 @@ import './Gallery.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import sizes from 'react-sizes'
+import { range } from '../utils/Utils'
 
 class Gallery extends Component {
 
@@ -35,34 +36,39 @@ class Gallery extends Component {
         }
     }
 
+    _anyModal() {
+        return this.state.modalImage !== undefined;
+    }
+
     _mapColumn(column) {
-        const width = (100 / this.props.columns);
-        const images = this._imagesOf(column);
+        const { columns, images } = this.props;
+        const width = (100 / columns);
+        const indexes = range(column, images.length, columns);
 
         return (
             <div
                 key={column}
                 className="column"
                 style={{
-                    width: "calc( " + width + "% - 10px )",
-                    height: "100%"
+                    width: "calc( " + width + "% - 10px )"
                 }}
             >
                 {
-                    images.map((image, index) => this._mapImage(image, index))
+                    indexes.map(i => this._mapImage(i))
                 }
             </div>
         );
     }
 
-    _mapImage(image, index) {
+    _mapImage(index) {
+        const image = this.props.images[index];
         return (
             <img
                 key={index}
                 className="gallery-image"
                 src={image}
                 alt=""
-                onClick={() => this._openModal(image)}
+                onClick={() => this._openModal(index)}
             />);
     }
 
@@ -84,13 +90,23 @@ class Gallery extends Component {
                         .map((d, column) => this._mapColumn(column))
                 }
                 {
-                    modalImage &&
-                    <div className="modal" onClick={e => this._modalClicked(e)}>
-                        <div className="modal-content">
-                            <span className="icon close" onClick={() => this._closeModal()}>×</span>
-                            <img src={modalImage} alt="" />
+                    this._anyModal() &&
+                    (
+                        <div className="modal" onClick={e => this._modalClicked(e)}>
+                            <div className="modal-content">
+                                <img src={images[modalImage]} alt="" />
+                                <span className="icon close" onClick={() => this._closeModal()}>×</span>
+                                {
+                                    modalImage > 0 &&
+                                    (<span className="icon previous" onClick={() => this._openModal(modalImage - 1)}>＜</span>)
+                                }
+                                {
+                                    modalImage < (images.length - 1) &&
+                                    (<span className="icon next" onClick={() => this._openModal(modalImage + 1)}>＞</span>)
+                                }
+                            </div>
                         </div>
-                    </div>
+                    )
                 }
             </div>
         );
