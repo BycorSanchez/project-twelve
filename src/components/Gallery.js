@@ -17,6 +17,25 @@ class Gallery extends Component {
         return { columns };
     };
 
+    state = {
+        modalImage: undefined
+    }
+
+    _openModal(modalImage) {
+        this.setState({ modalImage });
+    }
+
+    _closeModal(){
+        this.setState({ modalImage: undefined });
+    }
+
+    _modalClicked(e){
+        if (e.target.classList.contains("modal")){
+            this._closeModal();
+        }
+    }
+
+
     _mapColumn(column) {
         const width = (100 / this.props.columns);
         const images = this._imagesOf(column);
@@ -37,7 +56,16 @@ class Gallery extends Component {
         );
     }
 
-    _mapImage = (image, index) => (<img key={index} src={image} alt="" />);
+    _mapImage(image, index) {
+        return (
+            <img
+                key={index}
+                className="gallery-image"
+                src={image}
+                alt=""
+                onClick={() => this._openModal(image)}
+            />);
+    }
 
     _imagesOf(column) {
         const { columns, images } = this.props;
@@ -46,6 +74,7 @@ class Gallery extends Component {
 
     render() {
         const { columns, images } = this.props;
+        const { modalImage } = this.state;
         return (
             <div className="gallery">
                 {
@@ -55,10 +84,15 @@ class Gallery extends Component {
                         .fill()
                         .map((d, column) => this._mapColumn(column))
                 }
+                {
+                    modalImage &&
+                    <div className="modal" onClick={e => this._modalClicked(e)}>
+                        <img className="modal-image"src={modalImage} alt="" />
+                    </div>
+                }
             </div>
         );
     }
 }
-
 
 export default sizes(Gallery.sizesToProps)(Gallery)
