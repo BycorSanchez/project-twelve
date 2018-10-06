@@ -4,6 +4,7 @@ import Slice from '../components/Slice'
 import Rotable from '../components/RotableText'
 import Gallery from '../components/Gallery'
 import Clock from '../components/Clock'
+import Modal from '../components/Modal'
 import sizes from 'react-sizes'
 import classnames from 'classnames'
 
@@ -16,7 +17,8 @@ class App extends Component {
   state = {
     dataList: [],
     hover: undefined,
-    selected: undefined
+    selected: undefined,
+    modal: undefined
   }
 
   componentDidMount() {
@@ -32,20 +34,25 @@ class App extends Component {
     }));
   }
 
-  _onSelect = item => {
-    this.setState({ selected: item, hover: undefined });
-  }
+  _onSelect = item => this.setState({ selected: item, hover: undefined });
 
-  _anySelected() {
-    return this.state.selected !== undefined;
-  }
+  _anySelected = () => this.state.selected !== undefined;
 
-  _isMobile() {
-    return this.props.deviceWidth < 700;
-  }
+  _anyModal = () => this.state.modal !== undefined;
+
+  _isMobile = () => this.props.deviceWidth < 700;
+
+  _openModal = modal => this.setState({ modal });
+
+  _closeModal = () => this.setState({ modal: undefined });
+
+  _nextModal = () => this._openModal(this.state.modal+1);
+
+  _previousModal = () => this._openModal(this.state.modal-1);
+
 
   render() {
-    const { dataList, hover, selected } = this.state;
+    const { dataList, hover, selected, modal } = this.state;
     const width = 100 / (dataList.length - 1);
     const sliceType = this._isMobile() ? 'horizontal' : 'vertical';
 
@@ -67,7 +74,7 @@ class App extends Component {
                   <a
                     id="clock"
                     aria-label="Back to front"
-                    onClick={() => this._onSelect()}
+                    onClick={this._onSelect}
                   >
                     <Clock />
                   </a>
@@ -108,8 +115,25 @@ class App extends Component {
           this._anySelected() &&
           (
             <section id="gallery">
-              <Gallery images={dataList.map(d => d.url)} />
+              <Gallery 
+                images={dataList.map(d => d.url)} 
+                click={this._openModal}
+              />
             </section>
+          )
+        }
+
+        {
+          this._anyModal() &&
+          (
+            <Modal
+              image={dataList[modal].url}
+              close={this._closeModal}
+              next={this._nextModal}
+              previous={this._previousModal}
+              showPrevious={modal > 0}
+              showNext={modal < (dataList.length - 1)}
+            />
           )
         }
       </main>
