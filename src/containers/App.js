@@ -42,14 +42,15 @@ class App extends Component {
 
   _isMobile = () => this.props.deviceWidth < 700;
 
-  _openModal = modal => this.setState({ modal });
+  _openModal = modal => {
+    const length = this.state.dataList.length;
+
+    if (modal > -1 && modal < length) {
+      this.setState({ modal })
+    }
+  };
 
   _closeModal = () => this.setState({ modal: undefined });
-
-  _nextModal = () => this._openModal(this.state.modal+1);
-
-  _previousModal = () => this._openModal(this.state.modal-1);
-
 
   render() {
     const { dataList, hover, selected, modal } = this.state;
@@ -115,8 +116,8 @@ class App extends Component {
           this._anySelected() &&
           (
             <section id="gallery">
-              <Gallery 
-                images={dataList.map(d => d.url)} 
+              <Gallery
+                images={dataList.map(d => d.url)}
                 click={this._openModal}
               />
             </section>
@@ -129,8 +130,8 @@ class App extends Component {
             <Modal
               image={dataList[modal].url}
               close={this._closeModal}
-              next={this._nextModal}
-              previous={this._previousModal}
+              next={() => this._openModal(modal + 1)}
+              previous={() => this._openModal(modal - 1)}
               showPrevious={modal > 0}
               showNext={modal < (dataList.length - 1)}
             />
