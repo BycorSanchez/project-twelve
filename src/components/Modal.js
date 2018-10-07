@@ -49,7 +49,7 @@ class Modal extends Component {
         return (
             <div
                 className="modal"
-                tabIndex="0"
+                tabIndex="1"
                 ref={this.modalRef}
                 onKeyDown={e => this._handleKey(e.keyCode)}
             >
