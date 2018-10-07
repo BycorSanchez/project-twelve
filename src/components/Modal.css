@@ -26,6 +26,8 @@
 
 .modal-content .previous, .next {
     color:white;
+    border: none;
+    background: none;
 }
 
 .modal-content .close {
@@ -33,6 +35,7 @@
     right: 5%;
     background: white;
     padding: 0 0.2em;
+    border: none;
 }
 
 .modal-content .previous {

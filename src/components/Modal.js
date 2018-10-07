@@ -55,14 +55,14 @@ class Modal extends Component {
             >
                 <div className="modal-content">
                     <img src={image} alt="" />
-                    <span className="icon close" onClick={close}>×</span>
+                    <button className="icon close" onClick={close}>×</button>
                     {
                         showPrevious &&
-                        (<span className="icon previous" onClick={previous}>＜</span>)
+                        (<button className="icon previous" onClick={previous}>＜</button>)
                     }
                     {
                         showNext &&
-                        (<span className="icon next" onClick={next}>＞</span>)
+                        (<button className="icon next" onClick={next}>＞</button>)
                     }
                 </div>
             </div>
