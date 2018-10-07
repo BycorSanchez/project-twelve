@@ -1,5 +1,5 @@
 .heart {
-    color: red;
+    animation: 3s infinite heartBeat;
 }
 
 footer {
@@ -13,4 +13,26 @@ footer {
 footer a {
     text-decoration: none;
     color: #c78400;
+}
+
+  
+@keyframes heartBeat {
+    0% {
+        color: red;
+    }
+    25% {
+        color: #b50000;
+    }
+    35% {
+        color: red;
+    }
+    70% {
+        color: red;
+    }
+    85% {
+        color: #b50000;
+    }
+    100% {
+        color: red;
+    }
 }
