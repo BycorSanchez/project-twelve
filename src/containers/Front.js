@@ -77,7 +77,7 @@ class Front extends Component {
                 </div>
 
                 {/* Background slices */}
-                <div>
+                <div className="front-background">
                     {
                         dataList &&
                         dataList.map((data, index) => (
