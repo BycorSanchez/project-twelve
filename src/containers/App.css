@@ -1,0 +1,16 @@
+.heart {
+    color: red;
+}
+
+footer {
+    text-align: center;
+    overflow: auto;
+    background: #f3f3f3;
+    border-top: 1px solid #efefef;
+    margin-top: 1.5em;
+}
+
+footer a {
+    text-decoration: none;
+    color: #c78400;
+}

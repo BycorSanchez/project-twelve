@@ -1,3 +1,4 @@
+import './App.css'
 import React, { Component } from 'react'
 import Front from './Front'
 import Gallery from './Gallery'
@@ -38,38 +39,47 @@ class App extends Component {
     const { dataList, selected, modal } = this.state;
 
     return (
-      <main className="App">
+      <div className="App">
+        <main>
+          <Front
+            dataList={dataList}
+            selected={selected}
+            onSelect={this._onSelect}
+          />
 
-        <Front
-          dataList={dataList}
-          selected={selected}
-          onSelect={this._onSelect}
-        />
+          {
+            this._anySelected() &&
+            (
+              <Gallery
+                images={dataList.map(d => d.url)}
+                click={this._openModal}
+              />
+            )
+          }
 
+          {
+            this._anyModal() &&
+            (
+              <Modal
+                image={dataList[modal].url}
+                close={this._closeModal}
+                next={() => this._openModal(modal + 1)}
+                previous={() => this._openModal(modal - 1)}
+                showPrevious={modal > 0}
+                showNext={modal < (dataList.length - 1)}
+              />
+            )
+          }
+        </main>
         {
           this._anySelected() &&
           (
-            <Gallery
-              images={dataList.map(d => d.url)}
-              click={this._openModal}
-            />
+            <footer>
+              <p>With <span className="heart">♥</span> by <a href="https://github.com/BycorSanchez">Bycor</a></p>
+            </footer>
           )
         }
-
-        {
-          this._anyModal() &&
-          (
-            <Modal
-              image={dataList[modal].url}
-              close={this._closeModal}
-              next={() => this._openModal(modal + 1)}
-              previous={() => this._openModal(modal - 1)}
-              showPrevious={modal > 0}
-              showNext={modal < (dataList.length - 1)}
-            />
-          )
-        }
-      </main>
+      </div>
     );
   }
 }
