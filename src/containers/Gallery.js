@@ -1,7 +1,8 @@
 import './Gallery.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { range } from '../utils/Utils'
+import { range } from '../utils/utils'
+import { config, lazyLoadImage } from '../utils/lazyload'
 
 class Gallery extends Component {
 
@@ -9,6 +10,14 @@ class Gallery extends Component {
         images: PropTypes.array.isRequired,
         columns: PropTypes.number.isRequired,
         click: PropTypes.func.isRequired
+    }
+
+    observer = new window.IntersectionObserver(lazyLoadImage, config);
+
+    componentDidMount(){
+        // Lazy load all images marked with the class 'lazy'
+        const imgs = document.querySelectorAll('.lazy');
+        imgs.forEach(i => this.observer.observe(i));
     }
 
     _mapColumn(column) {
@@ -26,8 +35,9 @@ class Gallery extends Component {
                     indexes.map(i => (
                         <img
                             key={i}
-                            className="gallery-image"
-                            src={images[i]}
+                            className="gallery-image lazy"
+                            src={require("../images/placeholder.png")}
+                            data-src={images[i]}
                             alt=""
                             onClick={() => click(i)}
                         />
