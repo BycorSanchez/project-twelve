@@ -3,8 +3,13 @@ import React, { Component } from 'react'
 import Front from './Front'
 import Gallery from './Gallery'
 import Modal from '../components/Modal'
+import sizes from 'react-sizes'
 
 class App extends Component {
+
+  static sizesToProps({ width }) {
+    return { deviceWidth: width };
+  }
 
   state = {
     dataList: [],
@@ -35,8 +40,11 @@ class App extends Component {
 
   _closeModal = () => this.setState({ modal: undefined });
 
+  _columns = width => (width < 1000) ? ((width < 700) ? 2 : 3) : 5;
+
   render() {
     const { dataList, selected, modal } = this.state;
+    const { deviceWidth } = this.props;
 
     return (
       <div className="App">
@@ -45,6 +53,7 @@ class App extends Component {
             dataList={dataList}
             selected={selected}
             onSelect={this._onSelect}
+            isMobile={deviceWidth < 700}
           />
 
           {
@@ -52,6 +61,7 @@ class App extends Component {
             (
               <Gallery
                 images={dataList.map(d => d.url)}
+                columns={this._columns(deviceWidth)}
                 click={this._openModal}
               />
             )
@@ -84,4 +94,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default sizes(App.sizesToProps)(App)

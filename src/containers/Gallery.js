@@ -1,23 +1,15 @@
 import './Gallery.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import sizes from 'react-sizes'
 import { range } from '../utils/Utils'
 
 class Gallery extends Component {
 
     static propTypes = {
         images: PropTypes.array.isRequired,
+        columns: PropTypes.number.isRequired,
         click: PropTypes.func.isRequired
     }
-
-    static sizesToProps({ width }) {
-        let columns = 2;
-        if (width) {
-            columns = (width > 1000) ? 5 : ((width > 700) ? 3 : 2);
-        }
-        return { columns };
-    };
 
     _mapColumn(column) {
         const { columns, images, click } = this.props;
@@ -37,7 +29,7 @@ class Gallery extends Component {
                             className="gallery-image"
                             src={images[i]}
                             alt=""
-                            onClick={e => click(i)}
+                            onClick={() => click(i)}
                         />
                     ))
                 }
@@ -66,4 +58,4 @@ class Gallery extends Component {
     }
 }
 
-export default sizes(Gallery.sizesToProps)(Gallery)
+export default Gallery

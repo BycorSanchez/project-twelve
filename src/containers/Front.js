@@ -5,7 +5,6 @@ import Slice from '../components/Slice'
 import Rotable from '../components/RotableText'
 import Clock from '../components/Clock'
 import classnames from 'classnames'
-import sizes from 'react-sizes'
 
 class Front extends Component {
 
@@ -13,10 +12,11 @@ class Front extends Component {
         dataList: PropTypes.array.isRequired,
         onSelect: PropTypes.func.isRequired,
         selected: PropTypes.number,
+        isMobile: PropTypes.bool
     }
 
-    static sizesToProps({ width }) {
-        return { deviceWidth: width };
+    static defaultProps = {
+        isMobile: false
     }
 
     state = {
@@ -32,16 +32,14 @@ class Front extends Component {
         this.props.onSelect(item);
     }
 
-    _isMobile = () => this.props.deviceWidth < 700;
-
     _anySelected = () => this.props.selected !== undefined;
 
     render() {
-        const { dataList, selected } = this.props;
+        const { dataList, selected, isMobile } = this.props;
         const { hover } = this.state;
 
         const width = 100 / (dataList.length - 1);
-        const sliceType = this._isMobile() ? 'horizontal' : 'vertical';
+        const sliceType = isMobile ? 'horizontal' : 'vertical';
 
         return (
             <section className="front">
@@ -61,6 +59,7 @@ class Front extends Component {
                                     id="clock"
                                     onClick={() => this._onSelect(undefined)}
                                     aria-label="Back to front"
+                                    tabIndex="0"
                                 >
                                     <Clock />
                                 </a>
@@ -100,4 +99,4 @@ class Front extends Component {
     }
 }
 
-export default sizes(Front.sizesToProps)(Front)
+export default Front
