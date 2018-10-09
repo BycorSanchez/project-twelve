@@ -1,6 +1,6 @@
 export const config = {
-  rootMargin: '50px',
-  threshold: 0.5
+  rootMargin: '10px',
+  threshold: 0
 }
 
 export const lazyLoadImage = (entries, observer) => {
