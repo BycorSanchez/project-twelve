@@ -51,6 +51,8 @@ class App extends Component {
 
   _columns = width => width < 1000 ? (width < 700 ? 2 : 3) : 5;
 
+  _getSize = (image, size) => image.src[size];
+
   render() {
     const { dataList, selected, modal, imageList } = this.state;
     const { deviceWidth } = this.props;
@@ -70,7 +72,7 @@ class App extends Component {
             imageList &&
             (
               <Gallery
-                images={imageList}
+                images={imageList.map(i => this._getSize(i, "medium"))}
                 columns={this._columns(deviceWidth)}
                 click={this._openModal}
                 observer={this.observer}
@@ -83,7 +85,7 @@ class App extends Component {
             imageList &&
             (
               <Modal
-                image={imageList[modal]}
+                image={this._getSize(imageList[modal], "large2x")}
                 close={this._closeModal}
                 next={() => this._openModal(modal + 1)}
                 previous={() => this._openModal(modal - 1)}
