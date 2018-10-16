@@ -47,11 +47,18 @@ class Front extends Component {
                 {/* Overlapped information */}
                 <div className={classnames("front-info", "overlap", { "no-interaction": !this._anySelected() })}>
                     <h1>
-                        <span>Memories of</span>
-                        <Rotable
-                            start={selected ? selected : hover}
-                            options={dataList.map(d => d.title)}
-                        />
+                        {"Memories of "}
+                        {
+                            //Show rotable text while there is none selected
+                            this._anySelected() ?
+                                dataList[selected].title :
+                                (
+                                    <Rotable
+                                        start={selected ? selected : hover}
+                                        options={dataList.map(d => d.title)}
+                                    />
+                                )
+                        }
                         {
                             this._anySelected() &&
                             (
