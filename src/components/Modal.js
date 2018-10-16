@@ -23,7 +23,7 @@ class Modal extends Component {
 
     static _spinner = (<img className="spinner" src={spinner} alt="Loading" />);
 
-    static _errorImage = (<img src={placeholder} alt="Image not loaded" />);
+    static _errorImage = (<img src={placeholder} alt="Not loaded" />);
 
     state = {
         loaded: false,

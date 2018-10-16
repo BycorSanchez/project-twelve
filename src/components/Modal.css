@@ -1,3 +1,7 @@
+:root {
+    --spinner-size: 50px;
+}
+
 .modal {
     position: fixed;
     width: 100%;
@@ -50,8 +54,11 @@
 
 .modal-content .spinner {
     border: none;
-    width: 50px;
-    height: 50px;
+    width: var(--spinner-size);
+    height: var(--spinner-size);
+    position: absolute;
+    top: calc(50% - calc(var(--spinner-size) / 2));
+    left: calc(50% - calc(var(--spinner-size) / 2));
 }
 
 .modal-content img {
@@ -68,6 +75,10 @@
 }
 
 @media screen and (min-width: 500px) {
+    :root {
+        --spinner-size: 100px;
+    }
+
     .modal-content {
         position: relative;
         max-width: 80vw;
@@ -77,16 +88,10 @@
     .gallery .icon {
         font-size: 2.2em;
     }
-
-    .modal-content .spinner {
-        width: 100px;
-        height: 100px;
-    }
 }
 
 @media screen and (min-width: 500px) {
-    .modal-content .spinner {
-        width: 130px;
-        height: 130px;
+    :root {
+        --spinner-size: 130px;
     }
 }
