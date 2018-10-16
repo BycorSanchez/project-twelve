@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 class RotableText extends Component {
 
     static propTypes = {
-        text: PropTypes.string,
         options: PropTypes.array.isRequired,
         start: PropTypes.number,
         timeout: PropTypes.number,
@@ -46,15 +45,11 @@ class RotableText extends Component {
     }
 
     render() {
-        const { text, options } = this.props;
+        const { options } = this.props;
         let selected = this._selectedItem();
 
         return (
             <div className="rotable-text">
-                {
-                    text &&
-                    (<span>{text}</span>)
-                }
                 <div
                     className="options"
                     style={{

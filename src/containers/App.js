@@ -64,7 +64,7 @@ class App extends Component {
             dataList={dataList}
             selected={selected}
             onSelect={this._onSelect}
-            isMobile={deviceWidth < 700}
+            isMobile={deviceWidth < 600}
           />
 
           {
