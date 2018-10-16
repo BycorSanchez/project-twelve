@@ -6,6 +6,8 @@ import Rotable from '../components/RotableText'
 import Clock from '../components/Clock'
 import classnames from 'classnames'
 
+import pexels from '../images/pexels.png'
+
 class Front extends Component {
 
     static propTypes = {
@@ -104,6 +106,10 @@ class Front extends Component {
                         ))
                     }
                 </div>
+                {/* Pexels link */}
+                <a className="pexels overlap" href="https://www.pexels.com">
+                    <img src={pexels} alt="pexels" />
+                </a>
             </section>
         );
     }
