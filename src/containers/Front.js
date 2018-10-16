@@ -33,7 +33,7 @@ class Front extends Component {
     }
 
     _currentData(dataList, selected) {
-        return (selected != undefined) ? dataList[selected] : undefined;
+        return (selected !== undefined) ? dataList[selected] : undefined;
     }
 
     render() {
