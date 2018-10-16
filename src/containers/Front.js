@@ -32,7 +32,9 @@ class Front extends Component {
         this.props.onSelect(item);
     }
 
-    _anySelected = () => this.props.selected !== undefined;
+    _currentData(dataList, selected) {
+        return (selected != undefined) ? dataList[selected] : undefined;
+    }
 
     render() {
         const { dataList, selected, isMobile } = this.props;
@@ -40,18 +42,19 @@ class Front extends Component {
 
         const width = 100 / (dataList.length - 1);
         const sliceType = isMobile ? 'horizontal' : 'vertical';
+        const data = this._currentData(dataList, selected);
 
         return (
             <section className="front">
 
                 {/* Overlapped information */}
-                <div className={classnames("front-info", "overlap", { "no-interaction": !this._anySelected() })}>
+                <div className={classnames("front-info", "overlap", { "no-interaction": !data })}>
                     <h1>
                         {"Memories of "}
                         {
                             //Show rotable text while there is none selected
-                            this._anySelected() ?
-                                dataList[selected].title :
+                            data ?
+                                data.title :
                                 (
                                     <Rotable
                                         start={selected ? selected : hover}
@@ -60,7 +63,7 @@ class Front extends Component {
                                 )
                         }
                         {
-                            this._anySelected() &&
+                            data &&
                             (
                                 <a
                                     id="clock"
@@ -74,10 +77,10 @@ class Front extends Component {
                         }
                     </h1>
 
-                    <p>{this._anySelected() ? (dataList[selected].description) : "Select a memory"}</p>
+                    <p>{data ? data.description : "Select a memory"}</p>
 
                     {
-                        this._anySelected() &&
+                        data &&
                         (<a className="next-section hide-text" href="#gallery">Next</a>)
                     }
                 </div>
