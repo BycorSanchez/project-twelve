@@ -2,6 +2,9 @@ import './Modal.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import spinner from '../images/spinner.svg'
+import placeholder from '../images/placeholder.png'
+
 class Modal extends Component {
 
     static propTypes = {
@@ -16,6 +19,15 @@ class Modal extends Component {
     static defaultProps = {
         showNext: true,
         showPrevious: true
+    }
+
+    static _spinner = (<img className="spinner" src={spinner} alt="Loading" />);
+
+    static _errorImage = (<img src={placeholder} alt="Image not loaded" />);
+
+    state = {
+        loaded: false,
+        error: false
     }
 
     constructor(props) {
@@ -43,8 +55,33 @@ class Modal extends Component {
         }
     }
 
+    _renderControls() {
+        const { close, next, previous, showNext, showPrevious } = this.props;
+        return (
+            <div>
+                <button className="icon close" onClick={close}>×</button>
+                {
+                    showPrevious &&
+                    (<button className="icon previous" onClick={previous}>＜</button>)
+                }
+                {
+                    showNext &&
+                    (<button className="icon next" onClick={next}>＞</button>)
+                }
+            </div>
+        );
+    }
+
+    _imageLoaded = () => this.setState({ loaded: true });
+
+    _imageLoadError = () => {
+        this.setState({ loaded: true, error: true });
+        console.error("Image could not be loaded");
+    }
+
     render() {
-        const { image, close, next, previous, showNext, showPrevious } = this.props;
+        const { loaded, error } = this.state;
+        const { image } = this.props;
 
         return (
             <div
@@ -54,16 +91,19 @@ class Modal extends Component {
                 onKeyDown={e => this._handleKey(e.keyCode)}
             >
                 <div className="modal-content">
-                    <img src={image} alt="" />
-                    <button className="icon close" onClick={close}>×</button>
                     {
-                        showPrevious &&
-                        (<button className="icon previous" onClick={previous}>＜</button>)
+                        loaded ? this._renderControls() : Modal._spinner
                     }
                     {
-                        showNext &&
-                        (<button className="icon next" onClick={next}>＞</button>)
+                        error &&
+                        Modal._errorImage
                     }
+                    <img
+                        src={image}
+                        alt=""
+                        onLoad={this._imageLoaded}
+                        onError={this._imageLoadError}
+                    />
                 </div>
             </div>
         );

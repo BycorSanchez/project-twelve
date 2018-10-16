@@ -48,10 +48,23 @@
     right: 4%;
 }
 
+.modal-content .spinner {
+    border: none;
+    width: 50px;
+    height: 50px;
+}
+
 .modal-content img {
     max-width: inherit;
     max-height: inherit;
     border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.error-image {
+    width: 50%;
+    height: 50%;
+    color: red;
+    background: grey;
 }
 
 @media screen and (min-width: 500px) {
@@ -63,5 +76,17 @@
 
     .gallery .icon {
         font-size: 2.2em;
+    }
+
+    .modal-content .spinner {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .modal-content .spinner {
+        width: 130px;
+        height: 130px;
     }
 }

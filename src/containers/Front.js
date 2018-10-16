@@ -52,7 +52,7 @@ class Front extends Component {
                     <h1>
                         {"Memories of "}
                         {
-                            //Show rotable text while there is none selected
+                            //Show rotable text while none is selected
                             data ?
                                 data.title :
                                 (
