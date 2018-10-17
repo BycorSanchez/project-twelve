@@ -32,6 +32,7 @@
     color:white;
     border: none;
     background: none;
+    text-shadow: 0 0 1px black;
 }
 
 .modal-content .close {
