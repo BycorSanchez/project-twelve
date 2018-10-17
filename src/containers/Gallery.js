@@ -55,7 +55,8 @@ class Gallery extends Component {
     render() {
         const { columns, images } = this.props;
         return (
-            <div id="gallery" className="gallery">
+            <div>
+                <div className="gallery">
                 {
                     images &&
                     images.length > 0 &&
@@ -63,6 +64,8 @@ class Gallery extends Component {
                         .fill()
                         .map((d, column) => this._mapColumn(column))
                 }
+                </div>
+                <button className="load-more">Load more</button>
             </div>
         );
     }

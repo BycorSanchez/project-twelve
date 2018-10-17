@@ -62,7 +62,7 @@
     left: calc(50% - calc(var(--spinner-size) / 2));
 }
 
-.modal-content img {
+.modal-content .modal-image {
     max-width: inherit;
     max-height: inherit;
     border: 1px solid rgba(255, 255, 255, 0.5);

@@ -3,9 +3,10 @@ import React, { Component } from 'react'
 import Front from './Front'
 import Gallery from './Gallery'
 import Modal from '../components/Modal'
+import Loading from '../components/Loading'
 import sizes from 'react-sizes'
 import { fetchFrontData, fetchImages } from '../api'
-import loading from '../images/loadingcube.svg'
+
 
 class App extends Component {
 
@@ -78,7 +79,7 @@ class App extends Component {
             this._anySelected() &&
             !galleryError &&
             (
-              <section>
+              <section id="gallery">
                 {
                   imageList ?
                     (
@@ -89,7 +90,7 @@ class App extends Component {
                       />
                     )
                     :
-                    (<img className="loading-cube" src={loading} alt="Loading" />)
+                    (<span className="loading-cube"><Loading type="cubes" /></span>)
                 }
               </section>
             )

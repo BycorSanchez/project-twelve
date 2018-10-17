@@ -1,8 +1,8 @@
 import './Modal.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Loading from './Loading'
 
-import spinner from '../images/spinner.svg'
 import placeholder from '../images/placeholder.png'
 
 class Modal extends Component {
@@ -20,8 +20,6 @@ class Modal extends Component {
         showNext: true,
         showPrevious: true
     }
-
-    static _spinner = (<img className="loading-spinner" src={spinner} alt="Loading" />);
 
     state = {
         loaded: false,
@@ -53,6 +51,8 @@ class Modal extends Component {
                 break;
         }
     }
+
+    _renderSpinner =() => (<span className="loading-spinner"><Loading type="spinner"/></span>);
 
     _renderControls() {
         const { close, next, previous, showNext, showPrevious } = this.props;
@@ -91,13 +91,14 @@ class Modal extends Component {
             >
                 <div className="modal-content">
                     {
-                        loaded ? this._renderControls() : Modal._spinner
+                        loaded ? this._renderControls() : this._renderSpinner()
                     }
                     {
                         error &&
-                        (<img src={placeholder} alt="Not loaded" />)
+                        (<img className="modal-image" src={placeholder} alt="Not loaded" />)
                     }
                     <img
+                        className="modal-image"
                         src={image}
                         alt=""
                         onLoad={this._imageLoaded}
