@@ -37,8 +37,9 @@ class Modal extends Component {
         this.modalRef.current.focus();
     }
 
-    _handleKey(keyCode) {
-        switch (keyCode) {
+    _handleKey(e) {
+        e.preventDefault();
+        switch (e.keyCode) {
             case 27: //Escape
                 this.props.close();
                 break;
@@ -86,7 +87,7 @@ class Modal extends Component {
                 className="modal"
                 tabIndex="1"
                 ref={this.modalRef}
-                onKeyDown={e => this._handleKey(e.keyCode)}
+                onKeyDown={e => this._handleKey(e)}
             >
                 <div className="modal-content">
                     {

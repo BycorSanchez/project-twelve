@@ -86,7 +86,6 @@ class App extends Component {
                         images={imageList.map(i => this._getSize(i, "medium"))}
                         columns={this._columns(deviceWidth)}
                         click={this._openModal}
-                        observer={this.observer}
                       />
                     )
                     :
