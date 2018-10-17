@@ -52,7 +52,7 @@
     right: 4%;
 }
 
-.modal-content .spinner {
+.modal-content .loading-spinner {
     border: none;
     width: var(--spinner-size);
     height: var(--spinner-size);

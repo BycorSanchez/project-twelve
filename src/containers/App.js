@@ -5,6 +5,7 @@ import Gallery from './Gallery'
 import Modal from '../components/Modal'
 import sizes from 'react-sizes'
 import { fetchFrontData, fetchImages } from '../api'
+import loading from '../images/loadingcube.svg'
 
 class App extends Component {
 
@@ -16,7 +17,8 @@ class App extends Component {
     dataList: [],
     imageList: undefined,
     selected: undefined,
-    modal: undefined
+    modal: undefined,
+    galleryError: false
   }
 
   componentDidMount() {
@@ -26,13 +28,16 @@ class App extends Component {
   }
 
   _onSelect = item => {
-    this.setState({ selected: item, imageList: undefined });
+    this.setState({ selected: item, imageList: undefined, galleryError: false });
 
     if (item !== undefined) {
       const data = this.state.dataList[item];
       fetchImages(data.title)
         .then(imageList => this.setState({ imageList }))
-        .catch(e => console.error("Gallery images could not be loaded"));
+        .catch(e => {
+          this.setState({ galleryError: true });
+          console.error("Gallery images could not be loaded");
+        });
     }
   }
 
@@ -54,29 +59,40 @@ class App extends Component {
   _getSize = (image, size) => image.src[size];
 
   render() {
-    const { dataList, selected, modal, imageList } = this.state;
+    const { dataList, selected, modal, imageList, galleryError } = this.state;
     const { deviceWidth } = this.props;
 
     return (
       <div className="App">
         <main>
-          <Front
-            dataList={dataList}
-            selected={selected}
-            onSelect={this._onSelect}
-            isMobile={deviceWidth < 600}
-          />
+          <section>
+            <Front
+              dataList={dataList}
+              selected={selected}
+              onSelect={this._onSelect}
+              isMobile={deviceWidth < 600}
+            />
+          </section>
 
           {
             this._anySelected() &&
-            imageList &&
+            !galleryError &&
             (
-              <Gallery
-                images={imageList.map(i => this._getSize(i, "medium"))}
-                columns={this._columns(deviceWidth)}
-                click={this._openModal}
-                observer={this.observer}
-              />
+              <section>
+                {
+                  imageList ?
+                    (
+                      <Gallery
+                        images={imageList.map(i => this._getSize(i, "medium"))}
+                        columns={this._columns(deviceWidth)}
+                        click={this._openModal}
+                        observer={this.observer}
+                      />
+                    )
+                    :
+                    (<img className="loading-cube" src={loading} alt="Loading" />)
+                }
+              </section>
             )
           }
 

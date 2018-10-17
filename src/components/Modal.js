@@ -21,9 +21,7 @@ class Modal extends Component {
         showPrevious: true
     }
 
-    static _spinner = (<img className="spinner" src={spinner} alt="Loading" />);
-
-    static _errorImage = (<img src={placeholder} alt="Not loaded" />);
+    static _spinner = (<img className="loading-spinner" src={spinner} alt="Loading" />);
 
     state = {
         loaded: false,
@@ -96,7 +94,7 @@ class Modal extends Component {
                     }
                     {
                         error &&
-                        Modal._errorImage
+                        (<img src={placeholder} alt="Not loaded" />)
                     }
                     <img
                         src={image}

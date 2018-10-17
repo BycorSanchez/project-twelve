@@ -1,3 +1,7 @@
+.App {
+    text-align: center;
+}
+
 .heart {
     animation: 3s infinite heartBeat;
 }
@@ -14,7 +18,12 @@ footer a {
     color: #c78400;
 }
 
-  
+.loading-cube {
+    width: 100px;
+    height: 100px;
+    margin: 2em;
+}
+
 @keyframes heartBeat {
     0% {
         color: red;

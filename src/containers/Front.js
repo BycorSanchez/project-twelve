@@ -47,7 +47,7 @@ class Front extends Component {
         const data = this._currentData(dataList, selected);
 
         return (
-            <section className="front">
+            <div className="front">
 
                 {/* Overlapped information */}
                 <div className={classnames("front-info", "overlap", { "no-interaction": !data })}>
@@ -110,7 +110,7 @@ class Front extends Component {
                 <a className="pexels overlap" href="https://www.pexels.com">
                     <img src={pexels} alt="pexels" />
                 </a>
-            </section>
+            </div>
         );
     }
 }
