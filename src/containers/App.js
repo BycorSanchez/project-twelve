@@ -99,7 +99,7 @@ class App extends Component {
           this._anySelected() &&
           (
             <footer>
-              <p>With <span className="heart">♥</span> by <a href="https://github.com/BycorSanchez">Bycor</a></p>
+              <p>🖼 from <a href="https://www.pexels.com/">Pexels</a>. With <span className="heart">♥</span> by <a href="https://github.com/BycorSanchez">Bycor</a></p>
             </footer>
           )
         }
