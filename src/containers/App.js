@@ -5,7 +5,7 @@ import Gallery from './Gallery'
 import Modal from '../components/Modal'
 import Loading from '../components/Loading'
 import sizes from 'react-sizes'
-import { fetchFrontData, fetchImages } from '../api'
+import { fetchFrontData, fetchImages, imageSize } from '../api'
 
 
 class App extends Component {
@@ -45,7 +45,7 @@ class App extends Component {
   _openModal = modal => {
     const length = this.state.imageList.length;
     if (modal > -1 && modal < length) {
-      this.setState({ modal })
+      this.setState({ modal });
     }
   }
 
@@ -57,11 +57,13 @@ class App extends Component {
 
   _columns = width => width < 1000 ? (width < 700 ? 2 : 3) : 5;
 
-  _getSize = (image, size) => image.src[size];
+  _imageSource = (data, width) => data.src[imageSize(width)];
 
   render() {
     const { dataList, selected, modal, imageList, galleryError } = this.state;
     const { deviceWidth } = this.props;
+
+    const columns = this._columns(deviceWidth);
 
     return (
       <div className="App">
@@ -84,8 +86,8 @@ class App extends Component {
                   imageList ?
                     (
                       <Gallery
-                        images={imageList.map(i => this._getSize(i, "medium"))}
-                        columns={this._columns(deviceWidth)}
+                        images={imageList.map(i => this._imageSource(i, (deviceWidth / columns)))}
+                        columns={columns}
                         click={this._openModal}
                       />
                     )
@@ -101,7 +103,7 @@ class App extends Component {
             imageList &&
             (
               <Modal
-                image={this._getSize(imageList[modal], "large2x")}
+                image={this._imageSource(imageList[modal], deviceWidth)}
                 close={this._closeModal}
                 next={() => this._openModal(modal + 1)}
                 previous={() => this._openModal(modal - 1)}
