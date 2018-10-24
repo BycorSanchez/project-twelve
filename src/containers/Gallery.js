@@ -65,7 +65,6 @@ class Gallery extends Component {
                         .map((d, column) => this._mapColumn(column))
                 }
                 </div>
-                <button className="load-more">Load more</button>
             </div>
         );
     }
