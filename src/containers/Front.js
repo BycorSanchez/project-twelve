@@ -67,14 +67,14 @@ class Front extends Component {
                         {
                             data &&
                             (
-                                <a
+                                <span
                                     id="clock"
                                     onClick={() => this._onSelect(undefined)}
                                     aria-label="Back to front"
                                     tabIndex="0"
                                 >
                                     <Clock />
-                                </a>
+                                    </span>
                             )
                         }
                     </h1>

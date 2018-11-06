@@ -10,6 +10,7 @@
   width: var(--clock-size);
   height: var(--clock-size);
   margin-left: 0.3em;
+  cursor: pointer;
 }
 
 .hide-text{
