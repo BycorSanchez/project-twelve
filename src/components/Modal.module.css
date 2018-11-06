@@ -15,27 +15,27 @@
     z-index: 10;
 }
 
-.modal-content {
+.modalContent {
     position: relative;
     max-width: 70vw;
     max-height: 70vh;
 }
 
-.modal-content .icon {
+.icon {
     display: inline-block;
     position: absolute;
     font-size: 1.5em;
     cursor: pointer;
 }
 
-.modal-content .previous, .next {
+.previous, .next {
     color:white;
     border: none;
     background: none;
     text-shadow: 0 0 1px black;
 }
 
-.modal-content .close {
+.close {
     top: 5%;
     right: 5%;
     background: white;
@@ -43,17 +43,17 @@
     border: none;
 }
 
-.modal-content .previous {
+.previous {
     top: 50%;
     left: 4%;
 }
 
-.modal-content .next {
+.next {
     top: 50%;
     right: 4%;
 }
 
-.modal-content .loading-spinner {
+.loadingSpinner {
     border: none;
     width: var(--spinner-size);
     height: var(--spinner-size);
@@ -62,17 +62,10 @@
     left: calc(50% - calc(var(--spinner-size) / 2));
 }
 
-.modal-content .modal-image {
+.modalImage {
     max-width: inherit;
     max-height: inherit;
     border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.error-image {
-    width: 50%;
-    height: 50%;
-    color: red;
-    background: grey;
 }
 
 @media screen and (min-width: 500px) {
@@ -80,7 +73,7 @@
         --spinner-size: 100px;
     }
 
-    .modal-content {
+    .modalContent {
         position: relative;
         max-width: 80vw;
         max-height: 80vh;

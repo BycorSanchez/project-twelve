@@ -1,11 +1,11 @@
-import './Clock.css'
+import styles from './Clock.module.css'
 import React from 'react'
 
 const Clock = () => (
-    <div className="clock">
-        <span className="line hours" />
-        <span className="line minutes" />
-        <span className="clock-center" />
+    <div className={styles.clock}>
+        <span className={[styles.line, styles.hours].join(' ')} />
+        <span className={[styles.line, styles.minutes].join(' ')} />
+        <span className={styles.clockCenter} />
     </div>
 );
 

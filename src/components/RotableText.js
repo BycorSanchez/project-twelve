@@ -1,4 +1,4 @@
-import './RotableText.css'
+import styles from './RotableText.module.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
@@ -49,9 +49,9 @@ class RotableText extends Component {
         let selected = this._selectedItem();
 
         return (
-            <div className="rotable-text">
+            <div className={styles.rotableText}>
                 <div
-                    className="options"
+                    className={styles.options}
                     style={{
                         transform: "translate(0, " + (selected * -1.2) + "em)"
                     }}

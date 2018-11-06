@@ -1,4 +1,4 @@
-import './Modal.css'
+import styles from './Modal.module.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Loading from './Loading'
@@ -52,20 +52,22 @@ class Modal extends Component {
         }
     }
 
-    _renderSpinner =() => (<span className="loading-spinner"><Loading type="spinner"/></span>);
+    _renderSpinner() {
+        return (<span className={styles.loadingSpinner}><Loading type="spinner" /></span>);
+    }
 
     _renderControls() {
         const { close, next, previous, showNext, showPrevious } = this.props;
         return (
             <div>
-                <button className="icon close" onClick={close}>×</button>
+                <button className={[styles.icon, styles.close].join(' ')} onClick={close}>×</button>
                 {
                     showPrevious &&
-                    (<button className="icon previous" onClick={previous}>＜</button>)
+                    (<button className={[styles.icon, styles.previous].join(' ')} onClick={previous}>＜</button>)
                 }
                 {
                     showNext &&
-                    (<button className="icon next" onClick={next}>＞</button>)
+                    (<button className={[styles.icon, styles.next].join(' ')} onClick={next}>＞</button>)
                 }
             </div>
         );
@@ -84,21 +86,19 @@ class Modal extends Component {
 
         return (
             <div
-                className="modal"
+                className={styles.modal}
                 tabIndex="1"
                 ref={this.modalRef}
                 onKeyDown={e => this._handleKey(e)}
             >
-                <div className="modal-content">
-                    {
-                        loaded ? this._renderControls() : this._renderSpinner()
-                    }
+                <div className={styles.modalContent}>
+                    {loaded ? this._renderControls() : this._renderSpinner()}
                     {
                         error &&
-                        (<img className="modal-image" src={placeholder} alt="Not loaded" />)
+                        (<img className={styles.modalImage} src={placeholder} alt="Not loaded" />)
                     }
                     <img
-                        className="modal-image"
+                        className={styles.modalImage}
                         src={image}
                         alt=""
                         onLoad={this._imageLoaded}

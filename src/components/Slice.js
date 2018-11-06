@@ -1,4 +1,4 @@
-import './Slice.css'
+import styles from './Slice.module.css'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
@@ -58,7 +58,7 @@ class Slice extends Component {
         const polygon = isSelected ? this._fullPolygon() : this._polygon(item, width, isHover ? (width / 4) : 0);
 
         return (
-            <div className={classnames("slice", { "slice-front": (isSelected || isHover) })}
+            <div className={classnames(styles.slice, { [styles.sliceFront]: (isSelected || isHover) })}
                 style={{
                     clipPath: polygon,
                     WebkitClipPath: polygon,
