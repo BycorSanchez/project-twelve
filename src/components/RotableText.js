@@ -1,4 +1,4 @@
-import styles from "./RotableText.module.css";
+import styles from "../styles/RotableText.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 

@@ -1,4 +1,4 @@
-import styles from "./Clock.module.css";
+import styles from "../styles/Clock.module.css";
 import React from "react";
 
 const Clock = () => (

@@ -1,4 +1,4 @@
-import "./App.css";
+import "../styles/App.css";
 import React, { Component } from "react";
 import Front from "./Front";
 import Gallery from "./Gallery";

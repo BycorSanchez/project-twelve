@@ -1,4 +1,4 @@
-import styles from "./Slice.module.css";
+import styles from "../styles/Slice.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";

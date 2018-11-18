@@ -1,11 +1,10 @@
-import "./Front.css";
+import "../styles/Front.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Slice from "../components/Slice";
 import Rotable from "../components/RotableText";
 import Clock from "../components/Clock";
 import classnames from "classnames";
-
 import pexels from "../images/pexels.png";
 
 class Front extends Component {

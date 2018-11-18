@@ -1,8 +1,8 @@
-import "./Gallery.css";
+import "../styles/Gallery.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { range } from "../utils/helper";
-import { config, lazyLoadImage } from "../utils/lazyload";
+import { range } from "../helper";
+import { config, lazyLoadImage } from "../lazyload";
 
 class Gallery extends Component {
     static propTypes = {

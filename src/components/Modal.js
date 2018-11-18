@@ -1,4 +1,4 @@
-import styles from "./Modal.module.css";
+import styles from "../styles/Modal.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Loading from "./Loading";
