@@ -1,4 +1,4 @@
-import "../styles/Front.css";
+import styles from "../styles/Front.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Slice from "../components/Slice";
@@ -32,7 +32,8 @@ class Front extends Component {
         this.props.onSelect(item);
     };
 
-    _currentData(dataList, selected) {
+    _currentData() {
+        const { dataList, selected } = this.props;
         return selected !== undefined ? dataList[selected] : undefined;
     }
 
@@ -40,16 +41,16 @@ class Front extends Component {
         const { dataList, selected, isMobile } = this.props;
         const hover = this.state.hover;
 
-        const width = 100 / (dataList.length - 1);
         const sliceType = isMobile ? "horizontal" : "vertical";
-        const data = this._currentData(dataList, selected);
+        const width = 100 / (dataList.length - 1);
+        const data = this._currentData();
 
         return (
-            <div className="front">
+            <div className={styles.front}>
                 {/* Overlapped information */}
                 <div
-                    className={classnames("front-info", "overlap", {
-                        "no-interaction": !data
+                    className={classnames(styles.frontInfo, styles.overlap, {
+                        [styles.noInteraction]: !data
                     })}
                 >
                     <h1>
@@ -65,7 +66,7 @@ class Front extends Component {
                         )}
                         {data && (
                             <span
-                                id="clock"
+                                id={styles.clock}
                                 onClick={() => this._onSelect(undefined)}
                                 aria-label="Back to front"
                                 tabIndex="0"
@@ -78,14 +79,20 @@ class Front extends Component {
                     <p>{data ? data.description : "Select a memory"}</p>
 
                     {data && (
-                        <a className="next-section hide-text" href="#gallery">
+                        <a
+                            className={[
+                                styles.nextSection,
+                                styles.hideText
+                            ].join(" ")}
+                            href="#gallery"
+                        >
                             Next
                         </a>
                     )}
                 </div>
 
                 {/* Background slices */}
-                <div className="front-background">
+                <div className={styles.frontBackground}>
                     {dataList &&
                         dataList.map((data, index) => (
                             <Slice
@@ -102,7 +109,10 @@ class Front extends Component {
                         ))}
                 </div>
                 {/* Pexels link */}
-                <a className="pexels overlap" href="https://www.pexels.com">
+                <a
+                    className={[styles.pexels, styles.overlap].join(" ")}
+                    href="https://www.pexels.com"
+                >
                     <img src={pexels} alt="pexels" />
                 </a>
             </div>

@@ -1,9 +1,11 @@
-.App {
+.app {
     text-align: center;
 }
 
 .heart {
-    animation: 3s infinite heartBeat;
+    animation-name: heartBeat;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
 
 footer {
@@ -18,7 +20,7 @@ footer a {
     color: #c78400;
 }
 
-.loading-cube img {
+.loadingCube img {
     width: 100px;
     height: 100px;
     margin: 2em;

@@ -1,4 +1,4 @@
-import "../styles/Gallery.css";
+import styles from "../styles/Gallery.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { range } from "../helper";
@@ -27,13 +27,13 @@ class Gallery extends Component {
         return (
             <div
                 key={column}
-                className="column"
+                className={styles.column}
                 style={{ width: "calc( " + width + "% - 10px )" }}
             >
                 {indexes.map(i => (
                     <img
                         key={i}
-                        className="gallery-image lazy"
+                        className={[styles.galleryImage, "lazy"].join(" ")}
                         src={require("../images/placeholder.png")}
                         data-src={images[i]}
                         alt=""
@@ -53,7 +53,7 @@ class Gallery extends Component {
         const { columns, images } = this.props;
         return (
             <div>
-                <div className="gallery">
+                <div className={styles.gallery}>
                     {images &&
                         images.length > 0 &&
                         Array(columns)

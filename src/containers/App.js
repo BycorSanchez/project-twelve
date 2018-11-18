@@ -1,4 +1,4 @@
-import "../styles/App.css";
+import styles from "../styles/App.module.css";
 import React, { Component } from "react";
 import Front from "./Front";
 import Gallery from "./Gallery";
@@ -79,7 +79,7 @@ class App extends Component {
         const columns = this._columns(deviceWidth);
 
         return (
-            <div className="App">
+            <div className={styles.app}>
                 <main>
                     <section>
                         <Front
@@ -104,7 +104,7 @@ class App extends Component {
                                     click={this._openModal}
                                 />
                             ) : (
-                                <span className="loading-cube">
+                                <span className={styles.loadingCube}>
                                     <Loading type="cubes" />
                                 </span>
                             )}
@@ -129,7 +129,7 @@ class App extends Component {
                     <footer>
                         <p>
                             🖼 from <a href="https://www.pexels.com/">Pexels</a>.
-                            With <span className="heart">♥</span> by{" "}
+                            With <span className={styles.heart}>♥</span> by{" "}
                             <a href="https://github.com/BycorSanchez">Bycor</a>
                         </p>
                     </footer>
