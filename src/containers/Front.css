@@ -11,6 +11,7 @@
     height: var(--clock-size);
     margin-left: 0.3em;
     cursor: pointer;
+    outline: none;
 }
 
 .hide-text {
