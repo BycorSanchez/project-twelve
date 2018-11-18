@@ -1,96 +1,93 @@
-import './Front.css'
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Slice from '../components/Slice'
-import Rotable from '../components/RotableText'
-import Clock from '../components/Clock'
-import classnames from 'classnames'
+import "./Front.css";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Slice from "../components/Slice";
+import Rotable from "../components/RotableText";
+import Clock from "../components/Clock";
+import classnames from "classnames";
 
-import pexels from '../images/pexels.png'
+import pexels from "../images/pexels.png";
 
 class Front extends Component {
-
     static propTypes = {
         dataList: PropTypes.array.isRequired,
         onSelect: PropTypes.func.isRequired,
         selected: PropTypes.number,
         isMobile: PropTypes.bool
-    }
+    };
 
     static defaultProps = {
         isMobile: false
-    }
+    };
 
     state = {
         hover: undefined
-    }
+    };
 
     _onHover = item => {
         this.setState({ hover: this.props.selected ? undefined : item });
-    }
+    };
 
     _onSelect = item => {
         this.setState({ hover: undefined });
         this.props.onSelect(item);
-    }
+    };
 
     _currentData(dataList, selected) {
-        return (selected !== undefined) ? dataList[selected] : undefined;
+        return selected !== undefined ? dataList[selected] : undefined;
     }
 
     render() {
         const { dataList, selected, isMobile } = this.props;
-        const { hover } = this.state;
+        const hover = this.state.hover;
 
         const width = 100 / (dataList.length - 1);
-        const sliceType = isMobile ? 'horizontal' : 'vertical';
+        const sliceType = isMobile ? "horizontal" : "vertical";
         const data = this._currentData(dataList, selected);
 
         return (
             <div className="front">
-
                 {/* Overlapped information */}
-                <div className={classnames("front-info", "overlap", { "no-interaction": !data })}>
+                <div
+                    className={classnames("front-info", "overlap", {
+                        "no-interaction": !data
+                    })}
+                >
                     <h1>
                         {"Memories of "}
-                        {
-                            //Show rotable text while none is selected
-                            data ?
-                                data.title :
-                                (
-                                    <Rotable
-                                        start={selected ? selected : hover}
-                                        options={dataList.map(d => d.title)}
-                                    />
-                                )
-                        }
-                        {
-                            data &&
-                            (
-                                <span
-                                    id="clock"
-                                    onClick={() => this._onSelect(undefined)}
-                                    aria-label="Back to front"
-                                    tabIndex="0"
-                                >
-                                    <Clock />
-                                    </span>
-                            )
-                        }
+                        {//Show rotable text while none is selected
+                        data ? (
+                            data.title
+                        ) : (
+                            <Rotable
+                                start={selected ? selected : hover}
+                                options={dataList.map(d => d.title)}
+                            />
+                        )}
+                        {data && (
+                            <span
+                                id="clock"
+                                onClick={() => this._onSelect(undefined)}
+                                aria-label="Back to front"
+                                tabIndex="0"
+                            >
+                                <Clock />
+                            </span>
+                        )}
                     </h1>
 
                     <p>{data ? data.description : "Select a memory"}</p>
 
-                    {
-                        data &&
-                        (<a className="next-section hide-text" href="#gallery">Next</a>)
-                    }
+                    {data && (
+                        <a className="next-section hide-text" href="#gallery">
+                            Next
+                        </a>
+                    )}
                 </div>
 
                 {/* Background slices */}
                 <div className="front-background">
-                    {
-                        dataList &&
+                    {dataList &&
                         dataList.map((data, index) => (
                             <Slice
                                 key={index}
@@ -103,8 +100,7 @@ class Front extends Component {
                                 onHover={this._onHover}
                                 onSelect={this._onSelect}
                             />
-                        ))
-                    }
+                        ))}
                 </div>
                 {/* Pexels link */}
                 <a className="pexels overlap" href="https://www.pexels.com">
@@ -115,4 +111,4 @@ class Front extends Component {
     }
 }
 
-export default Front
+export default Front;

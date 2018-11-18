@@ -1,12 +1,11 @@
-import styles from './Modal.module.css'
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Loading from './Loading'
+import styles from "./Modal.module.css";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Loading from "./Loading";
 
-import placeholder from '../images/placeholder.png'
+import placeholder from "../images/placeholder.png";
 
 class Modal extends Component {
-
     static propTypes = {
         image: PropTypes.string.isRequired,
         next: PropTypes.func.isRequired,
@@ -14,17 +13,17 @@ class Modal extends Component {
         close: PropTypes.func.isRequired,
         showNext: PropTypes.bool,
         showPrevious: PropTypes.bool
-    }
+    };
 
     static defaultProps = {
         showNext: true,
         showPrevious: true
-    }
+    };
 
     state = {
         loaded: false,
         error: false
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -35,7 +34,14 @@ class Modal extends Component {
         this.modalRef.current.focus();
     }
 
-    _handleKey(e) {
+    _imageLoaded = () => this.setState({ loaded: true });
+
+    _imageLoadError = () => {
+        this.setState({ loaded: true, error: true });
+        console.error("Image could not be loaded");
+    };
+
+    _handleKey = e => {
         e.preventDefault();
         switch (e.keyCode) {
             case 27: //Escape
@@ -50,34 +56,44 @@ class Modal extends Component {
             default:
                 break;
         }
-    }
+    };
 
     _renderSpinner() {
-        return (<span className={styles.loadingSpinner}><Loading type="spinner" /></span>);
+        return (
+            <span className={styles.loadingSpinner}>
+                <Loading type="spinner" />
+            </span>
+        );
     }
 
     _renderControls() {
         const { close, next, previous, showNext, showPrevious } = this.props;
         return (
             <div>
-                <button className={[styles.icon, styles.close].join(' ')} onClick={close}>×</button>
-                {
-                    showPrevious &&
-                    (<button className={[styles.icon, styles.previous].join(' ')} onClick={previous}>＜</button>)
-                }
-                {
-                    showNext &&
-                    (<button className={[styles.icon, styles.next].join(' ')} onClick={next}>＞</button>)
-                }
+                <button
+                    className={[styles.icon, styles.close].join(" ")}
+                    onClick={close}
+                >
+                    ×
+                </button>
+                {showPrevious && (
+                    <button
+                        className={[styles.icon, styles.previous].join(" ")}
+                        onClick={previous}
+                    >
+                        ＜
+                    </button>
+                )}
+                {showNext && (
+                    <button
+                        className={[styles.icon, styles.next].join(" ")}
+                        onClick={next}
+                    >
+                        ＞
+                    </button>
+                )}
             </div>
         );
-    }
-
-    _imageLoaded = () => this.setState({ loaded: true });
-
-    _imageLoadError = () => {
-        this.setState({ loaded: true, error: true });
-        console.error("Image could not be loaded");
     }
 
     render() {
@@ -89,14 +105,17 @@ class Modal extends Component {
                 className={styles.modal}
                 tabIndex="1"
                 ref={this.modalRef}
-                onKeyDown={e => this._handleKey(e)}
+                onKeyDown={this._handleKey}
             >
                 <div className={styles.modalContent}>
                     {loaded ? this._renderControls() : this._renderSpinner()}
-                    {
-                        error &&
-                        (<img className={styles.modalImage} src={placeholder} alt="Not loaded" />)
-                    }
+                    {error && (
+                        <img
+                            className={styles.modalImage}
+                            src={placeholder}
+                            alt="Not loaded"
+                        />
+                    )}
                     <img
                         className={styles.modalImage}
                         src={image}
@@ -110,4 +129,4 @@ class Modal extends Component {
     }
 }
 
-export default Modal
+export default Modal;

@@ -1,32 +1,33 @@
-import styles from './RotableText.module.css'
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import styles from "./RotableText.module.css";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class RotableText extends Component {
-
     static propTypes = {
         options: PropTypes.array.isRequired,
         start: PropTypes.number,
         timeout: PropTypes.number,
         mode: PropTypes.oneOf(["manual", "auto", "loop"])
-    }
+    };
 
     static defaultProps = {
         start: 0,
         timeout: 2,
         mode: "manual"
-    }
+    };
 
     state = {
         selected: this.props.start
-    }
+    };
 
     componentDidMount() {
         this._autoUpdate();
     }
 
     _selectedItem() {
-        return (this.props.mode === "manual") ? this.props.start : this.state.selected;
+        return this.props.mode === "manual"
+            ? this.props.start
+            : this.state.selected;
     }
 
     _autoUpdate() {
@@ -35,7 +36,7 @@ class RotableText extends Component {
 
     _update() {
         const { mode, options } = this.props;
-        const { selected } = this.state;
+        const selected = this.state.selected;
         let next = selected + 1;
 
         if (mode === "loop" || (mode === "auto" && next < options.length)) {
@@ -45,7 +46,7 @@ class RotableText extends Component {
     }
 
     render() {
-        const { options } = this.props;
+        const options = this.props.options;
         let selected = this._selectedItem();
 
         return (
@@ -53,19 +54,17 @@ class RotableText extends Component {
                 <div
                     className={styles.options}
                     style={{
-                        transform: "translate(0, " + (selected * -1.2) + "em)"
+                        transform: "translate(0, " + selected * -1.2 + "em)"
                     }}
                 >
-                    {
-                        options &&
+                    {options &&
                         options.map((text, index) => (
                             <span key={index}>{text}</span>
-                        ))
-                    }
+                        ))}
                 </div>
             </div>
         );
     }
 }
 
-export default RotableText
+export default RotableText;
