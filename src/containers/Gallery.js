@@ -11,12 +11,15 @@ class Gallery extends Component {
         click: PropTypes.func.isRequired
     };
 
-    observer = new window.IntersectionObserver(lazyLoadImage, config);
+    constructor() {
+        super();
+        this.imgTags = [];
+        this.observer = new window.IntersectionObserver(lazyLoadImage, config);
+    }
 
     componentDidMount() {
-        // Lazy load all images marked with the class 'lazy'
-        const imgs = document.querySelectorAll(".lazy");
-        imgs.forEach(i => this.observer.observe(i));
+        // Lazy load gallery images
+        this.imgTags.forEach(i => this.observer.observe(i));
     }
 
     _mapColumn(column) {
@@ -33,11 +36,12 @@ class Gallery extends Component {
                 {indexes.map(i => (
                     <img
                         key={i}
-                        className={[styles.galleryImage, "lazy"].join(" ")}
+                        className={styles.galleryImage}
                         src={require("../images/placeholder.png")}
                         data-src={images[i]}
                         alt=""
                         onClick={() => click(i)}
+                        ref={ref => (this.imgTags[i] = ref)}
                     />
                 ))}
             </div>
