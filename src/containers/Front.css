@@ -1,96 +1,97 @@
 :root {
-  --clock-size: 1em;
+    --clock-size: 1em;
 }
 
 .overlap {
-  z-index: 2;
+    z-index: 2;
 }
 
 #clock {
-  width: var(--clock-size);
-  height: var(--clock-size);
-  margin-left: 0.3em;
-  cursor: pointer;
+    width: var(--clock-size);
+    height: var(--clock-size);
+    margin-left: 0.3em;
+    cursor: pointer;
 }
 
-.hide-text{
-  line-height: 0; 
-  font-size: 0;
-  color: transparent;
+.hide-text {
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
 }
 
 .no-interaction {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .next-section {
-  background: rgba(0, 0, 0, 0.4) url(../images/arrow_down.svg) no-repeat center;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  background-size: 64%;
-  bottom: 10%;
-  left: calc(50% - 35px);
+    background: rgba(0, 0, 0, 0.4) url(../images/arrow_down.svg) no-repeat
+        center;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-size: 64%;
+    bottom: 10%;
+    left: calc(50% - 35px);
 }
 
 .front {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .front-info {
-  text-shadow: 2px 3px 1px #333;
-  position: absolute;
-  color: white;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  text-align: center;
-  max-width: calc(100% - 50px);
+    text-shadow: 2px 3px 1px #333;
+    position: absolute;
+    color: white;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    max-width: calc(100% - 50px);
 }
 
 .front-info h1 {
-  font-size: 2em;
-  letter-spacing: .05em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+    font-size: 2em;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .front-info p {
-  font-size: 1.5em; 
+    font-size: 1.5em;
 }
 
 .front-background {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .pexels {
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  padding: 10px;
-  background: black;
-  color: white;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    padding: 10px;
+    background: black;
+    color: white;
 }
 
 @media screen and (min-width: 700px) {
-  .front-info h1 {
-    font-size: 2.4em;
-  }
+    .front-info h1 {
+        font-size: 2.4em;
+    }
 }
 
 @media screen and (min-width: 1000px) {
-  .front-info h1{
-    font-size: 3.6em;
-  }
+    .front-info h1 {
+        font-size: 3.6em;
+    }
 }
