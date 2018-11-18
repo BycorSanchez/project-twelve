@@ -2,7 +2,6 @@ import styles from "./Modal.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Loading from "./Loading";
-
 import placeholder from "../images/placeholder.png";
 
 class Modal extends Component {

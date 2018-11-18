@@ -1,7 +1,7 @@
 import "./Gallery.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { range } from "../utils/utils";
+import { range } from "../utils/helper";
 import { config, lazyLoadImage } from "../utils/lazyload";
 
 class Gallery extends Component {
