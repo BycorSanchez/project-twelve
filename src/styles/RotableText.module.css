@@ -13,3 +13,7 @@
     transition: all 0.8s ease;
     text-align: left;
 }
+
+.option {
+    position: relative;
+}

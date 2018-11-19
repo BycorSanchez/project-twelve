@@ -1,0 +1,22 @@
+.option-enter {
+    float: left;
+    transition: all 0.65s ease;
+    transform: translateY(100%);
+}
+
+.option-enter.option-enter-active {
+    transform: translateY(0);
+}
+
+.option-exit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    transition: all 0.65s ease;
+    transform: translateY(0);
+}
+
+.option-exit-active {
+    transform: translateY(-100%);
+}

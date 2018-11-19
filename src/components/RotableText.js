@@ -1,6 +1,8 @@
+import "../styles/Rotable.css";
 import styles from "../styles/RotableText.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class RotableText extends Component {
     static propTypes = {
@@ -51,16 +53,16 @@ class RotableText extends Component {
 
         return (
             <div className={styles.rotableText}>
-                <div
-                    className={styles.options}
-                    style={{
-                        transform: "translate(0, " + selected * -1.2 + "em)"
-                    }}
-                >
-                    {options &&
-                        options.map((text, index) => (
-                            <span key={index}>{text}</span>
-                        ))}
+                <div className={styles.options}>
+                    <TransitionGroup component="span" className={styles.option}>
+                        <CSSTransition
+                            classNames="option"
+                            key={selected}
+                            timeout={{ enter: 650, exit: 650 }}
+                        >
+                            <span>{options[selected]}</span>
+                        </CSSTransition>
+                    </TransitionGroup>
                 </div>
             </div>
         );
