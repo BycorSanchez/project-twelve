@@ -25,12 +25,13 @@ class Gallery extends Component {
     _mapColumn = column => {
         const { columns, images, click } = this.props;
         const indexes = range(column, images.length, columns);
+        const width = 100 / columns;
 
         return (
             <div
                 key={column}
                 className={styles.column}
-                style={{ width: `calc( " + ${100 / columns} + "% - 10px )` }}
+                style={{ width: "calc( " + width + "% - 10px )" }}
             >
                 {indexes.map(i => (
                     <img
