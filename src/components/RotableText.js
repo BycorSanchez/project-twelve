@@ -33,10 +33,10 @@ class RotableText extends Component {
     }
 
     _autoUpdate() {
-        setTimeout(this._update.bind(this), this.props.timeout * 1000);
+        setTimeout(this._update, this.props.timeout * 1000);
     }
 
-    _update() {
+    _update = () => {
         const { mode, options } = this.props;
         const selected = this.state.selected;
         let next = selected + 1;
@@ -45,7 +45,7 @@ class RotableText extends Component {
             this.setState({ selected: next % options.length });
             this._autoUpdate();
         }
-    }
+    };
 
     render() {
         const options = this.props.options;
