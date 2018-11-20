@@ -54,7 +54,6 @@ class RotableText extends Component {
             <div className={styles.rotableText}>
                 <TransitionGroup component="span" className={styles.options}>
                     <CSSTransition
-                        classNames={styles.option}
                         classNames={{
                             appear: styles.option,
                             enter: styles.optionEnter,

@@ -22,16 +22,15 @@ class Gallery extends Component {
         this.imgTags.forEach(i => this.observer.observe(i));
     }
 
-    _mapColumn(column) {
+    _mapColumn = column => {
         const { columns, images, click } = this.props;
-        const width = 100 / columns;
         const indexes = range(column, images.length, columns);
 
         return (
             <div
                 key={column}
                 className={styles.column}
-                style={{ width: "calc( " + width + "% - 10px )" }}
+                style={{ width: `calc( " + ${100 / columns} + "% - 10px )` }}
             >
                 {indexes.map(i => (
                     <img
@@ -46,7 +45,7 @@ class Gallery extends Component {
                 ))}
             </div>
         );
-    }
+    };
 
     _imagesOf(column) {
         const { columns, images } = this.props;
@@ -56,15 +55,11 @@ class Gallery extends Component {
     render() {
         const { columns, images } = this.props;
         return (
-            <div>
-                <div className={styles.gallery}>
-                    {images &&
-                        images.length > 0 &&
-                        Array(columns)
-                            .fill()
-                            .map((d, column) => this._mapColumn(column))}
-                </div>
-            </div>
+            <section id="gallery" className={styles.gallery}>
+                {images &&
+                    images.length > 0 &&
+                    [...Array(columns).keys()].map(this._mapColumn)}
+            </section>
         );
     }
 }

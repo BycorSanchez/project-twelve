@@ -46,7 +46,7 @@ class Front extends Component {
         const data = this._currentData();
 
         return (
-            <div className={styles.front}>
+            <section className={styles.front}>
                 {/* Overlapped information */}
                 <div
                     className={classnames(styles.frontInfo, styles.overlap, {
@@ -110,7 +110,7 @@ class Front extends Component {
                 >
                     <img src={pexels} alt="pexels" />
                 </a>
-            </div>
+            </section>
         );
     }
 }

@@ -2,6 +2,7 @@ import styles from "../styles/App.module.css";
 import React, { Component } from "react";
 import Front from "./Front";
 import Gallery from "./Gallery";
+import Footer from "./Footer";
 import Modal from "../components/Modal";
 import Loading from "../components/Loading";
 import sizes from "react-sizes";
@@ -58,10 +59,6 @@ class App extends Component {
 
     _closeModal = () => this.setState({ modal: undefined });
 
-    _anySelected = () => this.state.selected !== undefined;
-
-    _anyModal = () => this.state.modal !== undefined;
-
     _columns = width => (width < 1000 ? (width < 700 ? 2 : 3) : 5);
 
     _imageSource = (data, width) => data.src[imageSize(width)];
@@ -76,42 +73,37 @@ class App extends Component {
         } = this.state;
         const deviceWidth = this.props.deviceWidth;
 
+        const anySelected = this.state.selected !== undefined;
+        const anyModal = this.state.modal !== undefined;
         const columns = this._columns(deviceWidth);
 
         return (
             <div className={styles.app}>
                 <main>
-                    <section>
-                        <Front
-                            dataList={dataList}
-                            selected={selected}
-                            onSelect={this._onSelect}
-                            isMobile={deviceWidth < 600}
-                        />
-                    </section>
+                    <Front
+                        dataList={dataList}
+                        selected={selected}
+                        onSelect={this._onSelect}
+                        isMobile={deviceWidth < 600}
+                    />
 
-                    {this._anySelected() && !galleryError && (
-                        <section id="gallery">
-                            {imageList ? (
-                                <Gallery
-                                    images={imageList.map(i =>
-                                        this._imageSource(
-                                            i,
-                                            deviceWidth / columns
-                                        )
-                                    )}
-                                    columns={columns}
-                                    click={this._openModal}
-                                />
-                            ) : (
-                                <span className={styles.loadingCube}>
-                                    <Loading type="cubes" />
-                                </span>
-                            )}
-                        </section>
-                    )}
+                    {anySelected && !galleryError ? (
+                        imageList ? (
+                            <Gallery
+                                images={imageList.map(i =>
+                                    this._imageSource(i, deviceWidth / columns)
+                                )}
+                                columns={columns}
+                                click={this._openModal}
+                            />
+                        ) : (
+                            <span className={styles.loadingCube}>
+                                <Loading type="cubes" />
+                            </span>
+                        )
+                    ) : null}
 
-                    {this._anyModal() && imageList && (
+                    {anyModal && imageList && (
                         <Modal
                             image={this._imageSource(
                                 imageList[modal],
@@ -125,15 +117,7 @@ class App extends Component {
                         />
                     )}
                 </main>
-                {this._anySelected() && (
-                    <footer>
-                        <p>
-                            🖼 from <a href="https://www.pexels.com/">Pexels</a>.
-                            With <span className={styles.heart}>♥</span> by{" "}
-                            <a href="https://github.com/BycorSanchez">Bycor</a>
-                        </p>
-                    </footer>
-                )}
+                {anySelected && <Footer />}
             </div>
         );
     }
