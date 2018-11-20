@@ -7,13 +7,28 @@
 }
 
 .options {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0.3em;
-    transition: all 0.8s ease;
-    text-align: left;
+    position: relative;
 }
 
-.option {
-    position: relative;
+.optionEnter {
+    float: left;
+    transition: all 0.6s ease;
+    transform: translateY(100%);
+}
+
+.optionEnter.optionEnterActive {
+    transform: translateY(0);
+}
+
+.optionExit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    transition: all 0.6s ease;
+    transform: translateY(0);
+}
+
+.optionExitActive {
+    transform: translateY(-100%);
 }

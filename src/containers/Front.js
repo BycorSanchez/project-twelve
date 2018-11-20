@@ -23,14 +23,15 @@ class Front extends Component {
         hover: undefined
     };
 
-    _onHover = item => {
+    _onHover = item =>
         this.setState({ hover: this.props.selected ? undefined : item });
-    };
 
     _onSelect = item => {
         this.setState({ hover: undefined });
         this.props.onSelect(item);
     };
+
+    _unselect = () => this._onSelect(undefined);
 
     _currentData() {
         const { dataList, selected } = this.props;
@@ -41,7 +42,6 @@ class Front extends Component {
         const { dataList, selected, isMobile } = this.props;
         const hover = this.state.hover;
 
-        const sliceType = isMobile ? "horizontal" : "vertical";
         const width = 100 / (dataList.length - 1);
         const data = this._currentData();
 
@@ -54,20 +54,15 @@ class Front extends Component {
                     })}
                 >
                     <h1>
-                        {"Memories of "}
-                        {//Show rotable text while none is selected
-                        data ? (
-                            data.title
-                        ) : (
-                            <Rotable
-                                start={selected ? selected : hover}
-                                options={dataList.map(d => d.title)}
-                            />
-                        )}
+                        <span className={styles.title}>Memories of</span>
+                        <Rotable
+                            start={selected ? selected : hover}
+                            options={dataList.map(d => d.title)}
+                        />
                         {data && (
                             <span
                                 id={styles.clock}
-                                onClick={() => this._onSelect(undefined)}
+                                onClick={this._unselect}
                                 aria-label="Back to front"
                                 tabIndex="0"
                             >
@@ -102,7 +97,7 @@ class Front extends Component {
                                 image={data.url}
                                 isHover={index === hover}
                                 isSelected={index === selected}
-                                type={sliceType}
+                                type={isMobile ? "horizontal" : "vertical"}
                                 onHover={this._onHover}
                                 onSelect={this._onSelect}
                             />

@@ -1,4 +1,3 @@
-import "../styles/Rotable.css";
 import styles from "../styles/RotableText.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -53,17 +52,22 @@ class RotableText extends Component {
 
         return (
             <div className={styles.rotableText}>
-                <div className={styles.options}>
-                    <TransitionGroup component="span" className={styles.option}>
-                        <CSSTransition
-                            classNames="option"
-                            key={selected}
-                            timeout={{ enter: 650, exit: 650 }}
-                        >
-                            <span>{options[selected]}</span>
-                        </CSSTransition>
-                    </TransitionGroup>
-                </div>
+                <TransitionGroup component="span" className={styles.options}>
+                    <CSSTransition
+                        classNames={styles.option}
+                        classNames={{
+                            appear: styles.option,
+                            enter: styles.optionEnter,
+                            enterActive: styles.optionEnterActive,
+                            exit: styles.optionExit,
+                            exitActive: styles.optionExitActive
+                        }}
+                        key={selected}
+                        timeout={{ enter: 600, exit: 600 }}
+                    >
+                        <span>{options[selected]}</span>
+                    </CSSTransition>
+                </TransitionGroup>
             </div>
         );
     }
