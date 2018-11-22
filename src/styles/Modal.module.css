@@ -1,101 +1,101 @@
 :root {
-    --spinner-size: 50px;
+  --spinner-size: 50px;
 }
 
 .modal {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 .modalContent {
-    position: relative;
-    max-width: 70vw;
-    max-height: 70vh;
+  position: relative;
+  max-width: 70vw;
+  max-height: 70vh;
 }
 
 .icon {
-    display: inline-block;
-    position: absolute;
-    font-size: 1.5em;
-    cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
 .previous,
 .next {
-    color: white;
-    border: none;
-    background: none;
-    text-shadow: 0 0 1px black;
-    outline: none;
+  color: white;
+  border: none;
+  background: none;
+  text-shadow: 0 0 1px black;
+  outline: none;
 }
 
 .previous:hover,
 .next:hover {
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 50%;
-    font-weight: bold;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  font-weight: bold;
 }
 
 .close {
-    top: 5%;
-    right: 5%;
-    background: white;
-    padding: 0 0.2em;
-    border: none;
-    outline: none;
+  top: 5%;
+  right: 5%;
+  background: white;
+  padding: 0 0.2em;
+  border: none;
+  outline: none;
 }
 
 .previous {
-    top: 50%;
-    left: 4%;
+  top: 50%;
+  left: 4%;
 }
 
 .next {
-    top: 50%;
-    right: 4%;
+  top: 50%;
+  right: 4%;
 }
 
 .loadingSpinner {
-    border: none;
-    width: var(--spinner-size);
-    height: var(--spinner-size);
-    position: absolute;
-    top: calc(50% - calc(var(--spinner-size) / 2));
-    left: calc(50% - calc(var(--spinner-size) / 2));
+  border: none;
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  position: absolute;
+  top: calc(50% - calc(var(--spinner-size) / 2));
+  left: calc(50% - calc(var(--spinner-size) / 2));
 }
 
 .modalImage {
-    max-width: inherit;
-    max-height: inherit;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+  max-width: inherit;
+  max-height: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 @media screen and (min-width: 500px) {
-    :root {
-        --spinner-size: 100px;
-    }
+  :root {
+    --spinner-size: 100px;
+  }
 
-    .modalContent {
-        position: relative;
-        max-width: 80vw;
-        max-height: 80vh;
-    }
+  .modalContent {
+    position: relative;
+    max-width: 80vw;
+    max-height: 80vh;
+  }
 
-    .gallery .icon {
-        font-size: 2.2em;
-    }
+  .gallery .icon {
+    font-size: 2.2em;
+  }
 }
 
 @media screen and (min-width: 500px) {
-    :root {
-        --spinner-size: 130px;
-    }
+  :root {
+    --spinner-size: 130px;
+  }
 }

@@ -1,38 +1,38 @@
 .heart {
-    animation-name: heartBeat;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
+  animation-name: heartBeat;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
 footer {
-    text-align: center;
-    overflow: auto;
-    background: #f3f3f3;
-    border-top: 1px solid #efefef;
+  text-align: center;
+  overflow: auto;
+  background: #f3f3f3;
+  border-top: 1px solid #efefef;
 }
 
 footer a {
-    text-decoration: none;
-    color: #c78400;
+  text-decoration: none;
+  color: #c78400;
 }
 
 @keyframes heartBeat {
-    0% {
-        color: red;
-    }
-    25% {
-        color: #b50000;
-    }
-    35% {
-        color: red;
-    }
-    70% {
-        color: red;
-    }
-    85% {
-        color: #b50000;
-    }
-    100% {
-        color: red;
-    }
+  0% {
+    color: red;
+  }
+  25% {
+    color: #b50000;
+  }
+  35% {
+    color: red;
+  }
+  70% {
+    color: red;
+  }
+  85% {
+    color: #b50000;
+  }
+  100% {
+    color: red;
+  }
 }

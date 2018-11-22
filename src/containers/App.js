@@ -9,118 +9,107 @@ import sizes from "react-sizes";
 import { fetchFrontData, fetchImages, imageSize } from "../api";
 
 class App extends Component {
-    static sizesToProps({ width }) {
-        return { deviceWidth: width };
+  static sizesToProps({ width }) {
+    return { deviceWidth: width };
+  }
+
+  state = {
+    dataList: [],
+    imageList: undefined,
+    selected: undefined,
+    modal: undefined,
+    galleryError: false
+  };
+
+  componentDidMount() {
+    fetchFrontData()
+      .then(dataList => this.setState({ dataList }))
+      .catch(() => console.error("Front page information could not be loaded"));
+  }
+
+  _onSelect = item => {
+    this.setState({
+      selected: item,
+      imageList: undefined,
+      galleryError: false
+    });
+    if (item !== undefined) {
+      this._loadImageList(item);
     }
+  };
 
-    state = {
-        dataList: [],
-        imageList: undefined,
-        selected: undefined,
-        modal: undefined,
-        galleryError: false
-    };
+  _loadImageList(item) {
+    const data = this.state.dataList[item];
+    fetchImages(data.title)
+      .then(imageList => this.setState({ imageList }))
+      .catch(() => {
+        this.setState({ galleryError: true });
+        console.error("Gallery images could not be loaded");
+      });
+  }
 
-    componentDidMount() {
-        fetchFrontData()
-            .then(dataList => this.setState({ dataList }))
-            .catch(() =>
-                console.error("Front page information could not be loaded")
-            );
+  _openModal = modal => {
+    const length = this.state.imageList.length;
+    if (modal > -1 && modal < length) {
+      this.setState({ modal });
     }
+  };
 
-    _onSelect = item => {
-        this.setState({
-            selected: item,
-            imageList: undefined,
-            galleryError: false
-        });
-        if (item !== undefined) {
-            this._loadImageList(item);
-        }
-    };
+  _closeModal = () => this.setState({ modal: undefined });
 
-    _loadImageList(item) {
-        const data = this.state.dataList[item];
-        fetchImages(data.title)
-            .then(imageList => this.setState({ imageList }))
-            .catch(() => {
-                this.setState({ galleryError: true });
-                console.error("Gallery images could not be loaded");
-            });
-    }
+  _columns = width => (width < 1000 ? (width < 700 ? 2 : 3) : 5);
 
-    _openModal = modal => {
-        const length = this.state.imageList.length;
-        if (modal > -1 && modal < length) {
-            this.setState({ modal });
-        }
-    };
+  _imageSource = (data, width) => data.src[imageSize(width)];
 
-    _closeModal = () => this.setState({ modal: undefined });
+  render() {
+    const { dataList, selected, modal, imageList, galleryError } = this.state;
+    const deviceWidth = this.props.deviceWidth;
 
-    _columns = width => (width < 1000 ? (width < 700 ? 2 : 3) : 5);
+    const anySelected = this.state.selected !== undefined;
+    const anyModal = this.state.modal !== undefined;
+    const columns = this._columns(deviceWidth);
 
-    _imageSource = (data, width) => data.src[imageSize(width)];
+    return (
+      <div className={styles.app}>
+        <main>
+          <Front
+            dataList={dataList}
+            selected={selected}
+            onSelect={this._onSelect}
+            isMobile={deviceWidth < 600}
+          />
 
-    render() {
-        const {
-            dataList,
-            selected,
-            modal,
-            imageList,
-            galleryError
-        } = this.state;
-        const deviceWidth = this.props.deviceWidth;
+          {anySelected && !galleryError ? (
+            imageList ? (
+              <Gallery
+                images={imageList.map(i =>
+                  this._imageSource(i, deviceWidth / columns)
+                )}
+                columns={columns}
+                click={this._openModal}
+              />
+            ) : (
+              <span className={styles.loadingCube}>
+                <Loading type="cubes" />
+              </span>
+            )
+          ) : null}
 
-        const anySelected = this.state.selected !== undefined;
-        const anyModal = this.state.modal !== undefined;
-        const columns = this._columns(deviceWidth);
-
-        return (
-            <div className={styles.app}>
-                <main>
-                    <Front
-                        dataList={dataList}
-                        selected={selected}
-                        onSelect={this._onSelect}
-                        isMobile={deviceWidth < 600}
-                    />
-
-                    {anySelected && !galleryError ? (
-                        imageList ? (
-                            <Gallery
-                                images={imageList.map(i =>
-                                    this._imageSource(i, deviceWidth / columns)
-                                )}
-                                columns={columns}
-                                click={this._openModal}
-                            />
-                        ) : (
-                            <span className={styles.loadingCube}>
-                                <Loading type="cubes" />
-                            </span>
-                        )
-                    ) : null}
-
-                    {anyModal && imageList && (
-                        <Modal
-                            image={this._imageSource(
-                                imageList[modal],
-                                deviceWidth
-                            )}
-                            close={this._closeModal}
-                            next={() => this._openModal(modal + 1)}
-                            previous={() => this._openModal(modal - 1)}
-                            showPrevious={modal > 0}
-                            showNext={modal < imageList.length - 1}
-                        />
-                    )}
-                </main>
-                {anySelected && <Footer />}
-            </div>
-        );
-    }
+          {anyModal && imageList && (
+            <Modal
+              image={this._imageSource(imageList[modal], deviceWidth)}
+              close={this._closeModal}
+              next={() => this._openModal(modal + 1)}
+              previous={() => this._openModal(modal - 1)}
+              showPrevious={modal > 0}
+              showNext={modal < imageList.length - 1}
+            />
+          )}
+        </main>
+        {anySelected && <Footer />}
+      </div>
+    );
+  }
 }
 
 export default sizes(App.sizesToProps)(App);

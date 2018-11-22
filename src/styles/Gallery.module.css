@@ -1,24 +1,24 @@
 .gallery {
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    margin-bottom: 1.5em;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  margin-bottom: 1.5em;
 }
 
 .gallery .column {
-    display: flex;
-    flex-direction: column;
-    margin: 0 5px;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 5px;
+  height: 100%;
 }
 
 .gallery .galleryImage {
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin: 5px 0;
-    max-height: 300px;
-    object-fit: cover;
-    object-position: center;
-    cursor: zoom-in;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 5px 0;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center;
+  cursor: zoom-in;
 }

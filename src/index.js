@@ -5,7 +5,7 @@ import App from "./containers/App";
 import registerServiceWorker from "./registerServiceWorker";
 
 if (!window.IntersectionObserver) {
-    require("intersection-observer");
+  require("intersection-observer");
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
