@@ -2,7 +2,7 @@ import styles from "../styles/Gallery.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { range } from "../helper";
-import { config, lazyLoadImage } from "../lazyload";
+import { lazyLoadConfig, lazyLoadImage } from "../helper";
 
 class Gallery extends Component {
   static propTypes = {
@@ -14,7 +14,10 @@ class Gallery extends Component {
   constructor() {
     super();
     this.imgTags = [];
-    this.observer = new window.IntersectionObserver(lazyLoadImage, config);
+    this.observer = new window.IntersectionObserver(
+      lazyLoadImage,
+      lazyLoadConfig
+    );
   }
 
   componentDidMount() {
