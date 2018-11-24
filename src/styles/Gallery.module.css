@@ -22,3 +22,9 @@
   object-position: center;
   cursor: zoom-in;
 }
+
+.loadingCube img {
+  width: 100px;
+  height: 100px;
+  margin: 2em;
+}

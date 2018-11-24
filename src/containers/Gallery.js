@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { range } from "../helper";
 import { lazyLoadConfig, lazyLoadImage } from "../helper";
+import Loading from "../components/Loading";
 
 class Gallery extends Component {
   static propTypes = {
@@ -20,9 +21,10 @@ class Gallery extends Component {
     );
   }
 
-  componentDidMount() {
-    // Lazy load gallery images
-    this.imgTags.forEach(i => this.observer.observe(i));
+  componentDidUpdate() {
+    if (this.imgTags.length > 0) {
+      this.imgTags.forEach(i => this.observer.observe(i));
+    }
   }
 
   _mapColumn = column => {
@@ -56,13 +58,21 @@ class Gallery extends Component {
     return images.filter((i, index) => index % columns === column);
   }
 
+  _hasImages() {
+    return this.props.images && this.props.images.length > 0;
+  }
+
   render() {
-    const { columns, images } = this.props;
     return (
       <section id="gallery" className={styles.gallery}>
-        {images &&
-          images.length > 0 &&
-          [...Array(columns).keys()].map(this._mapColumn)}
+        {this._hasImages() &&
+          [...Array(this.props.columns).keys()].map(this._mapColumn)}
+
+        {!this._hasImages() && (
+          <span className={styles.loadingCube}>
+            <Loading type="cubes" />
+          </span>
+        )}
       </section>
     );
   }

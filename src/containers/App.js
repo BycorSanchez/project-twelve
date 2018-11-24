@@ -1,10 +1,8 @@
-import styles from "../styles/App.module.css";
 import React, { Component } from "react";
 import Front from "./Front";
 import Gallery from "./Gallery";
 import Footer from "./Footer";
 import Modal from "../components/Modal";
-import Loading from "../components/Loading";
 import sizes from "react-sizes";
 import { fetchFrontData, fetchImages, imageSize } from "../api";
 
@@ -15,7 +13,7 @@ class App extends Component {
 
   state = {
     dataList: [],
-    imageList: undefined,
+    images: [],
     selected: undefined,
     modal: undefined,
     galleryError: false
@@ -30,18 +28,18 @@ class App extends Component {
   _onSelect = item => {
     this.setState({
       selected: item,
-      imageList: undefined,
+      images: [],
       galleryError: false
     });
     if (item !== undefined) {
-      this._loadImageList(item);
+      this._loadimages(item);
     }
   };
 
-  _loadImageList(item) {
+  _loadimages(item) {
     const data = this.state.dataList[item];
     fetchImages(data.title)
-      .then(imageList => this.setState({ imageList }))
+      .then(images => this.setState({ images }))
       .catch(() => {
         this.setState({ galleryError: true });
         console.error("Gallery images could not be loaded");
@@ -49,7 +47,7 @@ class App extends Component {
   }
 
   _openModal = modal => {
-    const length = this.state.imageList.length;
+    const length = this.state.images.length;
     if (modal > -1 && modal < length) {
       this.setState({ modal });
     }
@@ -62,7 +60,7 @@ class App extends Component {
   _imageSource = (data, width) => data.src[imageSize(width)];
 
   render() {
-    const { dataList, selected, modal, imageList, galleryError } = this.state;
+    const { dataList, selected, modal, images, galleryError } = this.state;
     const deviceWidth = this.props.deviceWidth;
 
     const anySelected = this.state.selected !== undefined;
@@ -70,7 +68,7 @@ class App extends Component {
     const columns = this._columns(deviceWidth);
 
     return (
-      <div className={styles.app}>
+      <div>
         <main>
           <Front
             dataList={dataList}
@@ -79,30 +77,24 @@ class App extends Component {
             isMobile={deviceWidth < 600}
           />
 
-          {anySelected && !galleryError ? (
-            imageList ? (
-              <Gallery
-                images={imageList.map(i =>
-                  this._imageSource(i, deviceWidth / columns)
-                )}
-                columns={columns}
-                click={this._openModal}
-              />
-            ) : (
-              <span className={styles.loadingCube}>
-                <Loading type="cubes" />
-              </span>
-            )
-          ) : null}
+          {anySelected && !galleryError && (
+            <Gallery
+              images={images.map(i =>
+                this._imageSource(i, deviceWidth / columns)
+              )}
+              columns={columns}
+              click={this._openModal}
+            />
+          )}
 
-          {anyModal && imageList && (
+          {anyModal && images && (
             <Modal
-              image={this._imageSource(imageList[modal], deviceWidth)}
+              image={this._imageSource(images[modal], deviceWidth)}
               close={this._closeModal}
               next={() => this._openModal(modal + 1)}
               previous={() => this._openModal(modal - 1)}
               showPrevious={modal > 0}
-              showNext={modal < imageList.length - 1}
+              showNext={modal < images.length - 1}
             />
           )}
         </main>
