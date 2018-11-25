@@ -1,62 +1,62 @@
 [
     {
-        "url": "https://images.pexels.com/photos/795163/pexels-photo-795163.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/iceland.jpeg",
         "title": "iceland",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/newyork.jpeg",
         "title": "new york",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/33612/sailboat-water-stockholm-ship.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/sweden.jpeg",
         "title": "sweden",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/17658/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/spain.jpeg",
         "title": "spain",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/10922/pexels-photo-10922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/italy.jpeg",
         "title": "italy",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/149394/pexels-photo-149394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/france.jpeg",
         "title": "france",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/46970/neuschwanstein-castle-castle-kristin-allgau-46970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/germany.jpeg",
         "title": "germany",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/japan.jpeg",
         "title": "japan",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/1533721/pexels-photo-1533721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/australia.jpeg",
         "title": "australia",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/416024/pexels-photo-416024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/denmark.jpeg",
         "title": "denmark",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/533842/pexels-photo-533842.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "url": "res/images/ireland.jpeg",
         "title": "ireland",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     },
     {
-        "url": "https://images.pexels.com/photos/672532/pexels-photo-672532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        "title": "london",
+        "url": "res/images/uk.jpeg",
+        "title": "uk",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor."
     }
 ]

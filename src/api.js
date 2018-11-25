@@ -1,6 +1,6 @@
 // Get front page data (slice image, title, etc)
 export const fetchFrontData = () =>
-  fetch("data/front-data.json").then(r => r.json());
+  fetch("res/front-data.json").then(r => r.json());
 
 export const fetchImages = (query, page = 1) => {
   return fetch(
