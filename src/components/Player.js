@@ -1,44 +1,44 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Howl, Howler } from "howler";
+import { Howl } from "howler";
 import muted from "../images/volume-mute.svg";
 import high from "../images/volume-high.svg";
 import styles from "../styles/Player.module.css";
 
 class Player extends Component {
   static propTypes = {
-    src: PropTypes.arrayOf(String).isRequired,
-    loop: PropTypes.bool
+    songs: PropTypes.arrayOf(String).isRequired
   };
 
   state = {
-    volume: 0
+    playing: true
   };
 
   componentDidMount() {
+    this.createSong(0);
+  }
+
+  createSong(current) {
+    const { songs, loop } = this.props;
     this.song = new Howl({
-      src: this.props.src,
-      loop: this.props.loop || false
+      src: songs[current],
+      loop: loop || false,
+      onend: () => this.createSong((current + 1) % songs.length)
     });
+    this.song.play();
   }
 
   changeVolume = () => {
-    const volume = (this.state.volume + 0.5) % 1;
-
-    if (volume) this.song.play();
-    else this.song.pause();
-
-    Howler.volume(volume);
-    this.setState({ volume });
+    if (this.state.playing) this.song.pause();
+    else this.song.play();
+    this.setState(state => ({ playing: !state.playing }));
   };
-
-  _volumeIcon = volume => (volume < 0.5 ? muted : high);
 
   render() {
     return (
       <img
         id={styles.player}
-        src={this._volumeIcon(this.state.volume)}
+        src={this.state.playing ? high : muted}
         alt="Player"
         onClick={this.changeVolume}
       />
