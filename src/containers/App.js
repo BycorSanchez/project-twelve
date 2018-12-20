@@ -65,7 +65,7 @@ class App extends Component {
             isMobile={deviceWidth < 600}
           />
 
-          {anySelected && !galleryError && (
+          {anySelected && !galleryError && images && (
             <Gallery
               images={images.map(i =>
                 this._imageSource(i, deviceWidth)
