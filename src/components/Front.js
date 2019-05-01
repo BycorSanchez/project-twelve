@@ -1,9 +1,9 @@
 import styles from "../styles/Front.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Slice from "../components/Slice";
-import Rotable from "../components/RotableText";
-import Clock from "../components/Clock";
+import Slice from "./Slice";
+import Rotable from "./RotableText";
+import Clock from "./Clock";
 import classnames from "classnames";
 import pexels from "../images/pexels.png";
 

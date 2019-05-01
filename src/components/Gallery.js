@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { range } from "../helper";
 import { lazyLoadConfig, lazyLoadImage } from "../helper";
-import Loading from "../components/Loading";
-import Modal from "../components/Modal";
+import Loading from "./Loading";
+import Modal from "./Modal";
 
 class Gallery extends Component {
   static propTypes = {
