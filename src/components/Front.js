@@ -2,7 +2,7 @@ import styles from "../styles/Front.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Slice from "./Slice";
-import Rotable from "./RotableText";
+import Rotable from "./Rotable";
 import Clock from "./Clock";
 import classnames from "classnames";
 import pexels from "../images/pexels.png";
@@ -56,7 +56,7 @@ class Front extends Component {
           <h1>
             <span className={styles.title}>Memories of</span>
             <Rotable
-              start={selected ? selected : hover}
+              current={selected ? selected : hover}
               options={dataList.map(d => d.title)}
             />
             {data && (
