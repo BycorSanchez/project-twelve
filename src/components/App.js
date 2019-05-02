@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import Front from "./Front";
 import Gallery from "./Gallery";
 import Footer from "./Footer";
-import sizes from "react-sizes";
-import { fetchFrontData, fetchImages, imageSize } from "../api";
+import withSizes from 'react-sizes'
+import { fetchFrontData, fetchImages } from "../api";
+
+const sizeToProps = ({ width }) => {
+  return { deviceWidth: width };
+}
 
 class App extends Component {
-  static sizesToProps({ width }) {
-    return { deviceWidth: width };
-  }
 
   state = {
     dataList: [],
@@ -44,16 +45,19 @@ class App extends Component {
       });
   }
 
-  _columns = width => (width < 1000 ? (width < 700 ? 2 : 3) : 5);
+  _columns = () => {
+    const width = this.props.deviceWidth;
+    return width < 1000 ? (width < 700 ? 2 : 3) : 5;
+  }
 
-  _imageSource = (data, width) => data.src[imageSize(width)];
+  //TODO: Select image size based on device resolution
+  _imageSources = () => this.state.images.map(image => image.src["original"]);
 
   render() {
     const { dataList, selected, images, galleryError } = this.state;
     const deviceWidth = this.props.deviceWidth;
 
     const anySelected = this.state.selected !== undefined;
-    const columns = this._columns(deviceWidth);
 
     return (
       <div>
@@ -65,19 +69,17 @@ class App extends Component {
             isMobile={deviceWidth < 600}
           />
 
-          {anySelected && !galleryError && images && (
-            <Gallery
-              images={images.map(i =>
-                this._imageSource(i, deviceWidth)
-              )}
-              columns={columns}
+          {images && anySelected && !galleryError && (
+            <Gallery 
+              images={this._imageSources()} 
+              columns={this._columns()}
             />
           )}
         </main>
-        {anySelected && <Footer />}
+        <Footer />
       </div>
     );
   }
 }
 
-export default sizes(App.sizesToProps)(App);
+export default withSizes(sizeToProps)(App);

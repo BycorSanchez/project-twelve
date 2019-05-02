@@ -23,8 +23,7 @@ class Front extends Component {
     hover: undefined
   };
 
-  _onHover = item =>
-    this.setState({ hover: this.props.selected ? undefined : item });
+  _onHover = item => this.setState({ hover: this.props.selected ? undefined : item });
 
   _onSelect = item => {
     this.setState({ hover: undefined });
