@@ -21,7 +21,7 @@ class Slice extends Component {
     type: "vertical"
   };
 
-  _callListener(item, func) {
+  _callListener(func, item) {
     if (func) func(item);
   }
 
@@ -38,22 +38,18 @@ class Slice extends Component {
   }
 
   _polygonOf(...points) {
-    if (points.length < 4) return undefined;
+    if (points.length !== 4) return undefined;
     return this.props.type === "vertical"
       ? this._verticalPolygon(points)
       : this._horizontalPolygon(points);
   }
 
   _verticalPolygon(points) {
-    return `polygon(${points[0]}% 0, ${points[1]}% 0, ${points[2]}% 100%, ${
-      points[3]
-    }% 100%)`;
+    return `polygon(${points[0]}% 0, ${points[1]}% 0, ${points[2]}% 100%, ${points[3]}% 100%)`;
   }
 
   _horizontalPolygon(points) {
-    return `polygon(0 ${points[0]}%, 0 ${points[1]}%, 100% ${
-      points[2]
-    }%, 100% ${points[3]}%)`;
+    return `polygon(0 ${points[0]}%, 0 ${points[1]}%, 100% ${points[2]}%, 100% ${points[3]}%)`;
   }
 
   render() {
@@ -65,15 +61,15 @@ class Slice extends Component {
     return (
       <div
         className={classnames(styles.slice, {
-          [styles.sliceFront]: isSelected || isHover
+          [styles.focus]: isSelected || isHover
         })}
         style={{
           clipPath: polygon,
           WebkitClipPath: polygon,
           backgroundImage: `url(${image})`
         }}
-        onMouseEnter={() => this._callListener(item, this.props.onHover)}
-        onClick={() => this._callListener(item, this.props.onSelect)}
+        onMouseEnter={() => this._callListener(this.props.onHover, item)}
+        onClick={() => this._callListener(this.props.onSelect, item)}
       />
     );
   }
