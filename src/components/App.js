@@ -13,8 +13,7 @@ class App extends Component {
 
   state = {
     dataList: [],
-    images: [],
-    selected: undefined
+    images: []
   };
 
   componentDidMount() {
@@ -23,19 +22,12 @@ class App extends Component {
       .catch(() => console.error("Front page information could not be loaded"));
   }
 
-  _onSelect = item => {
-    this._resetState(item);
+  _loadGallery = item => {
+    this._resetImages();
     this._loadImages(item);
   };
 
-  _onUnSelect = () => this._resetState();
-
-  _resetState(selected = undefined){
-    this.setState({
-      selected,
-      images: []
-    });
-  }
+  _hideGallery = () => this._resetImages();
 
   _loadImages(item) {
     const data = this.state.dataList[item];
@@ -47,6 +39,10 @@ class App extends Component {
       });
   }
 
+  _resetImages(){
+    this.setState({ images: [] });
+  }
+
   _columns = () => {
     const width = this.props.deviceWidth;
     return width < 1000 ? (width < 700 ? 2 : 3) : 5;
@@ -56,23 +52,20 @@ class App extends Component {
   _imageSources = () => this.state.images.map(image => image.src["original"]);
 
   render() {
-    const { dataList, selected, images } = this.state;
+    const { dataList, images } = this.state;
     const deviceWidth = this.props.deviceWidth;
-
-    const showGallery = images && selected !== undefined;
 
     return (
       <div>
         <main>
           <Front
             dataList={dataList}
-            selected={selected}
-            onSelect={this._onSelect}
-            onUnselect={this._onUnSelect}
+            onSelect={this._loadGallery}
+            onDeselect={this._hideGallery}
             isMobile={deviceWidth < 600}
           />
 
-          {showGallery && (
+          {images && images.length > 0 && (
             <Gallery 
               images={this._imageSources()} 
               columns={this._columns()}

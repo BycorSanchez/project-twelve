@@ -11,8 +11,7 @@ class Front extends Component {
   static propTypes = {
     dataList: PropTypes.array.isRequired,
     onSelect: PropTypes.func.isRequired,
-    onUnselect: PropTypes.func.isRequired,
-    selected: PropTypes.number,
+    onDeselect: PropTypes.func.isRequired,
     isMobile: PropTypes.bool
   };
 
@@ -21,19 +20,30 @@ class Front extends Component {
   };
 
   state = {
-    hover: undefined
+    hover: undefined,
+    selected: undefined
   };
 
-  _onHover = item => this.setState({ hover: this.props.selected ? undefined : item });
+  _onHover = item => this.setState({ hover: item });
+
+  _onSelect = item => {
+    this.setState({ selected: item, hover: undefined});
+    this.props.onSelect(item);
+  }
+
+  _onDeselect = () => {
+    this.setState({ selected: undefined });
+    this.props.onDeselect();
+  }
 
   _currentData() {
-    const { dataList, selected } = this.props;
-    return selected !== undefined ? dataList[selected] : undefined;
+    const { selected } = this.state;
+    return selected !== undefined ? this.props.dataList[selected] : undefined;
   }
 
   render() {
-    const { dataList, selected, isMobile, onSelect, onUnselect } = this.props;
-    const hover = this.state.hover;
+    const { dataList, isMobile } = this.props;
+    const { hover, selected } = this.state;
 
     const width = 100 / (dataList.length - 1);
     const data = this._currentData();
@@ -55,7 +65,7 @@ class Front extends Component {
             {data && (
               <span
                 id={styles.clock}
-                onClick={onUnselect}
+                onClick={this._onDeselect}
                 aria-label="Back to front"
                 tabIndex="0"
               >
@@ -89,7 +99,7 @@ class Front extends Component {
                 isSelected={index === selected}
                 type={isMobile ? "horizontal" : "vertical"}
                 onHover={this._onHover}
-                onSelect={onSelect}
+                onSelect={this._onSelect}
               />
             ))}
         </div>
