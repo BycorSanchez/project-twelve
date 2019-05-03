@@ -14,8 +14,7 @@ class App extends Component {
   state = {
     dataList: [],
     images: [],
-    selected: undefined,
-    galleryError: false
+    selected: undefined
   };
 
   componentDidMount() {
@@ -25,22 +24,25 @@ class App extends Component {
   }
 
   _onSelect = item => {
-    this.setState({
-      selected: item,
-      images: [],
-      galleryError: false
-    });
-    if (item !== undefined) {
-      this._loadimages(item);
-    }
+    this._resetState(item);
+    this._loadImages(item);
   };
 
-  _loadimages(item) {
+  _onUnSelect = () => this._resetState();
+
+  _resetState(selected = undefined){
+    this.setState({
+      selected,
+      images: []
+    });
+  }
+
+  _loadImages(item) {
     const data = this.state.dataList[item];
     fetchImages(data.title)
       .then(images => this.setState({ images }))
       .catch(() => {
-        this.setState({ galleryError: true });
+        this.setState({ images: [] });
         console.error("Gallery images could not be loaded");
       });
   }
@@ -54,10 +56,10 @@ class App extends Component {
   _imageSources = () => this.state.images.map(image => image.src["original"]);
 
   render() {
-    const { dataList, selected, images, galleryError } = this.state;
+    const { dataList, selected, images } = this.state;
     const deviceWidth = this.props.deviceWidth;
 
-    const anySelected = this.state.selected !== undefined;
+    const showGallery = images && selected !== undefined;
 
     return (
       <div>
@@ -66,10 +68,11 @@ class App extends Component {
             dataList={dataList}
             selected={selected}
             onSelect={this._onSelect}
+            onUnselect={this._onUnSelect}
             isMobile={deviceWidth < 600}
           />
 
-          {images && anySelected && !galleryError && (
+          {showGallery && (
             <Gallery 
               images={this._imageSources()} 
               columns={this._columns()}

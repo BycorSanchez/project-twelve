@@ -11,6 +11,7 @@ class Front extends Component {
   static propTypes = {
     dataList: PropTypes.array.isRequired,
     onSelect: PropTypes.func.isRequired,
+    onUnselect: PropTypes.func.isRequired,
     selected: PropTypes.number,
     isMobile: PropTypes.bool
   };
@@ -25,20 +26,13 @@ class Front extends Component {
 
   _onHover = item => this.setState({ hover: this.props.selected ? undefined : item });
 
-  _onSelect = item => {
-    this.setState({ hover: undefined });
-    this.props.onSelect(item);
-  };
-
-  _unselect = () => this._onSelect(undefined);
-
   _currentData() {
     const { dataList, selected } = this.props;
     return selected !== undefined ? dataList[selected] : undefined;
   }
 
   render() {
-    const { dataList, selected, isMobile } = this.props;
+    const { dataList, selected, isMobile, onSelect, onUnselect } = this.props;
     const hover = this.state.hover;
 
     const width = 100 / (dataList.length - 1);
@@ -61,7 +55,7 @@ class Front extends Component {
             {data && (
               <span
                 id={styles.clock}
-                onClick={this._unselect}
+                onClick={onUnselect}
                 aria-label="Back to front"
                 tabIndex="0"
               >
@@ -95,7 +89,7 @@ class Front extends Component {
                 isSelected={index === selected}
                 type={isMobile ? "horizontal" : "vertical"}
                 onHover={this._onHover}
-                onSelect={this._onSelect}
+                onSelect={onSelect}
               />
             ))}
         </div>
