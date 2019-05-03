@@ -5,6 +5,7 @@ import { range } from "../helper";
 import { lazyLoadConfig, lazyLoadImage } from "../helper";
 import Loading from "./Loading";
 import Modal from "./Modal";
+import placeholder from "../images/placeholder.png";
 
 class Gallery extends Component {
   static propTypes = {
@@ -19,16 +20,11 @@ class Gallery extends Component {
   constructor() {
     super();
     this.imgRefs = [];
-    this.observer = new window.IntersectionObserver(
-      lazyLoadImage,
-      lazyLoadConfig
-    );
+    this.observer = new IntersectionObserver(lazyLoadImage,lazyLoadConfig);
   }
 
-  componentDidUpdate() {
-    if (this.imgRefs.length > 0) {
-      this.imgRefs.forEach(i => this.observer.observe(i));
-    }
+  componentDidMount() {
+    this.imgRefs.forEach(i => this.observer.observe(i));
   }
 
   _openModal = modal => {
@@ -54,7 +50,7 @@ class Gallery extends Component {
           <img
             key={key}
             className={styles.galleryImage}
-            src={require("../images/placeholder.png")}
+            src={placeholder}
             data-src={images[key]}
             alt=""
             onClick={() => this._openModal(key)}
