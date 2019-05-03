@@ -63,7 +63,7 @@
   right: 4%;
 }
 
-.loadingSpinner {
+.loading {
   border: none;
   width: var(--spinner-size);
   height: var(--spinner-size);

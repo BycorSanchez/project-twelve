@@ -78,7 +78,7 @@ class Gallery extends Component {
         {hasImages && [...Array(columns).keys()].map(this._mapColumn)}
 
         {!hasImages && (
-          <span className={styles.loadingCube}>
+          <span className={styles.loading}>
             <Loading type="cubes" />
           </span>
         )}

@@ -59,7 +59,7 @@ class Modal extends Component {
 
   _renderSpinner() {
     return (
-      <span className={styles.loadingSpinner}>
+      <span className={styles.loading}>
         <Loading type="spinner" />
       </span>
     );
