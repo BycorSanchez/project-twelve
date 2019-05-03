@@ -20,33 +20,28 @@ class Front extends Component {
   };
 
   state = {
-    hover: undefined,
-    selected: undefined
+    current: undefined,
+    isSelected: false
   };
 
-  _onHover = item => this.setState({ hover: item });
+  _onHover = item => this.setState({ current: item });
 
   _onSelect = item => {
-    this.setState({ selected: item, hover: undefined});
+    this.setState({ current: item, isSelected: true });
     this.props.onSelect(item);
   }
 
   _onDeselect = () => {
-    this.setState({ selected: undefined });
+    this.setState({ current: undefined, isSelected: false });
     this.props.onDeselect();
-  }
-
-  _currentData() {
-    const { selected } = this.state;
-    return selected !== undefined ? this.props.dataList[selected] : undefined;
   }
 
   render() {
     const { dataList, isMobile } = this.props;
-    const { hover, selected } = this.state;
+    const { current, isSelected } = this.state;
 
     const width = 100 / (dataList.length - 1);
-    const data = this._currentData();
+    const data = isSelected ? dataList[current] : undefined;
 
     return (
       <section className={styles.front}>
@@ -59,10 +54,10 @@ class Front extends Component {
           <h1>
             <span className={styles.title}>Memories of</span>
             <Rotable
-              current={selected ? selected : hover}
+              current={current}
               options={dataList.map(d => d.title)}
             />
-            {data && (
+            {isSelected && (
               <span
                 id={styles.clock}
                 onClick={this._onDeselect}
@@ -74,9 +69,9 @@ class Front extends Component {
             )}
           </h1>
 
-          <p>{data ? data.description : "Select a memory"}</p>
+          <p>{isSelected ? data.description : "Select a memory"}</p>
 
-          {data && (
+          {isSelected && (
             <a
               className={[styles.nextSection, styles.hideText].join(" ")}
               href="#gallery"
@@ -95,8 +90,8 @@ class Front extends Component {
                 item={index}
                 width={width}
                 image={data.url}
-                isHover={index === hover}
-                isSelected={index === selected}
+                isHover={index === current && !isSelected}
+                isSelected={index === current && isSelected}
                 type={isMobile ? "horizontal" : "vertical"}
                 onHover={this._onHover}
                 onSelect={this._onSelect}
