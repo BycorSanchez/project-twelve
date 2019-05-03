@@ -48,7 +48,7 @@ class Front extends Component {
         {/* Overlapped information */}
         <div
           className={classnames(styles.frontInfo, styles.overlap, {
-            [styles.noInteraction]: !data
+            [styles.noInteraction]: !isSelected
           })}
         >
           <h1>
@@ -73,7 +73,7 @@ class Front extends Component {
 
           {isSelected && (
             <a
-              className={[styles.nextSection, styles.hideText].join(" ")}
+              className={[styles.arrow, styles.hideText].join(" ")}
               href="#gallery"
             >
               Next
@@ -82,7 +82,7 @@ class Front extends Component {
         </div>
 
         {/* Background slices */}
-        <div className={styles.frontBackground}>
+        <div className={styles.background}>
           {dataList &&
             dataList.map((data, index) => (
               <Slice
