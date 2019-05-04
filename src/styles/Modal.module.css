@@ -15,7 +15,9 @@
   z-index: 10;
 }
 
-.modalContent {
+.content {
+  display: flex;
+  flex-direction: column;
   position: relative;
   max-width: 70vw;
   max-height: 70vh;
@@ -72,11 +74,12 @@
   left: calc(50% - calc(var(--spinner-size) / 2));
 }
 
-.modalImage {
+.photo {
   max-width: inherit;
   max-height: inherit;
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
+
 
 @media screen and (min-width: 500px) {
   :root {

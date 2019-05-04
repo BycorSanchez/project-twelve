@@ -6,7 +6,7 @@ import placeholder from "../images/placeholder.png";
 
 class Modal extends Component {
   static propTypes = {
-    image: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
     next: PropTypes.func.isRequired,
     previous: PropTypes.func.isRequired,
     close: PropTypes.func.isRequired,
@@ -33,11 +33,11 @@ class Modal extends Component {
     this.modalRef.current.focus();
   }
 
-  _imageLoaded = () => this.setState({ loaded: true });
+  _photoLoaded = () => this.setState({ loaded: true });
 
-  _imageLoadError = () => {
+  _photoLoadError = () => {
     this.setState({ loaded: true, error: true });
-    console.error("Image could not be loaded");
+    console.error("Photo could not be loaded");
   };
 
   _handleKey = e => {
@@ -97,7 +97,7 @@ class Modal extends Component {
 
   render() {
     const { loaded, error } = this.state;
-    const { image } = this.props;
+    const { photo } = this.props;
 
     return (
       <div
@@ -106,21 +106,21 @@ class Modal extends Component {
         ref={this.modalRef}
         onKeyDown={this._handleKey}
       >
-        <div className={styles.modalContent}>
+        <div className={styles.content}>
           {loaded ? this._renderControls() : this._renderSpinner()}
           {error && (
             <img
-              className={styles.modalImage}
+              className={styles.photo}
               src={placeholder}
-              alt="Not loaded"
+              alt="Default image"
             />
           )}
           <img
-            className={styles.modalImage}
-            src={image}
+            className={styles.photo}
+            src={photo}
             alt=""
-            onLoad={this._imageLoaded}
-            onError={this._imageLoadError}
+            onLoad={this._photoLoaded}
+            onError={this._photoLoadError}
           />
         </div>
       </div>
