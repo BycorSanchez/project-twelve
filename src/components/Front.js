@@ -24,7 +24,11 @@ class Front extends Component {
     isSelected: false
   };
 
-  _onHover = item => this.setState({ current: item });
+  _onHover = item => {
+    if (!this.state.isSelected){
+      this.setState({ current: item });
+    }
+  }
 
   _onSelect = item => {
     this.setState({ current: item, isSelected: true });
