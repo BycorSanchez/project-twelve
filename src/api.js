@@ -1,6 +1,9 @@
+import axios from 'axios';
+
 // Get front page data (slice image, title, etc)
-export const fetchFrontData = () =>
-  fetch("res/front-data.json").then(r => r.json());
+export const fetchFrontData = () => {
+  return axios("res/data/front-data.json").then(response => response.data);
+}
 
 export const fetchImages = (query, page = 1) => {
   return fetch(
