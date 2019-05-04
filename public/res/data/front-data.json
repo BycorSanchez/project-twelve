@@ -54,7 +54,7 @@
         "photos": "res/data/australia.json"
     },
     {
-        "url": "res/images/greece.jpeg",
+        "url": "res/images/greece.jpg",
         "title": "greece",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/greece.json"
