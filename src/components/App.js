@@ -3,7 +3,7 @@ import Front from "./Front";
 import Gallery from "./Gallery";
 import Footer from "./Footer";
 import withSizes from 'react-sizes'
-import { fetchFrontData, fetchImages } from "../api";
+import { fetchFrontData, fetchPhotos, photoResolution } from "../api";
 
 const sizeToProps = ({ width }) => {
   return { deviceWidth: width };
@@ -31,7 +31,7 @@ class App extends Component {
 
   _loadPhotos(item) {
     const data = this.state.dataList[item];
-    fetchImages(data.title)
+    fetchPhotos(data.photos)
       .then(photos => this.setState({ photos }))
       .catch(() => {
         this.setState({ photos: [] });
@@ -43,17 +43,11 @@ class App extends Component {
     this.setState({ photos: [] });
   }
 
-  _columns = () => {
-    const width = this.props.deviceWidth;
-    return width < 1000 ? (width < 700 ? 2 : 3) : 5;
-  }
-
-  //TODO: Select image size based on device resolution
-  _photoUrls = () => this.state.photos.map(photo => photo.src["medium"]);
-
   render() {
     const { dataList, photos } = this.state;
-    const deviceWidth = this.props.deviceWidth;
+    const width = this.props.deviceWidth;
+
+    const columns = width < 1000 ? (width < 700 ? 2 : 3) : 5;
 
     return (
       <div>
@@ -62,13 +56,14 @@ class App extends Component {
             dataList={dataList}
             onSelect={this._loadGallery}
             onDeselect={this._hideGallery}
-            isMobile={deviceWidth < 600}
+            isMobile={this.props.deviceWidth < 600}
           />
 
           {photos && photos.length > 0 && (
             <Gallery 
-              photos={this._photoUrls()} 
-              columns={this._columns()}
+              photos={photos} 
+              columns={columns}
+              resolution={photoResolution(width)}
             />
           )}
         </main>

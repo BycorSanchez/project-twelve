@@ -10,7 +10,8 @@ import placeholder from "../images/placeholder.png";
 class Gallery extends Component {
   static propTypes = {
     photos: PropTypes.array.isRequired,
-    columns: PropTypes.number.isRequired
+    columns: PropTypes.number.isRequired,
+    resolution: PropTypes.oneOf(["small", "medium", "large", "large2x", "original"])
   };
 
   state = {
@@ -35,6 +36,11 @@ class Gallery extends Component {
 
   _closeModal = () => this.setState({ modal: undefined });
 
+  _photoUrl = (index) => {
+    const { photos, resolution } = this.props;
+    return photos[index].src[resolution];
+  }
+
   _mapColumn = column => {
     const { photos, columns } = this.props;
     const indexes = range(column, photos.length, columns);
@@ -51,7 +57,7 @@ class Gallery extends Component {
             key={key}
             className={styles.photo}
             src={placeholder}
-            data-src={photos[key]}
+            data-src={this._photoUrl([key])}
             alt=""
             onClick={() => this._openModal(key)}
             ref={ref => (this.imageRefs[key] = ref)}
@@ -60,11 +66,6 @@ class Gallery extends Component {
       </div>
     );
   };
-
-  _imagesOf(column) {
-    const { columns, photos } = this.props;
-    return photos.filter((photo, index) => index % columns === column);
-  }
 
   render() {
     const { photos, columns } = this.props;
@@ -85,7 +86,7 @@ class Gallery extends Component {
 
         {anyModal && (
           <Modal
-            image={photos[modal]}
+            image={this._photoUrl(modal)}
             close={this._closeModal}
             next={() => this._openModal(modal + 1)}
             previous={() => this._openModal(modal - 1)}
