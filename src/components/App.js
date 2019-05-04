@@ -13,7 +13,7 @@ class App extends Component {
 
   state = {
     dataList: [],
-    images: []
+    photos: []
   };
 
   componentDidMount() {
@@ -23,24 +23,24 @@ class App extends Component {
   }
 
   _loadGallery = item => {
-    this._resetImages();
-    this._loadImages(item);
+    this._resetPhotos();
+    this._loadPhotos(item);
   };
 
-  _hideGallery = () => this._resetImages();
+  _hideGallery = () => this._resetPhotos();
 
-  _loadImages(item) {
+  _loadPhotos(item) {
     const data = this.state.dataList[item];
     fetchImages(data.title)
-      .then(images => this.setState({ images }))
+      .then(photos => this.setState({ photos }))
       .catch(() => {
-        this.setState({ images: [] });
+        this.setState({ photos: [] });
         console.error("Gallery images could not be loaded");
       });
   }
 
-  _resetImages(){
-    this.setState({ images: [] });
+  _resetPhotos(){
+    this.setState({ photos: [] });
   }
 
   _columns = () => {
@@ -49,10 +49,10 @@ class App extends Component {
   }
 
   //TODO: Select image size based on device resolution
-  _imageSources = () => this.state.images.map(image => image.src["original"]);
+  _photoUrls = () => this.state.photos.map(photo => photo.src["medium"]);
 
   render() {
-    const { dataList, images } = this.state;
+    const { dataList, photos } = this.state;
     const deviceWidth = this.props.deviceWidth;
 
     return (
@@ -65,9 +65,9 @@ class App extends Component {
             isMobile={deviceWidth < 600}
           />
 
-          {images && images.length > 0 && (
+          {photos && photos.length > 0 && (
             <Gallery 
-              images={this._imageSources()} 
+              photos={this._photoUrls()} 
               columns={this._columns()}
             />
           )}

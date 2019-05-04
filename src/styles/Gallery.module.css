@@ -4,14 +4,14 @@
   padding: 5px;
 }
 
-.gallery .column {
+.column {
   display: flex;
   flex-direction: column;
   margin: 0 5px;
   height: 100%;
 }
 
-.gallery .galleryImage {
+.photo {
   display: block;
   width: 100%;
   margin: 5px 0;

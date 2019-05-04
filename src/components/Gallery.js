@@ -9,7 +9,7 @@ import placeholder from "../images/placeholder.png";
 
 class Gallery extends Component {
   static propTypes = {
-    images: PropTypes.array.isRequired,
+    photos: PropTypes.array.isRequired,
     columns: PropTypes.number.isRequired
   };
 
@@ -19,16 +19,16 @@ class Gallery extends Component {
 
   constructor() {
     super();
-    this.imgRefs = [];
+    this.imageRefs = [];
     this.observer = new IntersectionObserver(lazyLoadImage,lazyLoadConfig);
   }
 
   componentDidMount() {
-    this.imgRefs.forEach(i => this.observer.observe(i));
+    this.imageRefs.forEach(i => this.observer.observe(i));
   }
 
   _openModal = modal => {
-    if (modal > -1 && modal < this.props.images.length) {
+    if (modal > -1 && modal < this.props.photos.length) {
       this.setState({ modal });
     }
   };
@@ -36,8 +36,8 @@ class Gallery extends Component {
   _closeModal = () => this.setState({ modal: undefined });
 
   _mapColumn = column => {
-    const { images, columns } = this.props;
-    const indexes = range(column, images.length, columns);
+    const { photos, columns } = this.props;
+    const indexes = range(column, photos.length, columns);
     const width = 100 / columns;
 
     return (
@@ -49,12 +49,12 @@ class Gallery extends Component {
         {indexes.map(key => (
           <img
             key={key}
-            className={styles.galleryImage}
+            className={styles.photo}
             src={placeholder}
-            data-src={images[key]}
+            data-src={photos[key]}
             alt=""
             onClick={() => this._openModal(key)}
-            ref={ref => (this.imgRefs[key] = ref)}
+            ref={ref => (this.imageRefs[key] = ref)}
           />
         ))}
       </div>
@@ -62,22 +62,22 @@ class Gallery extends Component {
   };
 
   _imagesOf(column) {
-    const { columns, images } = this.props;
-    return images.filter((image, index) => index % columns === column);
+    const { columns, photos } = this.props;
+    return photos.filter((photo, index) => index % columns === column);
   }
 
   render() {
-    const { images, columns } = this.props;
+    const { photos, columns } = this.props;
     const { modal } = this.state;
 
-    const hasImages = images && images.length > 0;
+    const hasPhotos = photos && photos.length > 0;
     const anyModal = modal !== undefined;
 
     return (
       <section id="gallery" className={styles.gallery}>
-        {hasImages && [...Array(columns).keys()].map(this._mapColumn)}
+        {hasPhotos && [...Array(columns).keys()].map(this._mapColumn)}
 
-        {!hasImages && (
+        {!hasPhotos && (
           <span className={styles.loading}>
             <Loading type="cubes" />
           </span>
@@ -85,12 +85,12 @@ class Gallery extends Component {
 
         {anyModal && (
           <Modal
-            image={images[modal]}
+            image={photos[modal]}
             close={this._closeModal}
             next={() => this._openModal(modal + 1)}
             previous={() => this._openModal(modal - 1)}
             showPrevious={modal > 0}
-            showNext={modal < images.length - 1}
+            showNext={modal < photos.length - 1}
           />
         )}
       </section>
