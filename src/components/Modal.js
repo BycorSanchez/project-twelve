@@ -1,5 +1,5 @@
 import styles from "../styles/Modal.module.css";
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Loading from "./Loading";
 import placeholder from "../images/placeholder.png";
@@ -66,15 +66,9 @@ class Modal extends Component {
   }
 
   _renderControls() {
-    const { close, next, previous, showNext, showPrevious } = this.props;
+    const { next, previous, showNext, showPrevious } = this.props;
     return (
-      <div>
-        <button
-          className={[styles.icon, styles.close].join(" ")}
-          onClick={close}
-        >
-          ×
-        </button>
+      <Fragment>
         {showPrevious && (
           <button
             className={[styles.icon, styles.previous].join(" ")}
@@ -91,13 +85,13 @@ class Modal extends Component {
             ＞
           </button>
         )}
-      </div>
+      </Fragment>
     );
   }
 
   render() {
     const { loaded, error } = this.state;
-    const { photo } = this.props;
+    const { photo, close } = this.props;
 
     return (
       <div
@@ -115,6 +109,11 @@ class Modal extends Component {
               alt="Default image"
             />
           )}
+          <button
+            className={styles.close}
+            onClick={close}
+          >×</button>
+          {/*TODO Test - Add next and previous controls on a div container flex where image can grow or shrink */}
           <img
             className={styles.photo}
             src={photo}
