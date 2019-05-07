@@ -57,17 +57,9 @@ class Modal extends Component {
     }
   };
 
-  _renderSpinner() {
-    return (
-      <span className={styles.loading}>
-        <Loading type="spinner" />
-      </span>
-    );
-  }
-
   render() {
-    const { loaded, error } = this.state;
     const { photo, close, next, previous, showNext, showPrevious } = this.props;
+    const { loaded, error } = this.state;
 
     return (
       <div
@@ -77,7 +69,11 @@ class Modal extends Component {
         onKeyDown={this._handleKey}
       >
         <div className={styles.content}>
-          {!loaded && this._renderSpinner()}
+          {!loaded && (
+            <span className={styles.loading}>
+              <Loading type="spinner" />
+            </span>
+          )}
 
           {error && (
             <img
