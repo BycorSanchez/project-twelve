@@ -1,5 +1,5 @@
 import styles from "../styles/Modal.module.css";
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Loading from "./Loading";
 import placeholder from "../images/placeholder.png";
@@ -83,7 +83,7 @@ class Modal extends Component {
             <img
               className={styles.photo}
               src={placeholder}
-              alt="Default image"
+              alt="Default"
             />
           )}
 
