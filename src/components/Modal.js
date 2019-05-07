@@ -65,33 +65,9 @@ class Modal extends Component {
     );
   }
 
-  _renderControls() {
-    const { next, previous, showNext, showPrevious } = this.props;
-    return (
-      <Fragment>
-        {showPrevious && (
-          <button
-            className={[styles.icon, styles.previous].join(" ")}
-            onClick={previous}
-          >
-            ＜
-          </button>
-        )}
-        {showNext && (
-          <button
-            className={[styles.icon, styles.next].join(" ")}
-            onClick={next}
-          >
-            ＞
-          </button>
-        )}
-      </Fragment>
-    );
-  }
-
   render() {
     const { loaded, error } = this.state;
-    const { photo, close } = this.props;
+    const { photo, close, next, previous, showNext, showPrevious } = this.props;
 
     return (
       <div
@@ -101,7 +77,8 @@ class Modal extends Component {
         onKeyDown={this._handleKey}
       >
         <div className={styles.content}>
-          {loaded ? this._renderControls() : this._renderSpinner()}
+          {!loaded && this._renderSpinner()}
+
           {error && (
             <img
               className={styles.photo}
@@ -109,18 +86,36 @@ class Modal extends Component {
               alt="Default image"
             />
           )}
+
           <button
             className={styles.close}
             onClick={close}
-          >×</button>
-          {/*TODO Test - Add next and previous controls on a div container flex where image can grow or shrink */}
-          <img
-            className={styles.photo}
-            src={photo}
-            alt=""
-            onLoad={this._photoLoaded}
-            onError={this._photoLoadError}
-          />
+            title="Close"
+          >&times;</button>
+
+          <div className={styles.container}>
+            {showPrevious && (
+              <button
+                className={styles.control}
+                onClick={previous}
+                title="Previous"
+              >&#10094;</button>
+            )}
+            <img
+              className={styles.photo}
+              src={photo}
+              alt=""
+              onLoad={this._photoLoaded}
+              onError={this._photoLoadError}
+            />
+            {showNext && (
+              <button
+                className={styles.control}
+                onClick={next}
+                title="Next"
+              >&#10095;</button>
+            )}
+          </div>
         </div>
       </div>
     );
