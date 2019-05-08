@@ -29,6 +29,8 @@ button {
 
 .container {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .control {
@@ -56,6 +58,7 @@ button {
 }
 
 .photo {
+  object-fit: contain;
   max-width: 70vw;
   max-height: 70vh;
   border: 1px solid rgba(255, 255, 255, 0.5);
