@@ -62,9 +62,22 @@ button {
   object-fit: contain;
   max-width: 70vw;
   max-height: 70vh;
-  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+figure {
+  display: table;
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  color: #e2e2e2;
+  text-align: center;
+}
+
+figcaption a {
+  color: #bbb;
+}
 
 @media screen and (min-width: 500px) {
   :root {

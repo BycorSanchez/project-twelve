@@ -48,7 +48,7 @@ class Modal extends Component {
   };
 
   render() {
-    const { url, onExit, onNext, onPrevious, showNext, showPrevious } = this.props;
+    const { url, photo, onExit, onNext, onPrevious, showNext, showPrevious } = this.props;
     const { loaded, error } = this.state;
 
     return (
@@ -84,13 +84,18 @@ class Modal extends Component {
                 </span>
               )}
 
-              <img
-                className={styles.photo}
-                src={error? placeholder : url}
-                alt={error? "Default" : ""}
-                onLoad={this._photoLoaded}
-                onError={this._photoLoadError}
-              />
+              <figure className={styles.information}>
+                <img
+                  className={styles.photo}
+                  src={error? placeholder : url}
+                  alt={error? "Default" : ""}
+                  onLoad={this._photoLoaded}
+                  onError={this._photoLoadError}
+                />  
+                <figcaption><p>Photo by <a href={photo.photographer_url}>{photo.photographer}</a> on <a href={photo.url}>Pexels</a></p></figcaption>
+              </figure>
+
+
               {showNext && (
                 <button
                   className={styles.control}
