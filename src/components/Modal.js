@@ -59,13 +59,11 @@ class Modal extends Component {
         <AriaModal
           titleText="Image modal"
           onExit={close}
-          initialFocus="#close-modal"
           verticallyCenter={true}
         >
           <div className={styles.content}>
 
             <button
-              id="close-modal"
               className={styles.close}
               onClick={close}
               title="Close"
