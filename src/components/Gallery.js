@@ -1,10 +1,9 @@
 import styles from "../styles/Gallery.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { range } from "../helper";
-import { lazyLoadConfig, lazyLoadImage } from "../helper";
 import Loading from "./Loading";
 import Modal from "./Modal";
+import { range, lazyLoadConfig, lazyLoadImage } from "../helper";
 import placeholder from "../images/placeholder.png";
 
 class Gallery extends Component {

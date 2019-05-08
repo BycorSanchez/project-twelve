@@ -66,7 +66,6 @@ class Front extends Component {
                 id={styles.clock}
                 onClick={this._onDeselect}
                 aria-label="Back to front"
-                tabIndex="0"
               >
                 <Clock />
               </span>
