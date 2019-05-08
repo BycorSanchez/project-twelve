@@ -85,10 +85,11 @@ class Gallery extends Component {
 
         {anyModal && (
           <Modal
-            photo={this._photoUrl(modal)}
-            close={this._closeModal}
-            next={() => this._openModal(modal + 1)}
-            previous={() => this._openModal(modal - 1)}
+            url={this._photoUrl(modal)}
+            photo={photos[modal]}
+            onExit={this._closeModal}
+            onNext={() => this._openModal(modal + 1)}
+            onPrevious={() => this._openModal(modal - 1)}
             showPrevious={modal > 0}
             showNext={modal < photos.length - 1}
           />

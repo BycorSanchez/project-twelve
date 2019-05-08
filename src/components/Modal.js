@@ -7,10 +7,10 @@ import placeholder from "../images/placeholder.png";
 
 class Modal extends Component {
   static propTypes = {
-    photo: PropTypes.string.isRequired,
-    next: PropTypes.func.isRequired,
-    previous: PropTypes.func.isRequired,
-    close: PropTypes.func.isRequired,
+    url: PropTypes.string.isRequired,
+    onNext: PropTypes.func.isRequired,
+    onPrevious: PropTypes.func.isRequired,
+    onExit: PropTypes.func.isRequired,
     showNext: PropTypes.bool,
     showPrevious: PropTypes.bool
   };
@@ -36,11 +36,11 @@ class Modal extends Component {
     switch (e.keyCode) {
       case 37: //Left arrow
         e.preventDefault();
-        this.props.previous();
+        this.props.onPrevious();
         break;
       case 39: //Right arrow
       e.preventDefault();
-        this.props.next();
+        this.props.onNext();
         break;
       default:
         break;
@@ -48,7 +48,7 @@ class Modal extends Component {
   };
 
   render() {
-    const { photo, close, next, previous, showNext, showPrevious } = this.props;
+    const { url, onExit, onNext, onPrevious, showNext, showPrevious } = this.props;
     const { loaded, error } = this.state;
 
     return (
@@ -58,14 +58,14 @@ class Modal extends Component {
       >
         <AriaModal
           titleText="Image modal"
-          onExit={close}
+          onExit={onExit}
           verticallyCenter={true}
         >
           <div className={styles.content}>
 
             <button
               className={styles.close}
-              onClick={close}
+              onClick={onExit}
               title="Close"
             >&times;</button>
 
@@ -73,7 +73,7 @@ class Modal extends Component {
               {showPrevious && (
                 <button
                   className={styles.control}
-                  onClick={previous}
+                  onClick={onPrevious}
                   title="Previous"
                 >&#10094;</button>
               )}
@@ -86,15 +86,15 @@ class Modal extends Component {
 
               <img
                 className={styles.photo}
-                src={error? placeholder : photo}
-                alt=""
+                src={error? placeholder : url}
+                alt={error? "Default" : ""}
                 onLoad={this._photoLoaded}
                 onError={this._photoLoadError}
               />
               {showNext && (
                 <button
                   className={styles.control}
-                  onClick={next}
+                  onClick={onNext}
                   title="Next"
                 >&#10095;</button>
               )}
