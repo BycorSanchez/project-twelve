@@ -37,6 +37,7 @@ button {
   text-shadow: 0 0 1px black;
   font-size: 1.7em;
   padding: 0 0.5em;
+  align-self: stretch;
 }
 
 .control:hover {
