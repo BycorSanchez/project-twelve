@@ -7,7 +7,7 @@ const Footer = () => {
       <p>
         🖼 from <a href="https://www.pexels.com/">Pexels</a>. With{" "}
         <span className={styles.heart}>♥</span> by{" "}
-        <a href="https://github.com/BycorSanchez">Bycor</a>
+        <a href="https://twitter.com/bycorsanchez">Bycor</a>
       </p>
     </footer>
   );
