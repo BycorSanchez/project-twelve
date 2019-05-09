@@ -79,15 +79,6 @@
   height: 100%;
 }
 
-.pexels {
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  padding: 10px;
-  background: black;
-  color: white;
-}
-
 @media screen and (min-width: 700px) {
   .frontInfo h1 {
     font-size: 2.4em;

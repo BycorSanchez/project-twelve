@@ -101,13 +101,6 @@ class Front extends Component {
               />
             ))}
         </div>
-        {/* Pexels link */}
-        <a
-          className={[styles.pexels, styles.overlap].join(" ")}
-          href="https://www.pexels.com"
-        >
-          <img src={pexels} alt="pexels" />
-        </a>
       </section>
     );
   }
