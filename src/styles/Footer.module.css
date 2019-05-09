@@ -7,13 +7,14 @@ footer .heart {
 footer {
   text-align: center;
   overflow: auto;
-  background: #f3f3f3;
-  border-top: 1px solid #efefef;
+  background: #384d5f;
+  border-top: 1px solid #4c4c4c;
+  color: #d6d6d6;
 }
 
 footer a {
   text-decoration: none;
-  color: #c78400;
+  color: #83abce;
 }
 
 @keyframes heartBeat {
