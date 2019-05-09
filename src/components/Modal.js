@@ -57,9 +57,11 @@ class Modal extends Component {
         onKeyDown={this._handleKey}
       >
         <AriaModal
-          titleText="Image modal"
+          titleText="Modal image"
           onExit={onExit}
           verticallyCenter={true}
+          focusDialog={true}
+          includeDefaultStyles="width: auto"
         >
           <div className={styles.content}>
 
