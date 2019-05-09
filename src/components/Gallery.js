@@ -10,7 +10,7 @@ class Gallery extends Component {
   static propTypes = {
     photos: PropTypes.array.isRequired,
     columns: PropTypes.number.isRequired,
-    resolution: PropTypes.oneOf(["small", "medium", "large", "large2x", "original"])
+    deviceWidth: PropTypes.number.isRequired
   };
 
   state = {
@@ -35,9 +35,18 @@ class Gallery extends Component {
 
   _closeModal = () => this.setState({ modal: undefined });
 
-  _photoUrl = (index) => {
-    const { photos, resolution } = this.props;
+  _photoUrl = (index, columns = 1) => {
+    const { photos, deviceWidth } = this.props;
+    const resolution =this._photoResolution(deviceWidth / columns);
     return photos[index].src[resolution];
+  }
+
+  _photoResolution = width => {
+    if (width < 190) return "small";
+    if (width < 600) return "medium";
+    if (width < 940) return "large";
+    if (width < 1500) return "large2x";
+    else return "original";
   }
 
   _mapColumn = column => {
@@ -56,7 +65,7 @@ class Gallery extends Component {
             key={key}
             className={styles.photo}
             src={placeholder}
-            data-src={this._photoUrl([key])}
+            data-src={this._photoUrl(key, columns)}
             alt=""
             onClick={() => this._openModal(key)}
             ref={ref => (this.imageRefs[key] = ref)}

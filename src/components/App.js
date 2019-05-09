@@ -3,7 +3,7 @@ import Front from "./Front";
 import Gallery from "./Gallery";
 import Footer from "./Footer";
 import withSizes from 'react-sizes'
-import { fetchFrontData, fetchPhotos, photoResolution } from "../api";
+import { fetchFrontData, fetchPhotos } from "../api";
 
 const sizeToProps = ({ width }) => {
   return { deviceWidth: width };
@@ -46,7 +46,6 @@ class App extends Component {
   render() {
     const { dataList, photos } = this.state;
     const width = this.props.deviceWidth;
-
     const columns = width < 1000 ? (width < 700 ? 2 : 3) : 5;
 
     return (
@@ -56,14 +55,14 @@ class App extends Component {
             dataList={dataList}
             onSelect={this._loadGallery}
             onDeselect={this._hideGallery}
-            isMobile={this.props.deviceWidth < 600}
+            isMobile={width < 600}
           />
 
           {photos && photos.length > 0 && (
             <Gallery 
               photos={photos} 
               columns={columns}
-              resolution={photoResolution(width)}
+              deviceWidth={width}
             />
           )}
         </main>
