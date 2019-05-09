@@ -27,11 +27,7 @@ class Gallery extends Component {
     this.imageRefs.forEach(i => this.observer.observe(i));
   }
 
-  _openModal = modal => {
-    if (modal > -1 && modal < this.props.photos.length) {
-      this.setState({ modal });
-    }
-  };
+  _openModal = modal => this.setState({ modal });
 
   _closeModal = () => this.setState({ modal: undefined });
 
@@ -49,7 +45,7 @@ class Gallery extends Component {
     else return "original";
   }
 
-  _mapColumn = column => {
+  _renderColumn = column => {
     const { photos, columns } = this.props;
     const indexes = range(column, photos.length, columns);
     const width = 100 / columns;
@@ -76,7 +72,7 @@ class Gallery extends Component {
   };
 
   render() {
-    const { photos, columns } = this.props;
+    const { photos, columns, deviceWidth } = this.props;
     const { modal } = this.state;
 
     const hasPhotos = photos && photos.length > 0;
@@ -84,7 +80,7 @@ class Gallery extends Component {
 
     return (
       <section id="gallery" className={styles.gallery}>
-        {hasPhotos && [...Array(columns).keys()].map(this._mapColumn)}
+        {hasPhotos && [...Array(columns).keys()].map(this._renderColumn)}
 
         {!hasPhotos && (
           <span className={styles.loading}>
@@ -94,13 +90,10 @@ class Gallery extends Component {
 
         {anyModal && (
           <Modal
-            url={this._photoUrl(modal)}
-            photo={photos[modal]}
+            photos={photos}
+            selected={modal}
+            resolution={this._photoResolution(deviceWidth)}
             onExit={this._closeModal}
-            onNext={() => this._openModal(modal + 1)}
-            onPrevious={() => this._openModal(modal - 1)}
-            showPrevious={modal > 0}
-            showNext={modal < photos.length - 1}
           />
         )}
       </section>
