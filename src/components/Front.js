@@ -64,6 +64,7 @@ class Front extends Component {
                 className={styles.back} 
                 onClick={this._onDeselect}
                 title="Go back"
+                aria-label="Go back"
               />
             )}
           </h1>
@@ -92,6 +93,7 @@ class Front extends Component {
                 type={isMobile ? "horizontal" : "vertical"}
                 onHover={this._onHover}
                 onSelect={this._onSelect}
+                ariaLabel={data.title}
               />
             ))}
         </div>

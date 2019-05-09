@@ -71,6 +71,7 @@
   transition: all 0.8s ease;
 }
 
+.back:focus,
 .back:hover {
   background: url("../images/back2.svg") no-repeat;
   background-size: 100% 100%;

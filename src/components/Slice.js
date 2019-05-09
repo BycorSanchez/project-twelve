@@ -12,7 +12,8 @@ class Slice extends Component {
     isSelected: PropTypes.bool,
     onHover: PropTypes.func,
     onSelect: PropTypes.func,
-    type: PropTypes.oneOf(["vertical", "horizontal"])
+    type: PropTypes.oneOf(["vertical", "horizontal"]),
+    ariaLabel: PropTypes.string
   };
 
   static defaultProps = {
@@ -53,7 +54,7 @@ class Slice extends Component {
   }
 
   render() {
-    const { item, width, image, isSelected, isHover } = this.props;
+    const { item, width, image, isSelected, isHover, ariaLabel } = this.props;
     const polygon = isSelected
       ? this._fullPolygon()
       : this._polygon(item, width, isHover ? width / 4 : 0);
@@ -66,10 +67,11 @@ class Slice extends Component {
         style={{
           clipPath: polygon,
           WebkitClipPath: polygon,
-          backgroundImage: `url(${image})`
+          backgroundImage: `url(${image})`,
         }}
         onMouseEnter={() => this._callListener(this.props.onHover, item)}
         onClick={() => this._callListener(this.props.onSelect, item)}
+        aria-label={ariaLabel}
       />
     );
   }

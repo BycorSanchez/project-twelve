@@ -62,7 +62,7 @@ class Gallery extends Component {
             className={styles.photo}
             src={placeholder}
             data-src={this._photoUrl(key, columns)}
-            alt=""
+            alt={photos[key].photographer + " photo"}
             onClick={() => this._openModal(key)}
             ref={ref => (this.imageRefs[key] = ref)}
           />

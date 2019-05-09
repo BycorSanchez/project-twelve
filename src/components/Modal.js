@@ -103,7 +103,7 @@ class Modal extends Component {
                 <img
                   className={styles.photo}
                   src={error ? placeholder : photoUrl}
-                  alt={error ? "Default" : `${photo.photographer} photo`}
+                  alt={error ? "Default" : photo.photographer + "photo"}
                   onLoad={this._photoLoaded}
                   onError={this._photoLoadError}
                 />
