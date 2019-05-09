@@ -5,7 +5,6 @@ import Slice from "./Slice";
 import Rotable from "./Rotable";
 import Clock from "./Clock";
 import classnames from "classnames";
-import pexels from "../images/pexels.png";
 
 class Front extends Component {
   static propTypes = {
