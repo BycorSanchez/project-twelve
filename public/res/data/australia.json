@@ -1276,23 +1276,5 @@
         },
         "url": "https://www.pexels.com/photo/silhouette-of-woman-holding-book-near-windmills-636335/",
         "width": 4928
-    },
-    {
-        "height": 4149,
-        "id": 2193271,
-        "photographer": "Rijan Hamidovic",
-        "photographer_url": "https://www.pexels.com/@rijan-hamidovic-790844",
-        "src": {
-            "landscape": "https://images.pexels.com/photos/2193271/pexels-photo-2193271.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-            "large": "https://images.pexels.com/photos/2193271/pexels-photo-2193271.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-            "large2x": "https://images.pexels.com/photos/2193271/pexels-photo-2193271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "medium": "https://images.pexels.com/photos/2193271/pexels-photo-2193271.jpeg?auto=compress&cs=tinysrgb&h=350",
-            "original": "https://images.pexels.com/photos/2193271/pexels-photo-2193271.jpeg",
-            "portrait": "https://images.pexels.com/photos/2193271/pexels-photo-2193271.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-            "small": "https://images.pexels.com/photos/2193271/pexels-photo-2193271.jpeg?auto=compress&cs=tinysrgb&h=130",
-            "tiny": "https://images.pexels.com/photos/2193271/pexels-photo-2193271.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=280"
-        },
-        "url": "https://www.pexels.com/photo/person-walking-on-beach-2193271/",
-        "width": 2770
     }
 ]
