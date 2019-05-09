@@ -33,11 +33,11 @@ class Gallery extends Component {
 
   _photoUrl = (index, columns = 1) => {
     const { photos, deviceWidth } = this.props;
-    const resolution =this._photoResolution(deviceWidth / columns);
-    return photos[index].src[resolution];
+    const format = this._imageFormat(deviceWidth / columns);
+    return photos[index].src[format];
   }
 
-  _photoResolution = width => {
+  _imageFormat = width => {
     if (width < 190) return "small";
     if (width < 600) return "medium";
     if (width < 940) return "large";
@@ -92,7 +92,7 @@ class Gallery extends Component {
           <Modal
             photos={photos}
             selected={modal}
-            resolution={this._photoResolution(deviceWidth)}
+            imageFormat={this._imageFormat(deviceWidth)}
             onExit={this._closeModal}
           />
         )}

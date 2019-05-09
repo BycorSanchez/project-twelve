@@ -10,11 +10,11 @@ class Modal extends Component {
     photos: PropTypes.array.isRequired,
     selected: PropTypes.number.isRequired,
     onExit: PropTypes.func.isRequired,
-    resolution: PropTypes.string
+    imageFormat: PropTypes.string
   };
 
   static defaultProps = {
-    resolution: "original"
+    imageFormat: "original"
   }
 
   state = {
@@ -55,11 +55,11 @@ class Modal extends Component {
   };
 
   render() {
-    const { photos, resolution, onExit } = this.props;
+    const { photos, imageFormat, onExit } = this.props;
     const { current, loaded, error } = this.state;
 
     const photo = photos[current];
-    const photoUrl = photo.src[resolution];
+    const photoUrl = photo.src[imageFormat];
     const showPrevious = current > 0;
     const showNext = current < photos.length - 1;
 
