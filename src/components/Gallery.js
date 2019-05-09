@@ -74,7 +74,7 @@ class Gallery extends Component {
   render() {
     const { photos, columns, deviceWidth } = this.props;
     const { modal } = this.state;
-
+    
     const hasPhotos = photos && photos.length > 0;
     const anyModal = modal !== undefined;
 

@@ -64,8 +64,7 @@ class Front extends Component {
                 className={styles.back} 
                 onClick={this._onDeselect}
                 title="Go back"
-              >
-              </button>
+              />
             )}
           </h1>
 
@@ -75,9 +74,7 @@ class Front extends Component {
             <a
               className={[styles.arrow, styles.hideText].join(" ")}
               href="#gallery"
-            >
-              Next
-            </a>
+            >Next</a>
           )}
         </div>
 

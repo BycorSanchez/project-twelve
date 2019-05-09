@@ -57,7 +57,6 @@ class App extends Component {
             onDeselect={this._hideGallery}
             isMobile={width < 600}
           />
-
           {photos && photos.length > 0 && (
             <Gallery 
               photos={photos} 

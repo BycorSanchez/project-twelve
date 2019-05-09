@@ -60,7 +60,6 @@ class Modal extends Component {
 
     const photo = photos[current];
     const photoUrl = photo.src[resolution];
-
     const showPrevious = current > 0;
     const showNext = current < photos.length - 1;
 
