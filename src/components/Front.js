@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Slice from "./Slice";
 import Rotable from "./Rotable";
-import Clock from "./Clock";
 import classnames from "classnames";
 
 class Front extends Component {
@@ -61,13 +60,12 @@ class Front extends Component {
               options={dataList.map(d => d.title)}
             />
             {isSelected && (
-              <span
-                id={styles.clock}
+              <button
+                className={styles.back} 
                 onClick={this._onDeselect}
-                aria-label="Back to front"
+                title="Go back"
               >
-                <Clock />
-              </span>
+              </button>
             )}
           </h1>
 

@@ -1,17 +1,5 @@
-:root {
-  --clock-size: 1em;
-}
-
 .overlap {
   z-index: 2;
-}
-
-#clock {
-  width: var(--clock-size);
-  height: var(--clock-size);
-  margin-left: 0.3em;
-  cursor: pointer;
-  outline: none;
 }
 
 .hideText {
@@ -74,6 +62,20 @@
   margin-right: 0.3em;
 }
 
+.back {
+  margin: 0 1em;
+  width: 3em;
+  height: 100%;
+  background: url("../images/back1.svg") no-repeat;
+  background-size: 100% 100%;
+  transition: all 0.8s ease;
+}
+
+.back:hover {
+  background: url("../images/back2.svg") no-repeat;
+  background-size: 100% 100%;
+}
+
 .background {
   width: 100%;
   height: 100%;
@@ -82,6 +84,10 @@
 @media screen and (min-width: 700px) {
   .frontInfo h1 {
     font-size: 2.4em;
+  }
+
+  .back {
+    width: 5em;
   }
 }
 
