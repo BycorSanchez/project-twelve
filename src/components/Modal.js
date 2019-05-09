@@ -102,8 +102,8 @@ class Modal extends Component {
               <figure className={styles.information}>
                 <img
                   className={styles.photo}
-                  src={error? placeholder : photoUrl}
-                  alt={error? "Default" : ""}
+                  src={error ? placeholder : photoUrl}
+                  alt={error ? "Default" : `${photo.photographer} photo`}
                   onLoad={this._photoLoaded}
                   onError={this._photoLoadError}
                 />

@@ -38,12 +38,12 @@ button {
 .control {
   text-shadow: 0 0 1px black;
   font-size: 1.7em;
-  padding: 0 0.5em;
-  align-self: stretch;
+  padding: 1em 0.6em;
+  color: #bbb;
 }
 
 .control:hover {
-  background: rgba(0, 0, 0, 0.4);
+  color: white;
 }
 
 .close {
