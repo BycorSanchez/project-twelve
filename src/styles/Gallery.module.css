@@ -19,7 +19,7 @@
   display: block;
   width: 100%;
   margin: 5px 0;
-  max-height: 300px;
+  max-height: 320px;
   object-fit: cover;
   object-position: center;
   cursor: zoom-in;
@@ -30,4 +30,10 @@
   width: 100px;
   height: 100px;
   margin: 2em;
+}
+
+@media screen and (min-width: 700px) {
+  .photo {
+    max-height: 450px;
+  }
 }
