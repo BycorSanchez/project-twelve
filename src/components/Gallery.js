@@ -40,9 +40,8 @@ class Gallery extends Component {
   _imageFormat = width => {
     if (width < 190) return "small";
     if (width < 600) return "medium";
-    if (width < 940) return "large";
-    if (width < 1500) return "large2x";
-    else return "original";
+    if (width < 950) return "large";
+    else return "large2x";
   }
 
   _renderColumn = column => {
