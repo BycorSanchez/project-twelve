@@ -4,18 +4,15 @@ import AriaModal from 'react-aria-modal';
 import PropTypes from "prop-types";
 import Loading from "./Loading";
 import placeholder from "../images/placeholder.png";
+import { photoUrl } from "../helper";
 
 class Modal extends Component {
   static propTypes = {
     photos: PropTypes.array.isRequired,
     selected: PropTypes.number.isRequired,
     onExit: PropTypes.func.isRequired,
-    imageFormat: PropTypes.string
+    width: PropTypes.number.isRequired
   };
-
-  static defaultProps = {
-    imageFormat: "original"
-  }
 
   state = {
     current: this.props.selected,
@@ -55,11 +52,12 @@ class Modal extends Component {
   };
 
   render() {
-    const { photos, imageFormat, onExit } = this.props;
+    const { photos, width, onExit } = this.props;
     const { current, loaded, error } = this.state;
 
     const photo = photos[current];
-    const photoUrl = photo.src[imageFormat];
+    const url = photoUrl(photo, width);
+
     const showPrevious = current > 0;
     const showNext = current < photos.length - 1;
 
@@ -102,7 +100,7 @@ class Modal extends Component {
               <figure className={styles.information}>
                 <img
                   className={styles.photo}
-                  src={error ? placeholder : photoUrl}
+                  src={error ? placeholder : url}
                   alt={error ? "Default" : photo.photographer + "photo"}
                   onLoad={this._photoLoaded}
                   onError={this._photoLoadError}

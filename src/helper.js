@@ -18,3 +18,16 @@ export const lazyLoadImage = (entries, observer) => {
     }
   });
 };
+
+// Choose best photo based on real img available width
+export const photoUrl = (photo, imgWidth) => {
+  const imgHeight = (imgWidth * photo.height) / photo.width;
+  return photo.src[format(imgWidth, imgHeight)];
+}
+
+const format = (width, height) => {
+  if (width < 190 && height < 350) return "small";
+  if (width < 600 && height < 650) return "medium";
+  if (width < 950 && height < 900) return "large";
+  else return "large2x";
+}

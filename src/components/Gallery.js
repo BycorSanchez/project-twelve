@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Loading from "./Loading";
 import Modal from "./Modal";
-import { range, lazyLoadConfig, lazyLoadImage } from "../helper";
+import { range, lazyLoadConfig, lazyLoadImage, photoUrl } from "../helper";
 import placeholder from "../images/placeholder.png";
 
 class Gallery extends Component {
@@ -31,39 +31,29 @@ class Gallery extends Component {
 
   _closeModal = () => this.setState({ modal: undefined });
 
-  _photoUrl = (index, columns = 1) => {
-    const { photos, deviceWidth } = this.props;
-    const format = this._imageFormat(deviceWidth / columns);
-    return photos[index].src[format];
-  }
-
-  _imageFormat = width => {
-    if (width < 190) return "small";
-    if (width < 600) return "medium";
-    if (width < 950) return "large";
-    else return "large2x";
-  }
-
   _renderColumn = column => {
-    const { photos, columns } = this.props;
+    const { photos, columns, deviceWidth } = this.props;
+    const widthPercent = 100 / columns;
+    const width = deviceWidth / columns;
+
+    //Get photo indexes for this column
     const indexes = range(column, photos.length, columns);
-    const width = 100 / columns;
 
     return (
       <div
         key={column}
         className={styles.column}
-        style={{ width: "calc( " + width + "% - 10px )" }}
+        style={{ width: "calc( " + widthPercent + "% - 10px )" }}
       >
-        {indexes.map(key => (
+        {indexes.map(index => (
           <img
-            key={key}
-            className={styles.photo}
+            key={index}
             src={placeholder}
-            data-src={this._photoUrl(key, columns)}
-            alt={photos[key].photographer + " photo"}
-            onClick={() => this._openModal(key)}
-            ref={ref => (this.imageRefs[key] = ref)}
+            data-src={photoUrl(photos[index], width)}
+            alt={photos[index].photographer + " photo"}
+            onClick={() => this._openModal(index)}
+            ref={ref => (this.imageRefs[index] = ref)}
+            className={styles.photo}
           />
         ))}
       </div>
@@ -75,7 +65,7 @@ class Gallery extends Component {
     const { modal } = this.state;
     
     const hasPhotos = photos && photos.length > 0;
-    const anyModal = modal !== undefined;
+    const hasModal = modal !== undefined;
 
     return (
       <section id="gallery" className={styles.gallery}>
@@ -87,12 +77,12 @@ class Gallery extends Component {
           </span>
         )}
 
-        {anyModal && (
+        {hasModal && (
           <Modal
             photos={photos}
             selected={modal}
-            imageFormat={this._imageFormat(deviceWidth)}
             onExit={this._closeModal}
+            width={deviceWidth}
           />
         )}
       </section>
