@@ -54,7 +54,7 @@ class Front extends Component {
           })}
         >
           <h1>
-            <span className={styles.title}>Memories of</span>
+            <span className={styles.title}>Discover</span>
             <Rotable
               current={current}
               options={dataList.map(d => d.title)}
@@ -69,7 +69,7 @@ class Front extends Component {
             )}
           </h1>
 
-          <p>{isSelected ? data.description : "Select a memory"}</p>
+          <p>{isSelected ? data.description : "Select a country"}</p>
 
           {isSelected && (
             <a
