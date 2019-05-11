@@ -6,7 +6,7 @@
         "photos": "res/data/iceland.json"
     },
     {
-        "url": "res/images/newyork.jpeg",
+        "url": "res/images/usa.jpeg",
         "title": "usa",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/usa.json"
