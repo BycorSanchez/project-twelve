@@ -5,6 +5,8 @@ import Footer from "./Footer";
 import withSizes from 'react-sizes'
 import { fetchFrontData, fetchPhotos } from "../api";
 
+const messages = ["Loading images", "Looking for passports", "Printing boarding passes", "Packing the suitcase"];
+
 const sizeToProps = ({ width }) => {
   return { deviceWidth: width };
 }
