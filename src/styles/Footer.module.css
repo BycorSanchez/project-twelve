@@ -5,15 +5,25 @@ footer .heart {
 }
 
 footer {
-  text-align: center;
-  overflow: auto;
-  background: #384d5f;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   color: #d6d6d6;
+  margin: 0.5em 1em;
 }
 
 footer a {
   text-decoration: none;
   color: #83abce;
+}
+
+footer p {
+  margin: 0.5em;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
 }
 
 @keyframes heartBeat {
