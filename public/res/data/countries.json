@@ -1,73 +1,73 @@
 [
     {
         "src": "res/images/iceland.jpeg",
-        "title": "iceland",
+        "title": "Iceland",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/iceland.json"
     },
     {
         "src": "res/images/usa.jpeg",
-        "title": "usa",
+        "title": "USA",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/usa.json"
     },
     {
         "src": "res/images/sweden.jpeg",
-        "title": "sweden",
+        "title": "Sweden",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/sweden.json"
     },
     {
         "src": "res/images/spain.jpeg",
-        "title": "spain",
+        "title": "Spain",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/spain.json"
     },
     {
         "src": "res/images/italy.jpeg",
-        "title": "italy",
+        "title": "Italy",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/italy.json"
     },
     {
         "src": "res/images/france.jpeg",
-        "title": "france",
+        "title": "France",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/france.json"
     },
     {
         "src": "res/images/germany.jpeg",
-        "title": "germany",
+        "title": "Germany",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/germany.json"
     },
     {
         "src": "res/images/japan.jpeg",
-        "title": "japan",
+        "title": "Japan",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/japan.json"
     },
     {
         "src": "res/images/australia.jpeg",
-        "title": "australia",
+        "title": "Australia",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/australia.json"
     },
     {
         "src": "res/images/greece.jpg",
-        "title": "greece",
+        "title": "Greece",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/greece.json"
     },
     {
         "src": "res/images/ireland.jpeg",
-        "title": "ireland",
+        "title": "Ireland",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/ireland.json"
     },
     {
         "src": "res/images/uk.jpeg",
-        "title": "uk",
+        "title": "UK",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
         "photos": "res/data/uk.json"
     }
