@@ -50,7 +50,7 @@ class App extends Component {
   }
 
   _imagesLoaded = () => { 
-    setTimeout( () => this.setState({ isLoaded: true}), 1500);
+    setTimeout( () => this.setState({ isLoaded: true}), 2000);
   }
 
   render() {

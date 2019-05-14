@@ -40,7 +40,7 @@ class FrontLoader extends Component {
     }
 
     componentDidMount(){
-        this.interval = setInterval(this._updateMessage, 1500);
+        this.interval = setInterval(this._updateMessage, 1000);
     }
 
     componentWillUnmount(){
@@ -52,13 +52,15 @@ class FrontLoader extends Component {
 
         return (
         <div className={styles.background}>
+            
             <div className={styles.container}>
+                <h1 className={styles.message}>Welcome! Wait a sec, we are..</h1>
                 <div className={styles.circle} style={{
                     background: info.color
                 }}>
                     <img src={info.image} alt="preloader"/>
                 </div>
-                <span className={styles.message}>{info.message}</span>    
+                <h2 className={styles.message}>{info.message}</h2>
             </div>
             
         </div>
