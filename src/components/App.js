@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Front from "./Front";
 import Gallery from "./Gallery";
 import Preloader from "./Preloader";
+import ImagePreloader from "../preloader";
 import Footer from "./Footer";
 import withSizes from 'react-sizes'
 import { fetchFrontData, fetchPhotos } from "../api";
-import { preloadImages } from "../helper";
 
 const sizeToProps = ({ width }) => {
   return { deviceWidth: width };
@@ -22,8 +22,7 @@ class App extends Component {
   componentDidMount() {
     fetchFrontData()
       .then(dataList => {
-        const urls = dataList.map(d => d.url); 
-        preloadImages(urls, this._imageLoaded);
+        new ImagePreloader().loadData(dataList, this._imagesLoaded);
         this.setState({ dataList });
       })
       .catch(() => console.error("Front page information could not be loaded"));
@@ -50,12 +49,7 @@ class App extends Component {
     this.setState({ photos: [] });
   }
 
-  _imageLoaded = () => {
-    this.imagesLoaded = this.imagesLoaded ? this.imagesLoaded + 1 : 1;
-    if (this.imagesLoaded >= this.state.dataList.length){
-      this.setState({ isLoaded: true});
-    }
-  }
+  _imagesLoaded = () => this.setState({ isLoaded: true});
 
   render() {
     const { dataList, photos, isLoaded } = this.state;

@@ -31,14 +31,3 @@ const format = (width, height) => {
   if (width < 950 && height < 900) return "large";
   else return "large2x";
 }
-
-export const preloadImages = (list, onload, onerror) => {
-  list.forEach(src => preloadImage(src, onload, onerror));
-}
-
-export const preloadImage = (src, onload, onerror) => {
-  const image = new Image();
-  image.src = src;
-  image.onload = onload;
-  image.onerror = onerror;
-}
