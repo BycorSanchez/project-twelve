@@ -69,7 +69,7 @@ class Front extends Component {
             )}
           </h1>
 
-          <p>{isSelected ? data.description : "Select a country"}</p>
+          <h2>{isSelected ? data.description : "Select a country"}</h2>
 
           {isSelected && (
             <a
