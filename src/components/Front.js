@@ -87,7 +87,7 @@ class Front extends Component {
                 key={index}
                 item={index}
                 width={width}
-                image={data.url}
+                image={data.src}
                 isHover={index === current && !isSelected}
                 isSelected={index === current && isSelected}
                 type={isMobile ? "horizontal" : "vertical"}

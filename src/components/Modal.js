@@ -56,7 +56,7 @@ class Modal extends Component {
     const { current, loaded, error } = this.state;
 
     const photo = photos[current];
-    const url = photoUrl(photo, width);
+    const src = photoUrl(photo, width);
 
     const showPrevious = current > 0;
     const showNext = current < photos.length - 1;
@@ -100,7 +100,7 @@ class Modal extends Component {
               <figure className={styles.information}>
                 <img
                   className={styles.photo}
-                  src={error ? placeholder : url}
+                  src={error ? placeholder : src}
                   alt={error ? "Default" : photo.photographer + "photo"}
                   onLoad={this._photoLoaded}
                   onError={this._photoLoadError}
