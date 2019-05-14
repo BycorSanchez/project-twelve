@@ -1,25 +1,28 @@
 import styles from "../styles/Preloader.module.css";
 import React, { Component } from 'react';
-import icon1 from "../images/iconmonstr.svg";
+import imagesIcon from "../images/images.svg";
+import passportIcon from "../images/passport.svg";
+import suitcaseIcon from "../images/suitcase.svg";
+import boardingPassIcon from "../images/boardingpass.svg";
 
 const data = [
     {
-        image: icon1,
-        color: "red",
+        image: imagesIcon,
+        color: "wheat",
         message: "Loading images"
     },
     {
-        image: icon1,
+        image: passportIcon,
         color: "white",
         message: "Looking for passports"
     },
    {
-        image: icon1,
+        image: boardingPassIcon,
         color: "green",
         message: "Printing boarding passes"
    },
    {
-        image: icon1,
+        image: suitcaseIcon,
         color: "brown",
         message: "Packing the suitcase"
    } 
@@ -37,7 +40,7 @@ class Preloader extends Component {
     }
 
     componentDidMount(){
-        this.interval = setInterval(this._updateMessage, 2000);
+        this.interval = setInterval(this._updateMessage, 3000);
     }
 
     componentWillUnmount(){
