@@ -40,7 +40,7 @@ class FrontLoader extends Component {
     }
 
     componentDidMount(){
-        this.interval = setInterval(this._updateMessage, 3000);
+        this.interval = setInterval(this._updateMessage, 1500);
     }
 
     componentWillUnmount(){
