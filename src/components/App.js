@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Front from "./Front";
 import Gallery from "./Gallery";
+import Preloader from "./Preloader";
 import Footer from "./Footer";
 import withSizes from 'react-sizes'
 import { fetchFrontData, fetchPhotos } from "../api";
-
-const messages = ["Loading images", "Looking for passports", "Printing boarding passes", "Packing the suitcase"];
+import { preloadImages } from "../helper";
 
 const sizeToProps = ({ width }) => {
   return { deviceWidth: width };
@@ -15,12 +15,17 @@ class App extends Component {
 
   state = {
     dataList: [],
-    photos: []
+    photos: [],
+    isLoaded: false
   };
 
   componentDidMount() {
     fetchFrontData()
-      .then(dataList => this.setState({ dataList }))
+      .then(dataList => {
+        const urls = dataList.map(d => d.url); 
+        preloadImages(urls, this._imageLoaded);
+        this.setState({ dataList });
+      })
       .catch(() => console.error("Front page information could not be loaded"));
   }
 
@@ -45,25 +50,35 @@ class App extends Component {
     this.setState({ photos: [] });
   }
 
+  _imageLoaded = () => {
+    this.imagesLoaded = this.imagesLoaded ? this.imagesLoaded + 1 : 1;
+    if (this.imagesLoaded >= this.state.dataList.length){
+      this.setState({ isLoaded: true});
+    }
+  }
+
   render() {
-    const { dataList, photos } = this.state;
-    const width = this.props.deviceWidth;
-    const columns = width < 1000 ? (width < 700 ? 2 : 3) : 5;
+    const { dataList, photos, isLoaded } = this.state;
+    const {deviceWidth} = this.props;
+    const columns = deviceWidth < 1000 ? (deviceWidth < 700 ? 2 : 3) : 5;
 
     return (
       <div>
         <main>
-          <Front
-            dataList={dataList}
-            onSelect={this._loadGallery}
-            onDeselect={this._hideGallery}
-            isMobile={width < 600}
-          />
+          {!isLoaded && (<Preloader/>)}
+          {isLoaded && 
+            (<Front
+              dataList={dataList}
+              onSelect={this._loadGallery}
+              onDeselect={this._hideGallery}
+              isMobile={deviceWidth < 600}
+            />)
+          }
           {photos && photos.length > 0 && (
             <Gallery 
               photos={photos} 
               columns={columns}
-              deviceWidth={width}
+              deviceWidth={deviceWidth}
             />
           )}
         </main>

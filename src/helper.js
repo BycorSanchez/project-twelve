@@ -19,7 +19,7 @@ export const lazyLoadImage = (entries, observer) => {
   });
 };
 
-// Choose best photo based on real img available width
+// Choose best photo based on available width
 export const photoUrl = (photo, imgWidth) => {
   const imgHeight = (imgWidth * photo.height) / photo.width;
   return photo.src[format(imgWidth, imgHeight)];
@@ -30,4 +30,15 @@ const format = (width, height) => {
   if (width < 600 && height < 650) return "medium";
   if (width < 950 && height < 900) return "large";
   else return "large2x";
+}
+
+export const preloadImages = (list, onload, onerror) => {
+  list.forEach(src => preloadImage(src, onload, onerror));
+}
+
+export const preloadImage = (src, onload, onerror) => {
+  const image = new Image();
+  image.src = src;
+  image.onload = onload;
+  image.onerror = onerror;
 }
