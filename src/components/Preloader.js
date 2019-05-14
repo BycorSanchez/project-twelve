@@ -1,30 +1,43 @@
 import styles from "../styles/Preloader.module.css";
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import icon1 from "../images/iconmonstr.svg";
+
+const data = [
+    {
+        image: icon1,
+        color: "red",
+        message: "Loading images"
+    },
+    {
+        image: icon1,
+        color: "white",
+        message: "Looking for passports"
+    },
+   {
+        image: icon1,
+        color: "green",
+        message: "Printing boarding passes"
+   },
+   {
+        image: icon1,
+        color: "brown",
+        message: "Packing the suitcase"
+   } 
+];
 
 class Preloader extends Component {
-
-    static propTypes = {
-        messages: PropTypes.arrayOf(PropTypes.string).isRequired,
-        period: PropTypes.number
-    }
-
-    static defaultProps = {
-        period: 2000
-    }
 
     state = {
         current: 0
     }
 
     _updateMessage = () => {
-        const max = this.props.messages.length;
-        var current = Math.floor(Math.random() * max);
+        const current = (this.state.current + 1) % data.length;
         this.setState({ current });
     }
 
     componentDidMount(){
-        this.interval = setInterval(this._updateMessage, this.props.period);
+        this.interval = setInterval(this._updateMessage, 2000);
     }
 
     componentWillUnmount(){
@@ -32,12 +45,19 @@ class Preloader extends Component {
     }
 
     render(){
-        const { current } = this.state;
-        const { messages } = this.props;
+        const info = data[this.state.current];
 
         return (
         <div className={styles.background}>
-            <span className={styles.message}>{ messages[current] }</span>
+            <div className={styles.container}>
+                <div className={styles.circle} style={{
+                    background: info.color
+                }}>
+                    <img src={info.image} alt="preloader"/>
+                </div>
+                <span className={styles.message}>{info.message}</span>    
+            </div>
+            
         </div>
         );
     }
