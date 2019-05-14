@@ -8,24 +8,24 @@ import boardingPassIcon from "../images/boardingpass.svg";
 const data = [
     {
         image: imagesIcon,
-        color: "wheat",
+        color: "#ff8989",
         message: "Loading images"
     },
     {
         image: passportIcon,
-        color: "white",
+        color: "#f3c97c",
         message: "Looking for passports"
     },
    {
-        image: boardingPassIcon,
-        color: "green",
-        message: "Printing boarding passes"
-   },
-   {
         image: suitcaseIcon,
-        color: "brown",
+        color: "#66ca66",
         message: "Packing the suitcase"
-   } 
+    },
+   {
+        image: boardingPassIcon,
+        color: "#7eb4e0",
+        message: "Printing boarding passes"
+   }
 ];
 
 class FrontLoader extends Component {
@@ -40,7 +40,7 @@ class FrontLoader extends Component {
     }
 
     componentDidMount(){
-        this.interval = setInterval(this._updateMessage, 1100);
+        this.interval = setInterval(this._updateMessage, 1500);
     }
 
     componentWillUnmount(){

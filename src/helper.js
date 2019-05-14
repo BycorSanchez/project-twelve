@@ -20,7 +20,7 @@ export const lazyLoadImage = (entries, observer) => {
 };
 
 // Choose best photo based on available width
-export const photoUrl = (photo, imgWidth) => {
+export const photoSrc = (photo, imgWidth) => {
   const imgHeight = (imgWidth * photo.height) / photo.width;
   return photo.src[format(imgWidth, imgHeight)];
 }

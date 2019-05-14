@@ -4,7 +4,7 @@ import AriaModal from 'react-aria-modal';
 import PropTypes from "prop-types";
 import Loading from "./Loading";
 import placeholder from "../images/placeholder.png";
-import { photoUrl } from "../helper";
+import { photoSrc } from "../helper";
 
 class Modal extends Component {
   static propTypes = {
@@ -56,7 +56,7 @@ class Modal extends Component {
     const { current, loaded, error } = this.state;
 
     const photo = photos[current];
-    const src = photoUrl(photo, width);
+    const src = photoSrc(photo, width);
 
     const showPrevious = current > 0;
     const showNext = current < photos.length - 1;

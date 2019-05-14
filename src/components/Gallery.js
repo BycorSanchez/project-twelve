@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Loading from "./Loading";
 import Modal from "./Modal";
-import { range, lazyLoadConfig, lazyLoadImage, photoUrl } from "../helper";
+import { range, lazyLoadConfig, lazyLoadImage, photoSrc } from "../helper";
 import placeholder from "../images/placeholder.png";
 
 class Gallery extends Component {
@@ -49,7 +49,7 @@ class Gallery extends Component {
           <img
             key={index}
             src={placeholder}
-            data-src={photoUrl(photos[index], width)}
+            data-src={photoSrc(photos[index], width)}
             alt={photos[index].photographer + " photo"}
             onClick={() => this._openModal(index)}
             ref={ref => (this.imageRefs[index] = ref)}
@@ -65,11 +65,12 @@ class Gallery extends Component {
     const { modal } = this.state;
     
     const hasPhotos = photos && photos.length > 0;
-    const hasModal = modal !== undefined;
 
     return (
       <section id="gallery" className={styles.gallery}>
-        {hasPhotos && [...Array(columns).keys()].map(this._renderColumn)}
+        {hasPhotos && 
+          [...Array(columns).keys()].map(this._renderColumn)
+        }
 
         {!hasPhotos && (
           <span className={styles.loading}>
@@ -77,7 +78,7 @@ class Gallery extends Component {
           </span>
         )}
 
-        {hasModal && (
+        {modal !== undefined && (
           <Modal
             photos={photos}
             selected={modal}

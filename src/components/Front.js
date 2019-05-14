@@ -44,6 +44,7 @@ class Front extends Component {
 
     const width = 100 / (dataList.length - 1);
     const data = isSelected ? dataList[current] : undefined;
+    const titles = dataList.map(d => d.title);
 
     return (
       <section className={styles.front}>
@@ -57,7 +58,7 @@ class Front extends Component {
             <span className={styles.title}>Discover</span>
             <Rotable
               current={current}
-              options={dataList.map(d => d.title)}
+              options={titles}
             />
             {isSelected && (
               <button
