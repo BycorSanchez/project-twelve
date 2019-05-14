@@ -44,7 +44,6 @@
 }
 
 .frontInfo h1 {
-  font-size: 2em;
   letter-spacing: 0.05em;
   display: flex;
   align-items: center;
@@ -77,17 +76,7 @@
 }
 
 @media screen and (min-width: 700px) {
-  .frontInfo h1 {
-    font-size: 2.4em;
-  }
-
   .back {
     width: 5em;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  .frontInfo h1 {
-    font-size: 3.6em;
   }
 }
