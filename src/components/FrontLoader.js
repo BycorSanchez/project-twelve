@@ -1,4 +1,4 @@
-import styles from "../styles/Preloader.module.css";
+import styles from "../styles/FrontLoader.module.css";
 import React, { Component } from 'react';
 import imagesIcon from "../images/images.svg";
 import passportIcon from "../images/passport.svg";
@@ -28,7 +28,7 @@ const data = [
    } 
 ];
 
-class Preloader extends Component {
+class FrontLoader extends Component {
 
     state = {
         current: 0
@@ -66,4 +66,4 @@ class Preloader extends Component {
     }
 }
 
-export default Preloader;
+export default FrontLoader;
