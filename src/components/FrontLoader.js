@@ -8,22 +8,22 @@ import boardingPassIcon from "../images/boardingpass.svg";
 const data = [
     {
         image: imagesIcon,
-        color: "#ff8989",
+        color: "#f3c97c",
         message: "Loading images"
     },
     {
         image: passportIcon,
-        color: "#f3c97c",
+        color: "#66ca66",
         message: "Looking for passports"
     },
    {
         image: suitcaseIcon,
-        color: "#66ca66",
+        color: "#7eb4e0",
         message: "Packing the suitcase"
     },
    {
         image: boardingPassIcon,
-        color: "#7eb4e0",
+        color: "#a76ad2",
         message: "Printing boarding passes"
    }
 ];
