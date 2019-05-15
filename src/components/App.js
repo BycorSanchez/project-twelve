@@ -16,7 +16,8 @@ class App extends Component {
   state = {
     dataList: [],
     photos: [],
-    isLoaded: false
+    isLoaded: false,
+    error: false
   };
 
   componentDidMount() {
@@ -25,7 +26,10 @@ class App extends Component {
         new Preloader().loadData(dataList, this._imagesLoaded);
         this.setState({ dataList });
       })
-      .catch(() => console.error("Front page information could not be loaded"));
+      .catch(() => {
+        this.setState({ error: true })
+        console.error("Front page information could not be loaded")
+      });
   }
 
   _loadGallery = item => {
@@ -54,14 +58,17 @@ class App extends Component {
   }
 
   render() {
-    const { dataList, photos, isLoaded } = this.state;
+    const { dataList, photos, isLoaded, error } = this.state;
     const { deviceWidth } = this.props;
     const columns = deviceWidth < 1000 ? (deviceWidth < 700 ? 2 : 3) : 5;
 
     return (
       <div>
         <main>
-          <FrontLoader display={!isLoaded} />
+          <FrontLoader
+            display={!isLoaded}
+            error={error}
+          />
           <Front
             dataList={dataList}
             onSelect={this._loadGallery}

@@ -5,6 +5,7 @@ import imagesIcon from "../images/images.svg";
 import passportIcon from "../images/passport.svg";
 import suitcaseIcon from "../images/suitcase.svg";
 import boardingPassIcon from "../images/boardingpass.svg";
+import errorIcon from "../images/error.svg";
 import { CSSTransition } from "react-transition-group";
 
 const data = [
@@ -30,14 +31,22 @@ const data = [
     }
 ];
 
+const errorMessage = {
+    image: errorIcon,
+    color: "#e82525",
+    message: "Oops! Something went wrong.."
+};
+
 class FrontLoader extends Component {
 
     static props = {
-        display: PropTypes.bool
+        display: PropTypes.bool,
+        error: PropTypes.bool
     }
 
     static defaultProps = {
-        display: true
+        display: true,
+        error: false
     }
 
     state = {
@@ -54,7 +63,8 @@ class FrontLoader extends Component {
     }
 
     componentDidUpdate() {
-        if (!this.props.display && this.interval) {
+        const { display, error } = this.props;
+        if ((error || !display) && this.interval) {
             this.interval = clearInterval(this.interval);
         }
     }
@@ -64,11 +74,12 @@ class FrontLoader extends Component {
     }
 
     render() {
-        const info = data[this.state.current];
+        const { display, error } = this.props;
+        const info = error ? errorMessage : data[this.state.current];
 
         return (
             <CSSTransition
-                in={this.props.display}
+                in={display}
                 classNames={{
                     enter: styles.frontLoaderEnter,
                     exit: styles.frontLoaderExit,
