@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import FrontLoader from "./FrontLoader";
 import Front from "./Front";
 import Gallery from "./Gallery";
-import FrontLoader from "./FrontLoader";
-import Preloader from "../preloader";
 import Footer from "./Footer";
-import withSizes from 'react-sizes'
+import withSizes from 'react-sizes';
+import Preloader from "../preloader";
 import { fetchFrontData, fetchPhotos } from "../api";
 
 const sizeToProps = ({ width }) => {
@@ -27,8 +27,8 @@ class App extends Component {
         this.setState({ dataList });
       })
       .catch(() => {
-        this.setState({ error: true })
-        console.error("Front page information could not be loaded")
+        this.setState({ error: true });
+        console.error("Front page information could not be loaded");
       });
   }
 

@@ -1,9 +1,9 @@
-import styles from "../styles/Front.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Slice from "./Slice";
 import Rotable from "./Rotable";
 import classnames from "classnames";
+import styles from "../styles/Front.module.css";
 
 class Front extends Component {
   static propTypes = {

@@ -1,7 +1,7 @@
-import styles from "../styles/Rotable.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import styles from "../styles/Rotable.module.css";
 
 class Rotable extends Component {
   static propTypes = {

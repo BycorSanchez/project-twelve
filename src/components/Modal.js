@@ -1,10 +1,10 @@
-import styles from "../styles/Modal.module.css";
 import React, { Component } from "react";
-import AriaModal from 'react-aria-modal';
 import PropTypes from "prop-types";
+import AriaModal from 'react-aria-modal';
 import Loading from "./Loading";
-import placeholder from "../images/placeholder.png";
 import { photoSrc } from "../helper";
+import styles from "../styles/Modal.module.css";
+import placeholder from "../images/placeholder.png";
 
 class Modal extends Component {
   static propTypes = {

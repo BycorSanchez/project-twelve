@@ -1,12 +1,12 @@
-import styles from "../styles/FrontLoader.module.css";
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import { CSSTransition } from "react-transition-group";
+import styles from "../styles/FrontLoader.module.css";
 import imagesIcon from "../images/images.svg";
 import passportIcon from "../images/passport.svg";
 import suitcaseIcon from "../images/suitcase.svg";
 import boardingPassIcon from "../images/boardingpass.svg";
 import errorIcon from "../images/error.svg";
-import { CSSTransition } from "react-transition-group";
 
 const data = [
     {
