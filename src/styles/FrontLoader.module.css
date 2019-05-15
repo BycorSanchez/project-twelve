@@ -36,3 +36,16 @@
 .message {
     margin: 1em;
 }
+
+.frontLoaderEnter {
+    opacity: 1;
+}
+
+.frontLoaderExit {
+    opacity: 0;
+    transition: opacity 300ms ease-out;
+}
+
+.frontLoaderExitDone {
+    display: none;
+}

@@ -50,7 +50,7 @@ class App extends Component {
   }
 
   _imagesLoaded = () => { 
-    setTimeout( () => this.setState({ isLoaded: true}), 2500);
+    setTimeout(() => this.setState({ isLoaded: true}), 2500);
   }
 
   render() {
@@ -61,15 +61,13 @@ class App extends Component {
     return (
       <div>
         <main>
-          {!isLoaded && (<FrontLoader/>)}
-          {isLoaded && 
-            (<Front
-              dataList={dataList}
-              onSelect={this._loadGallery}
-              onDeselect={this._hideGallery}
-              isMobile={deviceWidth < 600}
-            />)
-          }
+          <FrontLoader display={!isLoaded}/>
+          <Front
+            dataList={dataList}
+            onSelect={this._loadGallery}
+            onDeselect={this._hideGallery}
+            isMobile={deviceWidth < 600}
+          />
           {photos && photos.length > 0 && (
             <Gallery 
               photos={photos} 

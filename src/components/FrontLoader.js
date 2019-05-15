@@ -1,9 +1,11 @@
 import styles from "../styles/FrontLoader.module.css";
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 import imagesIcon from "../images/images.svg";
 import passportIcon from "../images/passport.svg";
 import suitcaseIcon from "../images/suitcase.svg";
 import boardingPassIcon from "../images/boardingpass.svg";
+import { CSSTransition } from "react-transition-group";
 
 const data = [
     {
@@ -30,6 +32,14 @@ const data = [
 
 class FrontLoader extends Component {
 
+    static props = {
+        display: PropTypes.bool
+    }
+
+    static defaultProps = {
+        display: true
+    }
+
     state = {
         current: 0
     }
@@ -43,27 +53,44 @@ class FrontLoader extends Component {
         this.interval = setInterval(this._updateMessage, 1500);
     }
 
+    componentDidUpdate(){
+        if (!this.props.display && this.interval){
+            clearInterval(this.interval);
+        }
+    }
+
     componentWillUnmount(){
-        clearInterval(this.interval);
+        if (this.interval) clearInterval(this.interval);
     }
 
     render(){
         const info = data[this.state.current];
 
         return (
-        <div className={styles.background}>
-            
-            <div className={styles.container}>
-                <h1 className={styles.message}>Welcome! Wait a sec, we are..</h1>
-                <div className={styles.circle} style={{
-                    background: info.color
-                }}>
-                    <img src={info.image} alt="preloader"/>
+            <CSSTransition
+                in={this.props.display}
+                classNames={{
+                    enter: styles.frontLoaderEnter,
+                    exit: styles.frontLoaderExit,
+                    exitDone: styles.frontLoaderExitDone
+                }}
+                timeout={300}
+                unmountOnExit
+            >
+                <div className={styles.background}>
+                    
+                    <div className={styles.container}>
+                        <h1 className={styles.message}>Welcome! Wait a sec, we are..</h1>
+                        <div className={styles.circle} style={{
+                            background: info.color
+                        }}>
+                            <img src={info.image} alt="preloader"/>
+                        </div>
+                        <h2 className={styles.message}>{info.message}</h2>
+                    </div>
+                    
                 </div>
-                <h2 className={styles.message}>{info.message}</h2>
-            </div>
-            
-        </div>
+            </CSSTransition>
         );
     }
 }
