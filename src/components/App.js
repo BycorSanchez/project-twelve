@@ -45,23 +45,23 @@ class App extends Component {
       });
   }
 
-  _resetPhotos(){
+  _resetPhotos() {
     this.setState({ photos: [] });
   }
 
-  _imagesLoaded = () => { 
-    setTimeout(() => this.setState({ isLoaded: true}), 2500);
+  _imagesLoaded = () => {
+    setTimeout(() => this.setState({ isLoaded: true }), 2500);
   }
 
   render() {
     const { dataList, photos, isLoaded } = this.state;
-    const {deviceWidth} = this.props;
+    const { deviceWidth } = this.props;
     const columns = deviceWidth < 1000 ? (deviceWidth < 700 ? 2 : 3) : 5;
 
     return (
       <div>
         <main>
-          <FrontLoader display={!isLoaded}/>
+          <FrontLoader display={!isLoaded} />
           <Front
             dataList={dataList}
             onSelect={this._loadGallery}
@@ -69,8 +69,8 @@ class App extends Component {
             isMobile={deviceWidth < 600}
           />
           {photos && photos.length > 0 && (
-            <Gallery 
-              photos={photos} 
+            <Gallery
+              photos={photos}
               columns={columns}
               deviceWidth={deviceWidth}
             />

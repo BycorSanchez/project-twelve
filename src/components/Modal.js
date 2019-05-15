@@ -43,7 +43,7 @@ class Modal extends Component {
         this._previous();
         break;
       case 39: //Right arrow
-      e.preventDefault();
+        e.preventDefault();
         this._next();
         break;
       default:

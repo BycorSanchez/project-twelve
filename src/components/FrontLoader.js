@@ -18,16 +18,16 @@ const data = [
         color: "#66ca66",
         message: "Looking for passports"
     },
-   {
+    {
         image: suitcaseIcon,
         color: "#7eb4e0",
         message: "Packing the suitcase"
     },
-   {
+    {
         image: boardingPassIcon,
         color: "#a76ad2",
         message: "Printing boarding passes"
-   }
+    }
 ];
 
 class FrontLoader extends Component {
@@ -49,21 +49,21 @@ class FrontLoader extends Component {
         this.setState({ current });
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.interval = setInterval(this._updateMessage, 1500);
     }
 
-    componentDidUpdate(){
-        if (!this.props.display && this.interval){
-            clearInterval(this.interval);
+    componentDidUpdate() {
+        if (!this.props.display && this.interval) {
+            this.interval = clearInterval(this.interval);
         }
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         if (this.interval) clearInterval(this.interval);
     }
 
-    render(){
+    render() {
         const info = data[this.state.current];
 
         return (
@@ -78,17 +78,16 @@ class FrontLoader extends Component {
                 unmountOnExit
             >
                 <div className={styles.background}>
-                    
                     <div className={styles.container}>
                         <h1 className={styles.message}>Welcome! Wait a sec, we are..</h1>
-                        <div className={styles.circle} style={{
-                            background: info.color
-                        }}>
-                            <img src={info.image} alt="preloader"/>
+                        <div
+                            className={styles.circle}
+                            style={{ background: info.color }}
+                        >
+                            <img src={info.image} alt="preloader" />
                         </div>
                         <h2 className={styles.message}>{info.message}</h2>
                     </div>
-                    
                 </div>
             </CSSTransition>
         );

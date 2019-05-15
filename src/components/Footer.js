@@ -6,8 +6,8 @@ import icons from "../images/iconmonstr.svg";
 const Footer = () => {
   return (
     <footer>
-      <p>Photos from{" "}<a href="https://www.pexels.com/"><img className={styles.icon}  src={pexels} alt="pexels"/></a></p>
-      <p>Icons by <a href="https://iconmonstr.com/"><img className={styles.icon} src={icons} alt="iconmonstr"/></a></p>
+      <p>Photos from{" "}<a href="https://www.pexels.com/"><img className={styles.icon} src={pexels} alt="pexels" /></a></p>
+      <p>Icons by <a href="https://iconmonstr.com/"><img className={styles.icon} src={icons} alt="iconmonstr" /></a></p>
       <p>Made with{" "}<span className={styles.heart}>♥</span> by{" "}<a href="https://twitter.com/bycorsanchez">Bycor</a></p>
     </footer>
   );

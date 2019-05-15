@@ -23,7 +23,7 @@ class Front extends Component {
   };
 
   _onHover = item => {
-    if (!this.state.isSelected){
+    if (!this.state.isSelected) {
       this.setState({ current: item });
     }
   }
@@ -62,7 +62,7 @@ class Front extends Component {
             />
             {isSelected && (
               <button
-                className={styles.back} 
+                className={styles.back}
                 onClick={this._onDeselect}
                 title="Go back"
                 aria-label="Go back"

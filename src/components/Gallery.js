@@ -20,7 +20,7 @@ class Gallery extends Component {
   constructor() {
     super();
     this.imageRefs = [];
-    this.observer = new IntersectionObserver(lazyLoadImage,lazyLoadConfig);
+    this.observer = new IntersectionObserver(lazyLoadImage, lazyLoadConfig);
   }
 
   componentDidMount() {
@@ -63,12 +63,11 @@ class Gallery extends Component {
   render() {
     const { photos, columns, deviceWidth } = this.props;
     const { modal } = this.state;
-    
     const hasPhotos = photos && photos.length > 0;
 
     return (
       <section id="gallery" className={styles.gallery}>
-        {hasPhotos && 
+        {hasPhotos &&
           [...Array(columns).keys()].map(this._renderColumn)
         }
 
