@@ -74,7 +74,7 @@ class FrontLoader extends Component {
                     exit: styles.frontLoaderExit,
                     exitDone: styles.frontLoaderExitDone
                 }}
-                timeout={300}
+                timeout={400}
                 unmountOnExit
             >
                 <div className={styles.background}>
