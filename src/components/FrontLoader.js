@@ -37,6 +37,7 @@ const errorMessage = {
     message: "Oops! Something went wrong.."
 };
 
+//TODO: Create timer that sets a state to true in order to wait a minimum of time to display front component (without making the user wait even longer)
 class FrontLoader extends Component {
 
     static props = {
