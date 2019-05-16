@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AriaModal from 'react-aria-modal';
-import Loading from "./Loading";
 import { photoSrc } from "../helper";
 import styles from "../styles/Modal.module.css";
 import placeholder from "../images/placeholder.png";
+import spinner from "../images/loadingspinner.svg";
 
 class Modal extends Component {
   static propTypes = {
@@ -92,9 +92,7 @@ class Modal extends Component {
               )}
 
               {!loaded && (
-                <span className={styles.loading}>
-                  <Loading type="spinner" />
-                </span>
+                <span className={styles.loading}><img src={spinner} alt="Loading" /></span>
               )}
 
               <figure className={styles.information}>
