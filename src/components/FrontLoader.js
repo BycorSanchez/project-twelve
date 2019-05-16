@@ -65,13 +65,19 @@ class FrontLoader extends Component {
 
     componentDidUpdate() {
         const { display, error } = this.props;
-        if ((error || !display) && this.interval) {
-            this.interval = clearInterval(this.interval);
+        if (error || !display) {
+            this._clearInterval();
         }
     }
 
     componentWillUnmount() {
-        if (this.interval) clearInterval(this.interval);
+        this._clearInterval();
+    }
+
+    _clearInterval(){
+        if (this.interval){
+            this.interval = clearInterval(this.interval);
+        } 
     }
 
     render() {
