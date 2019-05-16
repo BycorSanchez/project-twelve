@@ -8,6 +8,8 @@ import suitcaseIcon from "../images/suitcase.svg";
 import boardingPassIcon from "../images/boardingpass.svg";
 import errorIcon from "../images/error.svg";
 
+const PERIOD_MS = 1500;
+
 const data = [
     {
         image: imagesIcon,
@@ -37,7 +39,6 @@ const errorMessage = {
     message: "Oops! Something went wrong.."
 };
 
-//TODO: Create timer that sets a state to true in order to wait a minimum of time to display front component (without making the user wait even longer)
 class FrontLoader extends Component {
 
     static props = {
@@ -60,7 +61,7 @@ class FrontLoader extends Component {
     }
 
     componentDidMount() {
-        this.interval = setInterval(this._updateMessage, 1500);
+        this.interval = setInterval(this._updateMessage, PERIOD_MS);
     }
 
     componentDidUpdate() {
@@ -97,7 +98,6 @@ class FrontLoader extends Component {
             >
                 <div className={styles.background}>
                     <div className={styles.container}>
-                        <h1 className={styles.message}>Welcome! Wait a sec, we are..</h1>
                         <div
                             className={styles.circle}
                             style={{ background: info.color }}

@@ -54,13 +54,14 @@ class App extends Component {
   }
 
   _imagesLoaded = () => {
-    setTimeout(() => this.setState({ loading: false }), 2500);
+    this.setState({ loading: false });
   }
 
   render() {
     const { dataList, photos, loading, error } = this.state;
     const { deviceWidth } = this.props;
     const columns = deviceWidth < 1000 ? (deviceWidth < 700 ? 2 : 3) : 5;
+    const hasPhotos = photos && photos.length > 0;
 
     return (
       <div>
@@ -75,7 +76,7 @@ class App extends Component {
             onDeselect={this._hideGallery}
             isMobile={deviceWidth < 600}
           />
-          {photos && photos.length > 0 && (
+          {hasPhotos && (
             <Gallery
               photos={photos}
               columns={columns}

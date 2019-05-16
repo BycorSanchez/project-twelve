@@ -6,7 +6,6 @@ import { range, lazyLoadConfig, lazyLoadImage, photoSrc } from "../helper";
 import styles from "../styles/Gallery.module.css";
 import placeholder from "../images/placeholder.png";
 
-
 //Gallery must load photos, in order to display the preloader
 class Gallery extends Component {
   static propTypes = {
@@ -65,19 +64,10 @@ class Gallery extends Component {
   render() {
     const { photos, columns, deviceWidth } = this.props;
     const { modal } = this.state;
-    const hasPhotos = photos && photos.length > 0;
 
     return (
       <section id="gallery" className={styles.gallery}>
-        {hasPhotos &&
-          [...Array(columns).keys()].map(this._renderColumn)
-        }
-
-        {!hasPhotos && (
-          <span className={styles.loading}>
-            <Loading type="cubes" />
-          </span>
-        )}
+        {[...Array(columns).keys()].map(this._renderColumn)}
 
         {modal !== undefined && (
           <Modal
