@@ -16,7 +16,7 @@ class App extends Component {
   state = {
     dataList: [],
     photos: [],
-    isLoaded: false,
+    loading: true,
     error: false
   };
 
@@ -54,11 +54,11 @@ class App extends Component {
   }
 
   _imagesLoaded = () => {
-    setTimeout(() => this.setState({ isLoaded: true }), 2500);
+    setTimeout(() => this.setState({ loading: false }), 2500);
   }
 
   render() {
-    const { dataList, photos, isLoaded, error } = this.state;
+    const { dataList, photos, loading, error } = this.state;
     const { deviceWidth } = this.props;
     const columns = deviceWidth < 1000 ? (deviceWidth < 700 ? 2 : 3) : 5;
 
@@ -66,7 +66,7 @@ class App extends Component {
       <div>
         <main>
           <FrontLoader
-            display={!isLoaded}
+            display={loading}
             error={error}
           />
           <Front
