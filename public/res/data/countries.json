@@ -48,10 +48,10 @@
         "photos": "res/data/italy.json"
     },
     {
-        "src": "res/images/sweden.jpeg",
-        "title": "Sweden",
+        "src": "res/images/norway.jpg",
+        "title": "Norway",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
-        "photos": "res/data/sweden.json"
+        "photos": "res/data/norway.json"
     },
     {
         "src": "res/images/greece.jpg",
@@ -68,7 +68,7 @@
     {
         "src": "res/images/japan.jpeg",
         "title": "Japan",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "Japan is an island country in East Asia.",
         "photos": "res/data/japan.json"
     }
 ]
