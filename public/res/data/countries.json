@@ -8,7 +8,7 @@
     {
         "src": "res/images/iceland.jpeg",
         "title": "Iceland",
-        "description": "Iceland is a Nordic island country. The landscapes of Iceland are characterized by sand and lava fields, mountains, glaciers and glacial rivers. It is often referred to as the \"Land of Fire and Ice\".",
+        "description": "Iceland is often referred to as the \"Land of Fire and Ice\". Icelandic landscapes are shaped by sand and lava fields, mountains, volcanoes and glaciers.",
         "photos": "res/data/iceland.json"
     },
     {
@@ -68,7 +68,7 @@
     {
         "src": "res/images/japan.jpeg",
         "title": "Japan",
-        "description": "Japan is an island country in East Asia.",
+        "description": "Japan is often referred to as the \"Land of the rising sun\". ",
         "photos": "res/data/japan.json"
     }
 ]
