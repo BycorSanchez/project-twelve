@@ -44,13 +44,13 @@
     {
         "src": "res/images/italy.jpeg",
         "title": "Italy",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "Italy is home to many of the world's greatest works of art, architecture and gastronomy.",
         "photos": "res/data/italy.json"
     },
     {
         "src": "res/images/norway.jpg",
         "title": "Norway",
-        "description": "Norway is a Nordic country in Northern Europe. It is mostly known for its natural beauty, fjords and mountains, the amazing Northern Lights and the Midnight Sun.",
+        "description": "Norway is mostly known for its natural beauty, fjords and mountains, the amazing Northern Lights and the Midnight Sun.",
         "photos": "res/data/norway.json"
     },
     {
@@ -68,7 +68,7 @@
     {
         "src": "res/images/japan.jpeg",
         "title": "Japan",
-        "description": "Japan is often referred to as the \"Land of the rising sun\". ",
+        "description": "Often referred to as the \"Land of the rising sun\", Japan is a place where ancient traditions are fused with modern life.",
         "photos": "res/data/japan.json"
     }
 ]
