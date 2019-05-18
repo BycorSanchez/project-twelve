@@ -50,7 +50,7 @@
     {
         "src": "res/images/norway.jpg",
         "title": "Norway",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "Norway is a Nordic country in Northern Europe. It is mostly known for its natural beauty, fjords and mountains, the amazing Northern Lights and the Midnight Sun.",
         "photos": "res/data/norway.json"
     },
     {
