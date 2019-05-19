@@ -2,7 +2,7 @@
     {
         "src": "res/images/usa.jpeg",
         "title": "USA",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "The United States of America is one of the world's largest countries.",
         "photos": "res/data/usa.json"
     },
     {
@@ -14,25 +14,25 @@
     {
         "src": "res/images/ireland.jpeg",
         "title": "Ireland",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "Ireland is known for its wide expanses of lush, green fields. In fact, its nickname is the Emerald Isle. But there are also large areas of rugged, rocky landscape.",
         "photos": "res/data/ireland.json"
     },
     {
         "src": "res/images/uk.jpeg",
         "title": "UK",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "The United Kingdom consists of a group of islands off the northwest coast of Europe. It is a unique country made up of four nations: England, Wales, Scotland, and Northern Ireland.",
         "photos": "res/data/uk.json"
     },
     {
         "src": "res/images/spain.jpeg",
         "title": "Spain",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "Spain is a country of large cultural diversity. In Spain you will find from green valleys, hills and snowy mountains to almost desert zones. Its beaches are also famous.",
         "photos": "res/data/spain.json"
     },
     {
         "src": "res/images/france.jpeg",
         "title": "France",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "France is the most popular tourist destination in the world. It is home to vibrant cities, stunning landscapes, food and culture.",
         "photos": "res/data/france.json"
     },
     {
@@ -62,7 +62,7 @@
     {
         "src": "res/images/australia.jpeg",
         "title": "Australia",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "Australia is a diverse and fascinating country. With spectacular landscapes and a rich ancient culture, Australia is a land like no other.",
         "photos": "res/data/australia.json"
     },
     {
