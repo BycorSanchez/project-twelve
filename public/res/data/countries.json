@@ -2,7 +2,7 @@
     {
         "src": "res/images/usa.jpeg",
         "title": "USA",
-        "description": "The United States of America is one of the world's largest countries.",
+        "description": "The United States of America is a vast land. It is home to some of the most spectacular scenery in the world and some of the most recognizable icons on the globe.",
         "photos": "res/data/usa.json"
     },
     {
@@ -20,7 +20,7 @@
     {
         "src": "res/images/uk.jpeg",
         "title": "UK",
-        "description": "The United Kingdom consists of a group of islands off the northwest coast of Europe. It is a unique country made up of four nations: England, Wales, Scotland, and Northern Ireland.",
+        "description": "The United Kingdom is a country with fascinating history, exciting cities, and rich cultural traditions. Historic sites are at every turn, from prehistoric megaliths to centuries-old castles.",
         "photos": "res/data/uk.json"
     },
     {
@@ -38,13 +38,13 @@
     {
         "src": "res/images/germany.jpeg",
         "title": "Germany",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "Germany exhibit both a modern and classical feel. Its cities often preserve their historical appearance and have old towns with remarkable architectural heritage.",
         "photos": "res/data/germany.json"
     },
     {
         "src": "res/images/italy.jpeg",
         "title": "Italy",
-        "description": "Italy is home to many of the world's greatest works of art, architecture and gastronomy.",
+        "description": "As the birthplace of the Roman Empire and the Renaissance, Italy is home to many of the world's greatest works of art and architecture.",
         "photos": "res/data/italy.json"
     },
     {
@@ -56,7 +56,7 @@
     {
         "src": "res/images/greece.jpg",
         "title": "Greece",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor.",
+        "description": "Greece is the cradle of art and philosophy. It is made up of a series of islands covered in white buildings, and you will also find crumbling ruins, engaging museums, and pretty coastal towns.",
         "photos": "res/data/greece.json"
     },
     {
