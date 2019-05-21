@@ -6,15 +6,16 @@ import styles from "../styles/Rotable.module.css";
 class Rotable extends Component {
   static propTypes = {
     options: PropTypes.array.isRequired,
-    current: PropTypes.number
+    current: PropTypes.number,
+    defaultValue: PropTypes.string
   };
 
   static defaultProps = {
-    current: 0
+    defaultValue: ""
   };
 
   render() {
-    const { options, current } = this.props;
+    const { options, current, defaultValue } = this.props;
 
     return (
       <div className={styles.container}>
@@ -30,7 +31,7 @@ class Rotable extends Component {
             key={current}
             timeout={{ enter: 600, exit: 600 }}
           >
-            <span>{options[current]}</span>
+            <span>{current ? options[current] : defaultValue}</span>
           </CSSTransition>
         </TransitionGroup>
       </div>

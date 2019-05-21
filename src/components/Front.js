@@ -59,6 +59,7 @@ class Front extends Component {
             <Rotable
               current={current}
               options={titles}
+              defaultValue="Countries"
             />
             {isSelected && (
               <button
