@@ -56,7 +56,7 @@
     {
         "src": "res/images/greece.jpg",
         "title": "Greece",
-        "description": "Greece is the cradle of art and philosophy. It is made up of a series of islands covered in white buildings, and you will also find crumbling ruins, engaging museums, and pretty coastal towns.",
+        "description": "Greece is the cradle of art and philosophy. It is made up of a series of islands covered in white buildings. You will also find crumbling ruins, engaging museums, and pretty coastal towns.",
         "photos": "res/data/greece.json"
     },
     {
