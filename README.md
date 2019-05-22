@@ -11,6 +11,13 @@
 * Allow navigation inside modal.
 * Select automatically the format of the photo that best fits in the available space (modal and gallery photos).
 * Preload option images and display a loading page in the meantime.
+* ~~Load gallery photos using [Pexels API](https://www.pexels.com/api/).~~ Discarted to prevent API KEY public exposure, it is simulated loading photos from JSON file instead.
+
+## Technologies
+
+* ES6 JavaScript
+* [React ![react](readme/react-logo.png)](https://reactjs.org)
+* [CSS Modules ![css modules](readme/css-modules-logo.png)](https://github.com/css-modules/css-modules)
 
 ## Components
 
@@ -22,12 +29,6 @@
 * *Modal*: modal photo
 * *FrontLoader*: preloader
 * *Rotable*: text with CSS transition
-
-## Technologies
-
-* ES6 JavaScript
-* [React ![react](readme/react-logo.png)](https://reactjs.org)
-* [CSS Modules ![css modules](readme/css-modules-logo.png)](https://github.com/css-modules/css-modules)
 
 ## Dependencies
 
