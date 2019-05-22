@@ -1,5 +1,7 @@
 # Countries to Discover
 
+Countries to discover is a web application which, through a photo gallery, let the user know up to twelve countries of great tourist, cultural, natural and gastronomic interest.
+
 ## Features
 
 * Show multiple selectable options (countries).
