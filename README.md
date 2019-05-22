@@ -14,14 +14,14 @@
 
 ## Components
 
-* App: main component
-* Front: option panel
-* Gallery: photo gallery
-* Footer: app footer
-* Slice: background slices
-* Modal: modal photo
-* FrontLoader: preloader
-* Rotable: text with CSS transition
+* *App*: main component
+* *Front*: option panel
+* *Gallery*: photo gallery
+* *Footer*: app footer
+* *Slice*: background slices
+* *Modal*: modal photo
+* *FrontLoader*: preloader
+* *Rotable*: text with CSS transition
 
 ## Technologies
 
@@ -43,6 +43,6 @@
 
 ## Acknowledges
 
-Photos from [Pexels](https://www.pexels.com).
-Icons by [iconmnstr](https://iconmonstr.com).
+Photos from [Pexels ![pexels](readme/pexels-logo.png)]](https://www.pexels.com).
+Icons by [iconmonstr ![iconmonstr](readme/iconmonstr-logo.png)](https://iconmonstr.com).
 Developed by Bycor Sánchez.
