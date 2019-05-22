@@ -1,4 +1,4 @@
-# Project twelve
+# Countries to Discover
 
 ## Features
 
