@@ -26,8 +26,8 @@
 ## Technologies
 
 * ES6 JavaScript
-* [React](https://reactjs.org)
-* [CSS Modules](https://github.com/css-modules/css-modules)
+* [React ![react](readme/react-logo.png)](https://reactjs.org)
+* [CSS Modules ![css modules](readme/css-modules-logo.png)](https://github.com/css-modules/css-modules)
 
 ## Dependencies
 
@@ -43,6 +43,6 @@
 
 ## Acknowledges
 
-Photos from [Pexels ![pexels](readme/pexels-logo.png)]](https://www.pexels.com).
-Icons by [iconmonstr ![iconmonstr](readme/iconmonstr-logo.png)](https://iconmonstr.com).
+Photos from [Pexels ![pexels](readme/pexels-logo.png)](https://www.pexels.com).  
+Icons by [iconmonstr ![iconmonstr](readme/iconmonstr-logo.png)](https://iconmonstr.com).  
 Developed by Bycor Sánchez.
