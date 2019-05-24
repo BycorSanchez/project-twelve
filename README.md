@@ -17,20 +17,9 @@ Countries to discover is a web application which, through a photo gallery, let t
 
 ## Technologies
 
-* ES6 JavaScript
+* ES6 JavaScript ![javascript](readme/js-logo.png)
 * [React ![react](readme/react-logo.png)](https://reactjs.org)
 * [CSS Modules ![css modules](readme/css-modules-logo.png)](https://github.com/css-modules/css-modules)
-
-## Components
-
-* *App*: main component
-* *Front*: option panel
-* *Gallery*: photo gallery
-* *Footer*: app footer
-* *Slice*: background slices
-* *Modal*: modal photo
-* *FrontLoader*: preloader
-* *Rotable*: text with CSS transition
 
 ## Dependencies
 
