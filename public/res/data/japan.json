@@ -918,24 +918,6 @@
         "width": 6000
     },
     {
-        "height": 4000,
-        "id": 2091013,
-        "photographer": "Mat Kedzia",
-        "photographer_url": "https://www.pexels.com/@mat-kedzia-1096222",
-        "src": {
-            "landscape": "https://images.pexels.com/photos/2091013/pexels-photo-2091013.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-            "large": "https://images.pexels.com/photos/2091013/pexels-photo-2091013.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-            "large2x": "https://images.pexels.com/photos/2091013/pexels-photo-2091013.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "medium": "https://images.pexels.com/photos/2091013/pexels-photo-2091013.jpeg?auto=compress&cs=tinysrgb&h=350",
-            "original": "https://images.pexels.com/photos/2091013/pexels-photo-2091013.jpeg",
-            "portrait": "https://images.pexels.com/photos/2091013/pexels-photo-2091013.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-            "small": "https://images.pexels.com/photos/2091013/pexels-photo-2091013.jpeg?auto=compress&cs=tinysrgb&h=130",
-            "tiny": "https://images.pexels.com/photos/2091013/pexels-photo-2091013.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=280"
-        },
-        "url": "https://www.pexels.com/photo/photo-of-two-women-sitting-beside-each-other-2091013/",
-        "width": 6000
-    },
-    {
         "height": 6322,
         "id": 1510610,
         "photographer": "Aleksandar Pasaric",
@@ -1384,23 +1366,5 @@
         },
         "url": "https://www.pexels.com/photo/architecture-buildings-city-clouds-23735/",
         "width": 6480
-    },
-    {
-        "height": 7096,
-        "id": 1717887,
-        "photographer": "Timo Volz",
-        "photographer_url": "https://www.pexels.com/@timo-volz-837240",
-        "src": {
-            "landscape": "https://images.pexels.com/photos/1717887/pexels-photo-1717887.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-            "large": "https://images.pexels.com/photos/1717887/pexels-photo-1717887.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-            "large2x": "https://images.pexels.com/photos/1717887/pexels-photo-1717887.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "medium": "https://images.pexels.com/photos/1717887/pexels-photo-1717887.jpeg?auto=compress&cs=tinysrgb&h=350",
-            "original": "https://images.pexels.com/photos/1717887/pexels-photo-1717887.jpeg",
-            "portrait": "https://images.pexels.com/photos/1717887/pexels-photo-1717887.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-            "small": "https://images.pexels.com/photos/1717887/pexels-photo-1717887.jpeg?auto=compress&cs=tinysrgb&h=130",
-            "tiny": "https://images.pexels.com/photos/1717887/pexels-photo-1717887.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=280"
-        },
-        "url": "https://www.pexels.com/photo/selective-focus-photography-of-brown-deer-1717887/",
-        "width": 4731
     }
 ]

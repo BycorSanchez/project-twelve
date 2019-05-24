@@ -36,24 +36,6 @@
         "width": 3462
     },
     {
-        "height": 3936,
-        "id": 1208781,
-        "photographer": "Mark Dalton",
-        "photographer_url": "https://www.pexels.com/@themarkdalton",
-        "src": {
-            "landscape": "https://images.pexels.com/photos/1208781/pexels-photo-1208781.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-            "large": "https://images.pexels.com/photos/1208781/pexels-photo-1208781.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-            "large2x": "https://images.pexels.com/photos/1208781/pexels-photo-1208781.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "medium": "https://images.pexels.com/photos/1208781/pexels-photo-1208781.jpeg?auto=compress&cs=tinysrgb&h=350",
-            "original": "https://images.pexels.com/photos/1208781/pexels-photo-1208781.jpeg",
-            "portrait": "https://images.pexels.com/photos/1208781/pexels-photo-1208781.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-            "small": "https://images.pexels.com/photos/1208781/pexels-photo-1208781.jpeg?auto=compress&cs=tinysrgb&h=130",
-            "tiny": "https://images.pexels.com/photos/1208781/pexels-photo-1208781.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=280"
-        },
-        "url": "https://www.pexels.com/photo/red-stall-1208781/",
-        "width": 2624
-    },
-    {
         "height": 3433,
         "id": 1649273,
         "photographer": "Steven Hylands",
