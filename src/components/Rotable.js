@@ -31,7 +31,7 @@ class Rotable extends Component {
             key={current}
             timeout={{ enter: 600, exit: 600 }}
           >
-            <span>{current ? options[current] : defaultValue}</span>
+            <span>{current !== undefined ? options[current] : defaultValue}</span>
           </CSSTransition>
         </TransitionGroup>
       </div>
