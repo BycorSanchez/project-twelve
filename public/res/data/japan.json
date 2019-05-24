@@ -559,24 +559,6 @@
     },
     {
         "height": 4000,
-        "id": 932261,
-        "photographer": "Miguel Á. Padriñán",
-        "photographer_url": "https://www.pexels.com/@padrinan",
-        "src": {
-            "landscape": "https://images.pexels.com/photos/932261/pexels-photo-932261.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-            "large": "https://images.pexels.com/photos/932261/pexels-photo-932261.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-            "large2x": "https://images.pexels.com/photos/932261/pexels-photo-932261.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "medium": "https://images.pexels.com/photos/932261/pexels-photo-932261.jpeg?auto=compress&cs=tinysrgb&h=350",
-            "original": "https://images.pexels.com/photos/932261/pexels-photo-932261.jpeg",
-            "portrait": "https://images.pexels.com/photos/932261/pexels-photo-932261.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-            "small": "https://images.pexels.com/photos/932261/pexels-photo-932261.jpeg?auto=compress&cs=tinysrgb&h=130",
-            "tiny": "https://images.pexels.com/photos/932261/pexels-photo-932261.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=280"
-        },
-        "url": "https://www.pexels.com/photo/japanese-lucky-coin-cat-932261/",
-        "width": 6016
-    },
-    {
-        "height": 4000,
         "id": 209798,
         "photographer": "Pixabay",
         "photographer_url": "https://www.pexels.com/@pixabay",
@@ -970,24 +952,6 @@
         },
         "url": "https://www.pexels.com/photo/dark-alley-1510610/",
         "width": 4215
-    },
-    {
-        "height": 3528,
-        "id": 1198692,
-        "photographer": "Yuliya Strizhkina (Cartier)",
-        "photographer_url": "https://www.pexels.com/@cartier",
-        "src": {
-            "landscape": "https://images.pexels.com/photos/1198692/pexels-photo-1198692.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-            "large": "https://images.pexels.com/photos/1198692/pexels-photo-1198692.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-            "large2x": "https://images.pexels.com/photos/1198692/pexels-photo-1198692.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "medium": "https://images.pexels.com/photos/1198692/pexels-photo-1198692.jpeg?auto=compress&cs=tinysrgb&h=350",
-            "original": "https://images.pexels.com/photos/1198692/pexels-photo-1198692.jpeg",
-            "portrait": "https://images.pexels.com/photos/1198692/pexels-photo-1198692.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-            "small": "https://images.pexels.com/photos/1198692/pexels-photo-1198692.jpeg?auto=compress&cs=tinysrgb&h=130",
-            "tiny": "https://images.pexels.com/photos/1198692/pexels-photo-1198692.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=280"
-        },
-        "url": "https://www.pexels.com/photo/woman-in-black-kimono-looking-at-white-japanese-spitz-1198692/",
-        "width": 5054
     },
     {
         "height": 4128,
