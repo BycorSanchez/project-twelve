@@ -49,3 +49,7 @@ Countries to discover is a web application which, through a photo gallery, let t
 Photos from [Pexels ![pexels](readme/pexels-logo.png)](https://www.pexels.com).  
 Icons by [iconmonstr ![iconmonstr](readme/iconmonstr-logo.png)](https://iconmonstr.com).  
 Developed by Bycor Sánchez.
+
+## Notes
+
+It is not guaranteed that the photographs displayed on this web application are directly related to the listed countries.
