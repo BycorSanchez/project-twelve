@@ -4,6 +4,8 @@ import Slice from "./Slice";
 import Rotable from "./Rotable";
 import classnames from "classnames";
 import styles from "../styles/Front.module.css";
+import backIcon from "../images/back1.svg";
+import backIconHover from "../images/back2.svg";
 
 class Front extends Component {
   static propTypes = {
@@ -65,9 +67,26 @@ class Front extends Component {
               <button
                 className={styles.back}
                 onClick={this._onDeselect}
-                title="Go back"
-                aria-label="Go back"
-              />
+                title="Back"
+                aria-label="Back"
+              >
+                <object
+                  type="image/svg+xml"
+                  data={backIcon}
+                  id={styles.backIcon}
+                  className={styles.icon}
+                >
+                  Back
+                </object>
+                <object
+                  type="image/svg+xml"
+                  data={backIconHover}
+                  id={styles.backIconHover}
+                  className={styles.icon}
+                >
+                  Back
+                </object>
+              </button>
             )}
           </h1>
 
