@@ -102,7 +102,13 @@ class FrontLoader extends Component {
                             className={styles.circle}
                             style={{ background: info.color }}
                         >
-                            <img src={info.image} alt="preloader" />
+                            <object 
+                                type="image/svg+xml" 
+                                data={info.image}
+                                className={styles.icon}
+                            >
+                                Loading
+                            </object>
                         </div>
                         <h2 className={styles.message}>{info.message}</h2>
                     </div>

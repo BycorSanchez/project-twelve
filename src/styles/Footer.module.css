@@ -24,6 +24,7 @@ footer p {
 .icon {
   width: 16px;
   height: 16px;
+  pointer-events: none;
 }
 
 @keyframes heartBeat {
