@@ -103,7 +103,7 @@ class Modal extends Component {
                   onLoad={this._photoLoaded}
                   onError={this._photoLoadError}
                 />
-                <figcaption><p>Photo by <a href={photo.photographer_url}>{photo.photographer}</a> on <a href={photo.url}>Pexels</a></p></figcaption>
+                <figcaption><p>Photo by <a href={photo.photographer_url}>{photo.photographer}</a> on <a href={photo.url}>Unsplash</a></p></figcaption>
               </figure>
 
               {showNext && (

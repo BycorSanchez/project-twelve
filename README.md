@@ -13,7 +13,7 @@ Countries to discover is a web application which, through a photo gallery, let t
 * Allow navigation inside modal.
 * Select automatically the format of the photo that best fits in the available space (modal and gallery photos).
 * Preload option images and display a loading page in the meantime.
-* ~~Load gallery photos using [Pexels API](https://www.pexels.com/api/).~~ It was discarded to maintain API KEY confidential, it is simulated loading photos from a JSON file instead.
+* ~~Load gallery photos using [Unsplash API](https://unsplash.com/developers).~~ It was discarded to maintain API KEY confidential, it is simulated loading photos from a JSON file instead.
 
 ## Technologies
 
@@ -35,7 +35,7 @@ Countries to discover is a web application which, through a photo gallery, let t
 
 ## Acknowledges
 
-Photos from [Pexels ![pexels](readme/pexels-logo.png)](https://www.pexels.com).  
+Photos from [Unsplash ![unsplash](readme/unsplash-logo.png)](https://unsplash.com).  
 Icons by [iconmonstr ![iconmonstr](readme/iconmonstr-logo.png)](https://iconmonstr.com).  
 Developed by Bycor Sánchez.
 

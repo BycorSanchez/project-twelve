@@ -21,13 +21,13 @@ export const lazyLoadImage = (entries, observer) => {
 
 // Choose best photo based on available width
 export const photoSrc = (photo, imgWidth) => {
-  const imgHeight = (imgWidth * photo.height) / photo.width;
-  return photo.src[format(imgWidth, imgHeight)];
+  return photo.src[format(imgWidth)];
 }
 
-const format = (width, height) => {
-  if (width < 190 && height < 350) return "small";
-  if (width < 600 && height < 650) return "medium";
-  if (width < 950 && height < 900) return "large";
-  else return "large2x";
+const format = width => {
+  if (width < 200) return "thumb";
+  if (width < 400) return "small";
+  if (width < 800) return "medium";
+  if (width < 2000) return "large";
+  return "full";
 }
