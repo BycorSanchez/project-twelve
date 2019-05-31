@@ -1,48 +1,48 @@
 [
     {
-        "src": "res/images/usa.jpeg",
+        "src": "res/images/usa.jpg",
         "title": "USA",
         "description": "The United States of America is a vast land. It is home to some of the most spectacular scenery in the world and some of the most recognizable icons on the globe.",
         "photos": "res/data/usa.json"
     },
     {
-        "src": "res/images/iceland.jpeg",
+        "src": "res/images/iceland.jpg",
         "title": "Iceland",
         "description": "Iceland is often referred to as the \"Land of Fire and Ice\". Icelandic landscapes are shaped by sand and lava fields, mountains, volcanoes and glaciers.",
         "photos": "res/data/iceland.json"
     },
     {
-        "src": "res/images/ireland.jpeg",
+        "src": "res/images/ireland.jpg",
         "title": "Ireland",
         "description": "Ireland is known for its wide expanses of lush, green fields. In fact, its nickname is the Emerald Isle. But there are also large areas of rugged, rocky landscape.",
         "photos": "res/data/ireland.json"
     },
     {
-        "src": "res/images/uk.jpeg",
+        "src": "res/images/uk.jpg",
         "title": "UK",
         "description": "The United Kingdom is a country with fascinating history, exciting cities, and rich cultural traditions. Historic sites are at every turn, from prehistoric megaliths to centuries-old castles.",
         "photos": "res/data/uk.json"
     },
     {
-        "src": "res/images/spain.jpeg",
+        "src": "res/images/spain.jpg",
         "title": "Spain",
         "description": "Spain is a country of large cultural diversity. In Spain you will find from green valleys, hills and snowy mountains to almost desert zones. Its beaches are also famous.",
         "photos": "res/data/spain.json"
     },
     {
-        "src": "res/images/france.jpeg",
+        "src": "res/images/france.jpg",
         "title": "France",
         "description": "France is the most popular tourist destination in the world. It is home to vibrant cities, stunning landscapes, food and culture.",
         "photos": "res/data/france.json"
     },
     {
-        "src": "res/images/germany.jpeg",
+        "src": "res/images/germany.jpg",
         "title": "Germany",
         "description": "Germany exhibit both a modern and classical feel. Its cities often preserve their historical appearance and have old towns with remarkable architectural heritage.",
         "photos": "res/data/germany.json"
     },
     {
-        "src": "res/images/italy.jpeg",
+        "src": "res/images/italy.jpg",
         "title": "Italy",
         "description": "As the birthplace of the Roman Empire and the Renaissance, Italy is home to many of the world's greatest works of art and architecture.",
         "photos": "res/data/italy.json"
@@ -60,13 +60,13 @@
         "photos": "res/data/greece.json"
     },
     {
-        "src": "res/images/australia.jpeg",
+        "src": "res/images/australia.jpg",
         "title": "Australia",
         "description": "Australia is a diverse and fascinating country. With spectacular landscapes and a rich ancient culture, Australia is a land like no other.",
         "photos": "res/data/australia.json"
     },
     {
-        "src": "res/images/japan.jpeg",
+        "src": "res/images/japan.jpg",
         "title": "Japan",
         "description": "Often referred to as the \"Land of the rising sun\", Japan is a place where ancient traditions are fused with modern life.",
         "photos": "res/data/japan.json"
