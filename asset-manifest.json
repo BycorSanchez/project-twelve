@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/discover-countries/static/css/main.ca746255.chunk.css",
+    "main.js": "/discover-countries/static/js/main.2beb32b3.chunk.js",
+    "main.js.map": "/discover-countries/static/js/main.2beb32b3.chunk.js.map",
+    "runtime~main.js": "/discover-countries/static/js/runtime~main.26f4f2ac.js",
+    "runtime~main.js.map": "/discover-countries/static/js/runtime~main.26f4f2ac.js.map",
+    "static/js/2.e852bc31.chunk.js": "/discover-countries/static/js/2.e852bc31.chunk.js",
+    "static/js/2.e852bc31.chunk.js.map": "/discover-countries/static/js/2.e852bc31.chunk.js.map",
+    "index.html": "/discover-countries/index.html",
+    "precache-manifest.a5eb80683dbf2f46a208fea0b8df99f8.js": "/discover-countries/precache-manifest.a5eb80683dbf2f46a208fea0b8df99f8.js",
+    "service-worker.js": "/discover-countries/service-worker.js",
+    "static/css/main.ca746255.chunk.css.map": "/discover-countries/static/css/main.ca746255.chunk.css.map",
+    "static/media/Front.module.css": "/discover-countries/static/media/arrow_down.7c7df07a.svg",
+    "static/media/back1.svg": "/discover-countries/static/media/back1.f9a04b4a.svg",
+    "static/media/back2.svg": "/discover-countries/static/media/back2.d41fa46a.svg",
+    "static/media/boardingpass.svg": "/discover-countries/static/media/boardingpass.8b1f1164.svg",
+    "static/media/error.svg": "/discover-countries/static/media/error.6f29afb2.svg",
+    "static/media/iconmonstr.svg": "/discover-countries/static/media/iconmonstr.0264d61d.svg",
+    "static/media/images.svg": "/discover-countries/static/media/images.e94bed21.svg",
+    "static/media/loadingspinner.svg": "/discover-countries/static/media/loadingspinner.47876779.svg",
+    "static/media/passport.svg": "/discover-countries/static/media/passport.3b97fe46.svg",
+    "static/media/placeholder.png": "/discover-countries/static/media/placeholder.12d0fc49.png",
+    "static/media/suitcase.svg": "/discover-countries/static/media/suitcase.ae014b39.svg",
+    "static/media/unsplash.svg": "/discover-countries/static/media/unsplash.ea0cefc3.svg"
+  }
+}
