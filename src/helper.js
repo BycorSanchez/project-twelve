@@ -6,7 +6,7 @@ export const range = (start, stop, step = 1) => {
 };
 
 export const lazyLoadConfig = {
-  rootMargin: "10px",
+  rootMargin: "20px",
   threshold: 0
 };
 

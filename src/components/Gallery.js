@@ -52,7 +52,7 @@ class Gallery extends Component {
             data-src={photoSrc(photos[index], width)}
             alt={photos[index].photographer + " photo"}
             onClick={() => this._openModal(index)}
-            ref={ref => (this.imageRefs[index] = ref)}
+            ref={ref => this.imageRefs.push(ref)}
             className={styles.photo}
           />
         ))}
