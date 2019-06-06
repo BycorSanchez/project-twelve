@@ -1,7 +1,7 @@
-import styles from "../styles/Slice.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import styles from "../styles/Slice.module.css";
 
 class Slice extends Component {
   static propTypes = {
@@ -12,7 +12,8 @@ class Slice extends Component {
     isSelected: PropTypes.bool,
     onHover: PropTypes.func,
     onSelect: PropTypes.func,
-    type: PropTypes.oneOf(["vertical", "horizontal"])
+    type: PropTypes.oneOf(["vertical", "horizontal"]),
+    ariaLabel: PropTypes.string
   };
 
   static defaultProps = {
@@ -21,7 +22,7 @@ class Slice extends Component {
     type: "vertical"
   };
 
-  _callListener(item, func) {
+  _callListener(func, item) {
     if (func) func(item);
   }
 
@@ -38,26 +39,22 @@ class Slice extends Component {
   }
 
   _polygonOf(...points) {
-    if (points.length < 4) return undefined;
+    if (points.length !== 4) return undefined;
     return this.props.type === "vertical"
       ? this._verticalPolygon(points)
       : this._horizontalPolygon(points);
   }
 
   _verticalPolygon(points) {
-    return `polygon(${points[0]}% 0, ${points[1]}% 0, ${points[2]}% 100%, ${
-      points[3]
-    }% 100%)`;
+    return `polygon(${points[0]}% 0, ${points[1]}% 0, ${points[2]}% 100%, ${points[3]}% 100%)`;
   }
 
   _horizontalPolygon(points) {
-    return `polygon(0 ${points[0]}%, 0 ${points[1]}%, 100% ${
-      points[2]
-    }%, 100% ${points[3]}%)`;
+    return `polygon(0 ${points[0]}%, 0 ${points[1]}%, 100% ${points[2]}%, 100% ${points[3]}%)`;
   }
 
   render() {
-    const { item, width, image, isSelected, isHover } = this.props;
+    const { item, width, image, isSelected, isHover, ariaLabel } = this.props;
     const polygon = isSelected
       ? this._fullPolygon()
       : this._polygon(item, width, isHover ? width / 4 : 0);
@@ -65,15 +62,16 @@ class Slice extends Component {
     return (
       <div
         className={classnames(styles.slice, {
-          [styles.sliceFront]: isSelected || isHover
+          [styles.focus]: isSelected || isHover
         })}
         style={{
           clipPath: polygon,
           WebkitClipPath: polygon,
-          backgroundImage: `url(${image})`
+          backgroundImage: `url(${image})`,
         }}
-        onMouseEnter={() => this._callListener(item, this.props.onHover)}
-        onClick={() => this._callListener(item, this.props.onSelect)}
+        onMouseEnter={() => this._callListener(this.props.onHover, item)}
+        onClick={() => this._callListener(this.props.onSelect, item)}
+        aria-label={ariaLabel}
       />
     );
   }

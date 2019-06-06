@@ -1,17 +1,5 @@
-:root {
-  --clock-size: 1em;
-}
-
 .overlap {
   z-index: 2;
-}
-
-#clock {
-  width: var(--clock-size);
-  height: var(--clock-size);
-  margin-left: 0.3em;
-  cursor: pointer;
-  outline: none;
 }
 
 .hideText {
@@ -24,7 +12,7 @@
   pointer-events: none;
 }
 
-.nextSection {
+.arrow {
   background: rgba(0, 0, 0, 0.4) url(../images/arrow_down.svg) no-repeat center;
   border-radius: 50%;
   width: 70px;
@@ -44,9 +32,7 @@
 }
 
 .frontInfo {
-  text-shadow: 2px 3px 1px #333;
   position: absolute;
-  color: white;
   display: flex;
   width: 100%;
   height: 100%;
@@ -54,11 +40,10 @@
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  max-width: calc(100% - 50px);
+  max-width: calc(100% - 75px);
 }
 
-.frontInfo h1 {
-  font-size: 2em;
+h1 {
   letter-spacing: 0.05em;
   display: flex;
   align-items: center;
@@ -66,36 +51,51 @@
   flex-wrap: wrap;
 }
 
-.frontInfo p {
-  font-size: 1.5em;
-}
-
-.frontInfo .title {
+h1 .title {
   margin-right: 0.3em;
 }
 
-.frontBackground {
+.back {
+  position: relative;
+  margin: 0 1em;
+  width: 3em;
+  height: 3em;
+}
+
+.icon {
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+#backIcon,
+#backIconHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#backIconHover {
+  opacity: 0;
+}
+
+.back:hover #backIcon {
+  opacity: 0;
+}
+
+.back:hover #backIconHover {
+  opacity: 1;
+}
+
+.background {
   width: 100%;
   height: 100%;
 }
 
-.pexels {
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  padding: 10px;
-  background: black;
-  color: white;
-}
-
 @media screen and (min-width: 700px) {
-  .frontInfo h1 {
-    font-size: 2.4em;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  .frontInfo h1 {
-    font-size: 3.6em;
+  .back {
+    width: 6em;
+    height: 6em;
   }
 }

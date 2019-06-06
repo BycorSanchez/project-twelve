@@ -2,80 +2,76 @@
   --spinner-size: 50px;
 }
 
-.modal {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+a {
+  color: #bbb;
 }
 
-.modalContent {
-  position: relative;
-  max-width: 70vw;
-  max-height: 70vh;
-}
-
-.icon {
-  display: inline-block;
-  position: absolute;
-  font-size: 1.5em;
+button {
   cursor: pointer;
-}
-
-.previous,
-.next {
-  color: white;
   border: none;
   background: none;
-  text-shadow: 0 0 1px black;
-  outline: none;
+  color: white;
 }
 
-.previous:hover,
-.next:hover {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 50%;
-  font-weight: bold;
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  color: #e2e2e2;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control {
+  text-shadow: 0 0 1px black;
+  font-size: 1.7em;
+  padding: 1em 0.6em;
+  color: #bbb;
+}
+
+.control:hover {
+  color: white;
 }
 
 .close {
-  top: 5%;
-  right: 5%;
-  background: white;
-  padding: 0 0.2em;
-  border: none;
-  outline: none;
+  align-self: flex-end;
+  font-size: 2em;
 }
 
-.previous {
-  top: 50%;
-  left: 4%;
-}
-
-.next {
-  top: 50%;
-  right: 4%;
-}
-
-.loadingSpinner {
+.loading {
+  position: absolute;
   border: none;
   width: var(--spinner-size);
   height: var(--spinner-size);
-  position: absolute;
   top: calc(50% - calc(var(--spinner-size) / 2));
   left: calc(50% - calc(var(--spinner-size) / 2));
 }
 
-.modalImage {
-  max-width: inherit;
-  max-height: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+.photo {
+  object-fit: contain;
+  min-height: 150px;
+  min-width: 150px;
+  max-height: calc(100vh - 10em);
+  max-width: calc(100vw - 10em);
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (min-width: 500px) {
@@ -83,13 +79,7 @@
     --spinner-size: 100px;
   }
 
-  .modalContent {
-    position: relative;
-    max-width: 80vw;
-    max-height: 80vh;
-  }
-
-  .gallery .icon {
+  .control {
     font-size: 2.2em;
   }
 }

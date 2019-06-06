@@ -1,128 +1,123 @@
-import styles from "../styles/Modal.module.css";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Loading from "./Loading";
+import AriaModal from 'react-aria-modal';
+import { photoSrc } from "../helper";
+import styles from "../styles/Modal.module.css";
 import placeholder from "../images/placeholder.png";
+import spinner from "../images/loadingspinner.svg";
 
 class Modal extends Component {
   static propTypes = {
-    image: PropTypes.string.isRequired,
-    next: PropTypes.func.isRequired,
-    previous: PropTypes.func.isRequired,
-    close: PropTypes.func.isRequired,
-    showNext: PropTypes.bool,
-    showPrevious: PropTypes.bool
-  };
-
-  static defaultProps = {
-    showNext: true,
-    showPrevious: true
+    photos: PropTypes.array.isRequired,
+    selected: PropTypes.number.isRequired,
+    onExit: PropTypes.func.isRequired,
+    width: PropTypes.number.isRequired
   };
 
   state = {
+    current: this.props.selected,
     loaded: false,
     error: false
   };
 
-  constructor(props) {
-    super(props);
-    this.modalRef = React.createRef();
+  _update = current => {
+    if (current > -1 && current < this.props.photos.length) {
+      this.setState({ current, loaded: false, error: false });
+    }
   }
 
-  componentDidMount() {
-    this.modalRef.current.focus();
-  }
+  _next = () => this._update(this.state.current + 1);
+  _previous = () => this._update(this.state.current - 1);
 
-  _imageLoaded = () => this.setState({ loaded: true });
+  _photoLoaded = () => this.setState({ loaded: true });
 
-  _imageLoadError = () => {
+  _photoLoadError = () => {
     this.setState({ loaded: true, error: true });
-    console.error("Image could not be loaded");
+    console.error("Photo could not be loaded");
   };
 
   _handleKey = e => {
-    e.preventDefault();
     switch (e.keyCode) {
-      case 27: //Escape
-        this.props.close();
-        break;
       case 37: //Left arrow
-        this.props.previous();
+        e.preventDefault();
+        this._previous();
         break;
       case 39: //Right arrow
-        this.props.next();
+        e.preventDefault();
+        this._next();
         break;
       default:
         break;
     }
   };
 
-  _renderSpinner() {
-    return (
-      <span className={styles.loadingSpinner}>
-        <Loading type="spinner" />
-      </span>
-    );
-  }
-
-  _renderControls() {
-    const { close, next, previous, showNext, showPrevious } = this.props;
-    return (
-      <div>
-        <button
-          className={[styles.icon, styles.close].join(" ")}
-          onClick={close}
-        >
-          ×
-        </button>
-        {showPrevious && (
-          <button
-            className={[styles.icon, styles.previous].join(" ")}
-            onClick={previous}
-          >
-            ＜
-          </button>
-        )}
-        {showNext && (
-          <button
-            className={[styles.icon, styles.next].join(" ")}
-            onClick={next}
-          >
-            ＞
-          </button>
-        )}
-      </div>
-    );
-  }
-
   render() {
-    const { loaded, error } = this.state;
-    const { image } = this.props;
+    const { photos, width, onExit } = this.props;
+    const { current, loaded, error } = this.state;
+
+    const photo = photos[current];
+    const src = photoSrc(photo, width);
+
+    const showPrevious = current > 0;
+    const showNext = current < photos.length - 1;
 
     return (
       <div
         className={styles.modal}
-        tabIndex="1"
-        ref={this.modalRef}
         onKeyDown={this._handleKey}
       >
-        <div className={styles.modalContent}>
-          {loaded ? this._renderControls() : this._renderSpinner()}
-          {error && (
-            <img
-              className={styles.modalImage}
-              src={placeholder}
-              alt="Not loaded"
-            />
-          )}
-          <img
-            className={styles.modalImage}
-            src={image}
-            alt=""
-            onLoad={this._imageLoaded}
-            onError={this._imageLoadError}
-          />
-        </div>
+        <AriaModal
+          titleText="Modal image"
+          onExit={onExit}
+          focusDialog={true}
+          verticallyCenter={true}
+          includeDefaultStyles="width: auto"
+        >
+          <div className={styles.content}>
+
+            <button
+              className={styles.close}
+              onClick={onExit}
+              title="Close"
+            >&times;</button>
+
+            <div className={styles.container}>
+
+              {showPrevious && (
+                <button
+                  className={styles.control}
+                  onClick={this._previous}
+                  title="Previous"
+                >&#10094;</button>
+              )}
+
+              {!loaded && (
+                <span className={styles.loading}><img src={spinner} alt="Loading" /></span>
+              )}
+
+              <figure className={styles.information}>
+                <img
+                  className={styles.photo}
+                  src={error ? placeholder : src}
+                  alt={error ? "Default" : photo.photographer + "photo"}
+                  onLoad={this._photoLoaded}
+                  onError={this._photoLoadError}
+                />
+                <figcaption>
+                  <p>Photo by <a href={photo.photographer_url} target="_blank" rel="noopener noreferrer">{photo.photographer}</a> on <a href={photo.url} target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+                </figcaption>
+              </figure>
+
+              {showNext && (
+                <button
+                  className={styles.control}
+                  onClick={this._next}
+                  title="Next"
+                >&#10095;</button>
+              )}
+            </div>
+          </div>
+        </AriaModal>
       </div>
     );
   }

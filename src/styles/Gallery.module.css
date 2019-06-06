@@ -2,29 +2,37 @@
   display: flex;
   justify-content: center;
   padding: 5px;
-  margin-bottom: 1.5em;
+  background: #8e9eab;
+  background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab);
+  background: linear-gradient(to bottom, #eef2f3, #8e9eab);  
 }
 
-.gallery .column {
+.column {
   display: flex;
   flex-direction: column;
   margin: 0 5px;
   height: 100%;
 }
 
-.gallery .galleryImage {
+.photo {
   display: block;
   width: 100%;
-  height: 100%;
   margin: 5px 0;
-  max-height: 300px;
+  max-height: 320px;
   object-fit: cover;
   object-position: center;
   cursor: zoom-in;
+  border: 1px solid #9c9c9c;
 }
 
-.loadingCube img {
+.loading img {
   width: 100px;
   height: 100px;
   margin: 2em;
+}
+
+@media screen and (min-width: 700px) {
+  .photo {
+    max-height: 450px;
+  }
 }

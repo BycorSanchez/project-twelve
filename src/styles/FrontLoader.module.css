@@ -1,0 +1,51 @@
+.background {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #384d5f;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7em;
+    border-radius: 50%;
+    height: 7em;
+    border: 5px solid #151515;
+}
+
+.icon {
+    width: 60%;
+    height: auto;
+}
+
+.message {
+    margin: 1em;
+}
+
+.frontLoaderEnter {
+    opacity: 1;
+}
+
+.frontLoaderExit {
+    opacity: 0;
+    transition: opacity 400ms ease-out;
+}
+
+.frontLoaderExitDone {
+    display: none;
+}

@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Montserrat&display=swap');
+
 html,
 body {
   font-size: 16px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  background: #384d5f;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -16,4 +22,18 @@ h3,
 h4 {
   margin: 0;
   padding: 0;
+  color: white;
+  text-shadow: 2px 3px 1px #333;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-family: 'Merriweather', serif;
+}
+
+
+@media screen and (min-width: 700px) {
+  h1 {
+    font-size: 3.2em;
+  }
 }

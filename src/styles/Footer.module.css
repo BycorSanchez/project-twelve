@@ -1,19 +1,30 @@
-.heart {
+footer .heart {
   animation-name: heartBeat;
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
 
 footer {
-  text-align: center;
-  overflow: auto;
-  background: #f3f3f3;
-  border-top: 1px solid #efefef;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: #d6d6d6;
+  margin: 0.5em 1em;
 }
 
 footer a {
   text-decoration: none;
-  color: #c78400;
+  color: #83abce;
+}
+
+footer p {
+  margin: 0.5em;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
 }
 
 @keyframes heartBeat {
