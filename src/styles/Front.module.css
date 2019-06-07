@@ -40,7 +40,11 @@
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  max-width: calc(100% - 75px);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.frontInfo h2 {
+  padding: 0 2em;
 }
 
 h1 {
@@ -67,6 +71,9 @@ h1 .title {
   height: auto;
   pointer-events: none;
   transition: opacity 0.8s ease;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
 }
 
 #backIcon,
