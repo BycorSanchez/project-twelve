@@ -40,7 +40,11 @@
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  max-width: calc(100% - 75px);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.frontInfo h2 {
+  padding: 0 2em;
 }
 
 h1 {
