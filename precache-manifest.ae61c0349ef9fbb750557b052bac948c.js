@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eb4f66b54582057ebcf4e250a611132f",
+    "revision": "aa3d39b35c1258e7831e3deeaa53f470",
     "url": "/discover-countries/index.html"
   },
   {
-    "revision": "75d60ecfd09e81d4e3ce",
-    "url": "/discover-countries/static/css/main.ca746255.chunk.css"
+    "revision": "0face24ec1dec89dc7c0",
+    "url": "/discover-countries/static/css/main.054ef757.chunk.css"
   },
   {
     "revision": "cba15eb156b1f666653e",
     "url": "/discover-countries/static/js/2.e852bc31.chunk.js"
   },
   {
-    "revision": "75d60ecfd09e81d4e3ce",
-    "url": "/discover-countries/static/js/main.2beb32b3.chunk.js"
+    "revision": "0face24ec1dec89dc7c0",
+    "url": "/discover-countries/static/js/main.897c918f.chunk.js"
   },
   {
     "revision": "1d31741b3ead4515941c",
